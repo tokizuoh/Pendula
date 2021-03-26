@@ -1,0 +1,23 @@
+name: Pendula
+options:
+  bundleIdPrefix: dev.tokizuoh
+  developmentLanguage: ja
+  deploymentTarget:
+    iOS: 13.0
+  xcodeVersion: "12.3"
+
+settings:
+  base:
+    MARKETING_VERSION: 1.0.0
+    CURRENT_PROJECT_VERSION: 1
+
+targets:
+  Pendula:
+    type: application
+    platform: iOS
+    sources:
+      - Pendula
+    settings:
+      base:
+        INFOPLIST_FILE: Pendula/Info.plist
+        DEVELOPMENT_LANGUAGE: jp
