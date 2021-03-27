@@ -45,3 +45,29 @@ targets:
         DEVELOPMENT_LANGUAGE: jp
     dependencies:
       - target: Pendula
+
+schemes:
+  Pendula:
+    build:
+      targets:
+        Pendula: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      coverageTargets:
+        - Pendula
+      targets:
+        - name: PendulaTests
+          parallelizable: true
+          randomExecutionOrder: true
+        - name: PendulaUITests
+          parallelizable: true
+          randomExecutionOrder: true
+      profile:
+        config: Release
+      analyze:
+        config: Debug
+      archive:
+        config: Release
