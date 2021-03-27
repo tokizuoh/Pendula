@@ -16,7 +16,7 @@ final class StartViewController: UIViewController {
     }
     @IBOutlet weak var versionLabel: UILabel!{
         didSet {
-            versionLabel.text = getAppVersion()
+            versionLabel.text = "version: \(getAppVersion())"
         }
     }
     
