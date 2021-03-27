@@ -21,6 +21,16 @@ targets:
       base:
         INFOPLIST_FILE: Pendula/Info.plist
         DEVELOPMENT_LANGUAGE: jp
+    preBuildScripts:
+      - path: ./scripts/r_swift.sh
+        name: Generate resources by R.swift
+        inputFiles:
+          - $TEMP_DIR/rswift-lastrun
+        outputFiles:
+          - $SRCROOT/R.generated.swift
+    postCompileScripts:
+      - path: ./scripts/swiftlint.sh
+        name: Run SwiftLint
 
   PendulaTests:
     type: bundle.unit-test

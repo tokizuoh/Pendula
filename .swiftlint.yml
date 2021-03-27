@@ -5,3 +5,6 @@ variable_name_min_length:
 
 disabled_rules:
   - force_cast
+
+excluded:
+  - R.generated.swift
