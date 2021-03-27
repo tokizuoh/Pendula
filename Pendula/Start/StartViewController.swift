@@ -24,8 +24,9 @@ final class StartViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func moveList(_ sender: Any) {
-        // TODO: move list
+    @IBAction func moveVerificationList(_ sender: Any) {
+        let vc = UIStoryboard(name: "VerificationList", bundle: nil).instantiateViewController(identifier: "verificationList") as! VerificationListViewController
+        present(vc, animated: true)
     }
 
 }

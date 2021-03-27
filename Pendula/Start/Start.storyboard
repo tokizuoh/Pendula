@@ -27,7 +27,7 @@
                                 <rect key="frame" x="184" y="204" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="moveList:" destination="wc5-Bb-Bjf" eventType="touchUpInside" id="eea-3O-Akv"/>
+                                    <action selector="moveVerificationList:" destination="wc5-Bb-Bjf" eventType="touchUpInside" id="eea-3O-Akv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnQ-uO-8qw">
