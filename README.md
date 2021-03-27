@@ -25,3 +25,19 @@ Version: 0.14.2
 > xed .
 ```
   
+## Improve development
+  
+### Do xcodegen at checkout
+  
+1. Write the following content in `.git/hooks/post-checkout`.  
+  
+```bash
+#!/bin/zsh
+sh ./tools/setup.sh
+```
+  
+2. Grant permissions to shell scripts.  
+```bash
+chmod +x .git/hooks/post-checkout
+```
+  
