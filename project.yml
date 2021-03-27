@@ -21,3 +21,27 @@ targets:
       base:
         INFOPLIST_FILE: Pendula/Info.plist
         DEVELOPMENT_LANGUAGE: jp
+
+  PendulaTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - PendulaTests
+    settings:
+      base:
+        INFOPLIST_FILE: PendulaTests/Info.plist
+        DEVELOPMENT_LANGUAGE: jp
+    dependencies:
+      - target: Pendula
+
+  PendulaUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - PendulaUITests
+    settings:
+      base:
+        INFOPLIST_FILE: PendulaUITests/Info.plist
+        DEVELOPMENT_LANGUAGE: jp
+    dependencies:
+      - target: Pendula
