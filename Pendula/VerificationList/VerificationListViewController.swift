@@ -1,19 +1,18 @@
 //
-//  ViewController.swift
+//  VerificationListViewController.swift
 //  Pendula
 //
-//  Created by tokizo on 2021/03/26.
+//  Created by tokizo on 2021/03/27.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+final class VerificationListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
+   
 }
-
