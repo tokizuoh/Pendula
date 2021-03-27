@@ -9,9 +9,32 @@ import UIKit
 
 final class StartViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.text = "Pendula"
+        }
+    }
+    @IBOutlet weak var versionLabel: UILabel!{
+        didSet {
+            versionLabel.text = getAppVersion()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
+    @IBAction func moveList(_ sender: Any) {
+        // TODO: move list
+    }
+
+}
+
+extension StartViewController {
+    
+    private func getAppVersion() -> String {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        return version
+    }
+
 }
