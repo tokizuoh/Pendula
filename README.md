@@ -33,7 +33,7 @@ Version: 0.14.2
   
 ```bash
 #!/bin/zsh
-sh ./tools/setup.sh
+sh ./scripts/setup.sh
 ```
   
 2. Grant permissions to shell scripts.  
