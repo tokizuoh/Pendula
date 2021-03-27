@@ -14,25 +14,26 @@ final class StartViewController: UIViewController {
             titleLabel.text = "Pendula"
         }
     }
-    @IBOutlet weak var versionLabel: UILabel!{
+    @IBOutlet weak var versionLabel: UILabel! {
         didSet {
             versionLabel.text = "version: \(getAppVersion())"
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     @IBAction func moveVerificationList(_ sender: Any) {
-        let vc = UIStoryboard(name: "VerificationList", bundle: nil).instantiateViewController(identifier: "verificationList") as! VerificationListViewController
+        let storyboard = UIStoryboard(name: "VerificationList", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "verificationList") as! VerificationListViewController
         present(vc, animated: true)
     }
 
 }
 
 extension StartViewController {
-    
+
     private func getAppVersion() -> String {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
         return version
