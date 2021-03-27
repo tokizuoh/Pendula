@@ -20,8 +20,8 @@ Version: 0.14.2
 ```bash
 > git clone git@github.com:tokizuoh/Pendula.git
 > cd Pendula
-> mint bootstrap  
-> xcodegen
+> mint bootstrap
+> mint run xcodegen
 > xed .
 ```
   
