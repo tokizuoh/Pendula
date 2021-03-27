@@ -12,6 +12,12 @@ Build version 12C33
 ## Setup
   
 ```
+> brew install mint
+> mint --version
+Version: 0.14.2
+```
+  
+```
 > git clone git@github.com:tokizuoh/Pendula.git
 > cd Pendula
 > mint bootstrap  
