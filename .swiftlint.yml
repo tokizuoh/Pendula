@@ -4,4 +4,4 @@ variable_name_min_length:
   error: 0
 
 disabled_rules:
-  - force_castforce_cast
+  - force_cast
