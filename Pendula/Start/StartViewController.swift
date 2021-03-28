@@ -25,7 +25,8 @@ final class StartViewController: UIViewController {
     }
 
     @IBAction func moveVerificationList(_ sender: Any) {
-        let vc = R.storyboard.verificationList.verificationList()!
+        let vc = R.storyboard.verificationList.verificationListNavigation()!
+        vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }
 

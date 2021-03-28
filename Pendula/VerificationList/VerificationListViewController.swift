@@ -25,11 +25,26 @@ final class VerificationListViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationItem()
+
         viewModels = [
             Verification(title: "a"),
             Verification(title: "bbbbbbbbbbbbbbb"),
             Verification(title: "ccccccccccc")
         ]
+    }
+
+    private func setupNavigationItem() {
+        navigationItem.title = "Verifications"
+        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(backView))
+        navigationItem.leftBarButtonItem = backButton
+    }
+
+    @objc private func backView() {
+        dismiss(animated: true)
     }
 
 }
