@@ -27,7 +27,12 @@ final class StartViewController: UIViewController {
     @IBAction func moveVerificationList(_ sender: Any) {
         let vc = R.storyboard.verificationList.verificationListNavigation()!
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        let transition = CATransition()
+        transition.type = .push
+        transition.duration = 0.5
+        transition.subtype = .fromRight
+        view.window?.layer.add(transition, forKey: kCATransition)
+        present(vc, animated: false)
     }
 
 }

@@ -44,7 +44,12 @@ final class VerificationListViewController: UIViewController {
     }
 
     @objc private func backView() {
-        dismiss(animated: true)
+        let transition = CATransition()
+        transition.type = .push
+        transition.duration = 0.5
+        transition.subtype = .fromLeft
+        view.window?.layer.add(transition, forKey: kCATransition)
+        dismiss(animated: false)
     }
 
 }
@@ -65,7 +70,9 @@ extension VerificationListViewController: UITableViewDataSource {
 }
 
 extension VerificationListViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+
     }
 }
