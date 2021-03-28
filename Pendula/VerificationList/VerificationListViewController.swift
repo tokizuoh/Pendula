@@ -12,16 +12,20 @@ final class VerificationListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
+            tableView.register(R.nib.verificationTableViewCell)
+            tableView.tableFooterView = UIView(frame: .zero)
         }
     }
 
-    var viewModel: [Verification]?
-
+    private var viewModels: [Verification]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // TODO: 実データに変更する
-        viewModel = [
+        viewModels = [
             Verification(title: "a"),
             Verification(title: "bbbbbbbbbbbbbbb"),
             Verification(title: "ccccccccccc")
@@ -33,14 +37,20 @@ final class VerificationListViewController: UIViewController {
 extension VerificationListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.count ?? 0
+        return viewModels?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: カスタムセルを使用する
-        let cell = UITableViewCell()
-        cell.textLabel?.text = viewModel?[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.verificationTableViewCell, for: indexPath)!
+        cell.viewModel = VerificationTableViewCell.ViewModel(title: viewModels?[indexPath.row].title ?? "")
+        cell.setup()
         return cell
     }
 
+}
+
+extension VerificationListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
