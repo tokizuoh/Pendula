@@ -2,3 +2,5 @@
 *.xcworkspace
 
 R.generated.swift
+
+Pods/*
