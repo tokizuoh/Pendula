@@ -1,2 +1,6 @@
 *.xcodeproj
 *.xcworkspace
+
+R.generated.swift
+
+Pods/*
