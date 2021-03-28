@@ -16,13 +16,48 @@
                     <view key="view" contentMode="scaleToFill" id="abR-Hq-leW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9B-XK-tMv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="C1G-3g-a8u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="u9B-XK-tMv" firstAttribute="top" secondItem="C1G-3g-a8u" secondAttribute="top" id="5NJ-Hh-Mrp"/>
+                            <constraint firstItem="C1G-3g-a8u" firstAttribute="trailing" secondItem="u9B-XK-tMv" secondAttribute="trailing" id="gUo-oq-3eC"/>
+                            <constraint firstItem="u9B-XK-tMv" firstAttribute="leading" secondItem="C1G-3g-a8u" secondAttribute="leading" id="jj0-dx-bcR"/>
+                            <constraint firstItem="C1G-3g-a8u" firstAttribute="bottom" secondItem="u9B-XK-tMv" secondAttribute="bottom" id="xBi-aj-k9A"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="F5u-43-ZaM"/>
+                    <connections>
+                        <outlet property="tableView" destination="u9B-XK-tMv" id="lO8-FM-4Yc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Iw-N1-pGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="242" y="-55"/>
+            <point key="canvasLocation" x="1150.7246376811595" y="-55.580357142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T30-60-i8j">
+            <objects>
+                <navigationController storyboardIdentifier="verificationListNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x5h-xT-Pr1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ahC-yY-y4D">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="q0r-qM-Yd2" kind="relationship" relationship="rootViewController" id="ips-QM-DNm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBs-zP-pE9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="-56"/>
         </scene>
     </scenes>
     <resources>
