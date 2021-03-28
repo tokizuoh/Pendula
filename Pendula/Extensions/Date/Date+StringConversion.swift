@@ -9,12 +9,20 @@ import UIKit
 
 extension Date {
 
-    func string() -> String {
+    enum DateFormat {
+        case yyyyMMddPd
+    }
+
+    func string(dateFormat: DateFormat) -> String {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
-        formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from: self)
 
+        switch dateFormat {
+        case .yyyyMMddPd:
+            formatter.dateFormat = "yyyy.MM.dd"
+        }
+
+        return formatter.string(from: self)
     }
 
 }

@@ -82,7 +82,7 @@ extension VerificationListViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.verificationTableViewCell, for: indexPath)!
         let cellViewModel = VerificationTableViewCell.ViewModel(title: viewModels[indexPath.row].title,
-                                                                lastUpdatedDateText: viewModels[indexPath.row].lastUpdateDate.string())
+                                                                lastUpdatedDateText: viewModels[indexPath.row].lastUpdateDate.string(dateFormat: .yyyyMMddPd))
         cell.viewModel = cellViewModel
         cell.setup()
         return cell
