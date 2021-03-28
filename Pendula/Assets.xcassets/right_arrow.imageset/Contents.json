@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "矢印アイコン　右4 (2).png",
+      "filename" : "right_arrow_1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "矢印アイコン　右4 (1).png",
+      "filename" : "right_arrow_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "矢印アイコン　右4.png",
+      "filename" : "right_arrow_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
