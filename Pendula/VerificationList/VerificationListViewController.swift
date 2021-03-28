@@ -23,15 +23,11 @@ final class VerificationListViewController: UIViewController {
             tableView.reloadData()
         }
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationItem()
-
-        viewModels = [
-            Verification(title: "a"),
-            Verification(title: "bbbbbbbbbbbbbbb"),
-            Verification(title: "ccccccccccc")
-        ]
+        setupViewModels()
     }
 
     private func setupNavigationItem() {
@@ -41,6 +37,25 @@ final class VerificationListViewController: UIViewController {
                                          target: self,
                                          action: #selector(backView))
         navigationItem.leftBarButtonItem = backButton
+    }
+
+    private func setupViewModels() {
+        let calendar = Calendar.current
+        let date = Date()
+        viewModels = [
+            Verification(title: "a",
+                         lastUpdateDate: calendar.date(byAdding: .day,
+                                                       value: 1,
+                                                       to: calendar.startOfDay(for: date))!),
+            Verification(title: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                         lastUpdateDate: calendar.date(byAdding: .day,
+                                                       value: -1,
+                                                       to: calendar.startOfDay(for: date))!),
+            Verification(title: "ccccccccccc",
+                         lastUpdateDate: calendar.date(byAdding: .day,
+                                                       value: -1,
+                                                       to: calendar.startOfDay(for: date))!)
+        ]
     }
 
     @objc private func backView() {
@@ -62,7 +77,9 @@ extension VerificationListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.verificationTableViewCell, for: indexPath)!
-        cell.viewModel = VerificationTableViewCell.ViewModel(title: viewModels?[indexPath.row].title ?? "")
+        let viewModel = VerificationTableViewCell.ViewModel(title: viewModels?[indexPath.row].title ?? "",
+                                                            lastUpdatedDateText: "2000.04.12")
+        cell.viewModel = viewModel
         cell.setup()
         return cell
     }

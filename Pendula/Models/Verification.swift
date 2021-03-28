@@ -9,4 +9,5 @@ import Foundation
 
 struct Verification {
     let title: String
+    let lastUpdateDate: Date
 }

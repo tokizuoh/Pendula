@@ -10,10 +10,13 @@ import UIKit
 final class VerificationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var lastUpdatedLabel: UILabel!
 
     struct ViewModel {
         let title: String
+        let lastUpdatedDateText: String
     }
+
     var viewModel: ViewModel?
 
     override func awakeFromNib() {
@@ -25,6 +28,7 @@ final class VerificationTableViewCell: UITableViewCell {
             return
         }
         titleLabel.text = viewModel.title
+        lastUpdatedLabel.text = "最終更新日: \(viewModel.lastUpdatedDateText)"
     }
 
 }

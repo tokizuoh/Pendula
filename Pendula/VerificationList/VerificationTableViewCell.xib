@@ -10,42 +10,52 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="verificationTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="verificationTableViewCell" id="KGk-i7-Jjw" customClass="VerificationTableViewCell" customModule="Pendula" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="verificationTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="verificationTableViewCell" rowHeight="130" id="KGk-i7-Jjw" customClass="VerificationTableViewCell" customModule="Pendula" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4o-qT-a8j">
-                        <rect key="frame" x="20" y="25" width="255" height="0.0"/>
+                        <rect key="frame" x="20" y="25" width="250" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="auL-V7-MAi">
-                        <rect key="frame" x="285" y="17.5" width="15" height="15"/>
+                        <rect key="frame" x="285" y="57.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="auL-V7-MAi" secondAttribute="height" multiplier="1:1" id="8jl-fM-g97"/>
                             <constraint firstAttribute="width" constant="15" id="zsw-JC-qMH"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glz-8g-gZf">
+                        <rect key="frame" x="20" y="35" width="250" height="0.0"/>
+                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Glz-8g-gZf" firstAttribute="top" secondItem="I4o-qT-a8j" secondAttribute="bottom" constant="10" id="2DZ-7x-uc7"/>
                     <constraint firstItem="I4o-qT-a8j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OFk-J4-d42"/>
-                    <constraint firstItem="I4o-qT-a8j" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Sxv-IH-ZWd"/>
-                    <constraint firstItem="auL-V7-MAi" firstAttribute="leading" secondItem="I4o-qT-a8j" secondAttribute="trailing" constant="10" id="ZXa-ma-qHa"/>
+                    <constraint firstItem="auL-V7-MAi" firstAttribute="leading" secondItem="I4o-qT-a8j" secondAttribute="trailing" constant="15" id="ZXa-ma-qHa"/>
                     <constraint firstItem="I4o-qT-a8j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="eDF-No-k6n"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Glz-8g-gZf" secondAttribute="bottom" constant="25" id="hNi-A6-prV"/>
+                    <constraint firstItem="auL-V7-MAi" firstAttribute="leading" secondItem="Glz-8g-gZf" secondAttribute="trailing" constant="15" id="hyR-Kf-RE7"/>
+                    <constraint firstItem="Glz-8g-gZf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="kU8-00-xpN"/>
                     <constraint firstAttribute="trailing" secondItem="auL-V7-MAi" secondAttribute="trailing" constant="20" id="nmS-tb-w1N"/>
                     <constraint firstItem="auL-V7-MAi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="r4n-MG-c7x"/>
-                    <constraint firstAttribute="bottom" secondItem="I4o-qT-a8j" secondAttribute="bottom" constant="25" id="u9R-6L-dcR"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="I4o-qT-a8j" secondAttribute="bottom" constant="25" id="u9R-6L-dcR"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="lastUpdatedLabel" destination="Glz-8g-gZf" id="cZ0-xj-HY1"/>
                 <outlet property="titleLabel" destination="I4o-qT-a8j" id="oYH-sj-6Yv"/>
             </connections>
-            <point key="canvasLocation" x="111.59420289855073" y="153.34821428571428"/>
+            <point key="canvasLocation" x="121.73913043478262" y="192.1875"/>
         </tableViewCell>
     </objects>
     <resources>
