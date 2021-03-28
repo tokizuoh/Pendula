@@ -5,6 +5,7 @@ options:
   deploymentTarget:
     iOS: 13.0
   xcodeVersion: "12.3"
+  postGenCommand: pod install
 
 settings:
   base:
@@ -22,12 +23,13 @@ targets:
         INFOPLIST_FILE: Pendula/Info.plist
         DEVELOPMENT_LANGUAGE: jp
     preBuildScripts:
-      - path: ./scripts/r_swift.sh
-        name: Generate resources by R.swift
+      - script: |
+                "$PODS_ROOT/R.swift/rswift" generate "$SRCROOT/$TARGET_NAME/Generated/R.generated.swift"
+        name: Generate resouces by R.swift
         inputFiles:
           - $TEMP_DIR/rswift-lastrun
         outputFiles:
-          - $SRCROOT/R.generated.swift
+          - $SRCROOT/$TARGET_NAME/Generated/R.generated.swift
     postCompileScripts:
       - path: ./scripts/swiftlint.sh
         name: Run SwiftLint

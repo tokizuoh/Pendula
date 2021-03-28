@@ -7,4 +7,5 @@ disabled_rules:
   - force_cast
 
 excluded:
-  - R.generated.swift
+  - ./Pendula/Generated/R.generated.swift
+  - ./Pods/*
