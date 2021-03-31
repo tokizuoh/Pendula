@@ -12,7 +12,7 @@ final class DatePlusStringConversionTests: XCTestCase {
 
     private let calendar: Calendar = Calendar(identifier: .gregorian)
 
-    func testDateが文字列に変換されるか_月ゼロ埋め() throws {
+    func test_Dateが文字列に変換されるか_月ゼロ埋め() throws {
         let date = calendar.date(from: DateComponents(year: 2021, month: 3, day: 28))!
 
         let value = date.string(format: .yyyyMMddPd)
@@ -20,7 +20,7 @@ final class DatePlusStringConversionTests: XCTestCase {
         XCTAssertEqual(value, expected)
     }
 
-    func testDateが文字列に変換されるか_日ゼロ埋め() throws {
+    func test_Dateが文字列に変換されるか_日ゼロ埋め() throws {
         let date = calendar.date(from: DateComponents(year: 2020, month: 12, day: 8))!
 
         let value = date.string(format: .yyyyMMddPd)
