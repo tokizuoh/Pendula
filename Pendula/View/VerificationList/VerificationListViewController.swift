@@ -52,9 +52,7 @@ final class VerificationListViewController: UIViewController {
         let date = Date()
         viewModels = [
             Verification(title: "a",
-                         lastUpdateDate: calendar.date(byAdding: .day,
-                                                       value: 1,
-                                                       to: calendar.startOfDay(for: date))!,
+                         lastUpdateDate: "2021.03.31".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.irregularLayout.irregularLayout()!)
         ]
     }
