@@ -30,6 +30,14 @@ final class VerificationListViewController: UIViewController {
         setupViewModels()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+
     private func setupNavigationItem() {
         navigationItem.title = "Verifications"
         let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
@@ -46,15 +54,8 @@ final class VerificationListViewController: UIViewController {
             Verification(title: "a",
                          lastUpdateDate: calendar.date(byAdding: .day,
                                                        value: 1,
-                                                       to: calendar.startOfDay(for: date))!),
-            Verification(title: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                         lastUpdateDate: calendar.date(byAdding: .day,
-                                                       value: -1,
-                                                       to: calendar.startOfDay(for: date))!),
-            Verification(title: "ccccccccccc",
-                         lastUpdateDate: calendar.date(byAdding: .day,
-                                                       value: -1,
-                                                       to: calendar.startOfDay(for: date))!)
+                                                       to: calendar.startOfDay(for: date))!,
+                         viewController: R.storyboard.irregularLayout.irregularLayout()!)
         ]
     }
 
@@ -94,6 +95,14 @@ extension VerificationListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModels?[indexPath.row] else {
+            return
+        }
+
+        navigationController?.pushViewController(viewModel.viewController, animated: true)
+    }
+
 }

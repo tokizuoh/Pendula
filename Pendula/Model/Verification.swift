@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 struct Verification {
     let title: String
     let lastUpdateDate: Date
+    let viewController: UIViewController
 }
