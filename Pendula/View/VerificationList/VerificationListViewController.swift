@@ -30,6 +30,14 @@ final class VerificationListViewController: UIViewController {
         setupViewModels()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+
     private func setupNavigationItem() {
         navigationItem.title = "Verifications"
         let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
@@ -40,21 +48,10 @@ final class VerificationListViewController: UIViewController {
     }
 
     private func setupViewModels() {
-        let calendar = Calendar.current
-        let date = Date()
         viewModels = [
-            Verification(title: "a",
-                         lastUpdateDate: calendar.date(byAdding: .day,
-                                                       value: 1,
-                                                       to: calendar.startOfDay(for: date))!),
-            Verification(title: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-                         lastUpdateDate: calendar.date(byAdding: .day,
-                                                       value: -1,
-                                                       to: calendar.startOfDay(for: date))!),
-            Verification(title: "ccccccccccc",
-                         lastUpdateDate: calendar.date(byAdding: .day,
-                                                       value: -1,
-                                                       to: calendar.startOfDay(for: date))!)
+            Verification(title: "不規則なCellを持つUICollectionViewを試す",
+                         lastUpdateDate: "2021.03.31".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.irregularLayout.irregularLayout()!)
         ]
     }
 
@@ -82,7 +79,7 @@ extension VerificationListViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.verificationTableViewCell, for: indexPath)!
         let cellViewModel = VerificationTableViewCell.ViewModel(title: viewModels[indexPath.row].title,
-                                                                lastUpdatedDateText: viewModels[indexPath.row].lastUpdateDate.string(dateFormat: .yyyyMMddPd))
+                                                                lastUpdatedDateText: viewModels[indexPath.row].lastUpdateDate.string(format: .yyyyMMddPd))
         cell.viewModel = cellViewModel
         cell.setup()
         return cell
@@ -94,6 +91,14 @@ extension VerificationListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModels?[indexPath.row] else {
+            return
+        }
+
+        navigationController?.pushViewController(viewModel.viewController, animated: true)
+    }
+
 }

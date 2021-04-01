@@ -1,20 +1,20 @@
 //
-//  Date+StringConversion.swift
+//  String+DateConversion.swift
 //  Pendula
 //
-//  Created by tokizo on 2021/03/28.
+//  Created by tokizo on 2021/03/31.
 //
 
 import UIKit
 
-extension Date {
+extension String {
 
-    enum StringFormat {
+    enum Format {
         case yyyyMMddPd
     }
 
-    func string(format: StringFormat) -> String {
-        let formatter = DateFormatter()
+    func date(format: Format) -> Date {
+        let formatter: DateFormatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
 
         switch format {
@@ -22,7 +22,7 @@ extension Date {
             formatter.dateFormat = "yyyy.MM.dd"
         }
 
-        return formatter.string(from: self)
+        return formatter.date(from: self)!
     }
 
 }

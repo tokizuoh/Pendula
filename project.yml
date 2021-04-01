@@ -3,7 +3,7 @@ options:
   bundleIdPrefix: dev.tokizuoh
   developmentLanguage: ja
   deploymentTarget:
-    iOS: 13.0
+    iOS: 14.0
   xcodeVersion: "12.3"
   postGenCommand: pod install
 
