@@ -38,10 +38,10 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjH-VH-WJj">
-                                <rect key="frame" x="167.5" y="614" width="79" height="30"/>
-                                <state key="normal" title="Regenerate"/>
+                                <rect key="frame" x="175" y="614" width="64" height="30"/>
+                                <state key="normal" title="Generate"/>
                                 <connections>
-                                    <action selector="regenerate:" destination="2fV-jl-tio" eventType="touchUpInside" id="wNO-YA-UuO"/>
+                                    <action selector="generate:" destination="2fV-jl-tio" eventType="touchUpInside" id="wNO-YA-UuO"/>
                                 </connections>
                             </button>
                         </subviews>

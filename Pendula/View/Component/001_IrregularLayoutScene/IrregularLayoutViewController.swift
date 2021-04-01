@@ -31,7 +31,7 @@ final class IrregularLayoutViewController: UIViewController {
         setupNavigationItem()
     }
 
-    @IBAction func regenerate(_ sender: Any) {
+    @IBAction func generate(_ sender: Any) {
         func applySnapshot() {
             var snapshot = NSDiffableDataSourceSnapshot<CollectionViewSection, IrregularLayoutCellItem>()
             snapshot.appendSections([.main])
@@ -108,7 +108,6 @@ extension IrregularLayoutViewController {
                 var minimumColumnIndex = 0
 
                 for (index, itemColumn) in itemColumns.enumerated() {
-                    // 現在最も低い高さのColumnを探す
                     let columnHeight = itemColumn.totalHeight
                     if columnHeight < minimumHeight {
                         minimumHeight = columnHeight
