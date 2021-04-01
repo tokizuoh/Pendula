@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rjA-Nn-WPj">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="518"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8qZ-XR-idv">
                                     <size key="itemSize" width="128" height="128"/>
@@ -38,14 +37,23 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjH-VH-WJj">
+                                <rect key="frame" x="167.5" y="614" width="79" height="30"/>
+                                <state key="normal" title="Regenerate"/>
+                                <connections>
+                                    <action selector="regenerate:" destination="2fV-jl-tio" eventType="touchUpInside" id="wNO-YA-UuO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gat-27-o6t"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gat-27-o6t" firstAttribute="bottom" secondItem="rjA-Nn-WPj" secondAttribute="bottom" id="BKa-gp-bap"/>
+                            <constraint firstItem="gat-27-o6t" firstAttribute="bottom" secondItem="rjA-Nn-WPj" secondAttribute="bottom" constant="300" id="BKa-gp-bap"/>
                             <constraint firstItem="rjA-Nn-WPj" firstAttribute="leading" secondItem="gat-27-o6t" secondAttribute="leading" id="DEs-G5-xoe"/>
                             <constraint firstItem="gat-27-o6t" firstAttribute="trailing" secondItem="rjA-Nn-WPj" secondAttribute="trailing" id="R1x-XB-gbz"/>
+                            <constraint firstItem="ZjH-VH-WJj" firstAttribute="centerX" secondItem="gat-27-o6t" secondAttribute="centerX" id="SEk-5A-elR"/>
                             <constraint firstItem="rjA-Nn-WPj" firstAttribute="top" secondItem="gat-27-o6t" secondAttribute="top" id="vtZ-ZS-3Pz"/>
+                            <constraint firstItem="ZjH-VH-WJj" firstAttribute="top" secondItem="rjA-Nn-WPj" secondAttribute="bottom" constant="52" id="xMJ-4b-Fof"/>
                         </constraints>
                     </view>
                     <connections>

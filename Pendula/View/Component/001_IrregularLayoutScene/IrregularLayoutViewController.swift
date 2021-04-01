@@ -11,8 +11,8 @@ final class IrregularLayoutViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
-            collectionView.dataSource = self
             collectionView.collectionViewLayout = configureLayout()
+            collectionView.register(R.nib.irregularLayoutCollectionViewCell)
         }
     }
 
@@ -30,19 +30,18 @@ final class IrregularLayoutViewController: UIViewController {
         super.viewDidLoad()
     }
 
-}
+    @IBAction func regenerate(_ sender: Any) {
+        func applySnapshot() {
+            var snapshot = NSDiffableDataSourceSnapshot<CollectionViewSection, IrregularLayoutCellItem>()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(irregularLayoutCellItems)
+            dataSource.apply(snapshot, animatingDifferences: false)
+        }
 
-extension IrregularLayoutViewController: UICollectionViewDataSource {
+        irregularLayoutCellItems = IrregularLayoutCellItem.generateItems(count: itemCountPerSection)
+        collectionView.collectionViewLayout = configureLayout()
+        applySnapshot()
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemCountPerSection
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                      for: indexPath)
-        cell.backgroundColor = (indexPath.row % 2 == 0 ? .red : .blue)
-        return cell
     }
 
 }
@@ -55,6 +54,7 @@ extension IrregularLayoutViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.irregularLayoutCollectionViewCell.identifier,
                                                           for: indexPath) as? IrregularLayoutCollectionViewCell
             cell?.item = irregularLayoutCellItem
+            cell?.backgroundColor = (indexPath.row % 2 == 0 ? .red : .blue)
             return cell
         }
         return dataSource
