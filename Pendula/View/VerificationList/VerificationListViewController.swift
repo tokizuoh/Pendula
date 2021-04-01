@@ -48,10 +48,8 @@ final class VerificationListViewController: UIViewController {
     }
 
     private func setupViewModels() {
-        let calendar = Calendar.current
-        let date = Date()
         viewModels = [
-            Verification(title: "a",
+            Verification(title: "不規則なCellを持つUICollectionViewを試す",
                          lastUpdateDate: "2021.03.31".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.irregularLayout.irregularLayout()!)
         ]

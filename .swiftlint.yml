@@ -4,6 +4,7 @@ identifier_name:
 
 line_length:
   warning: 300
+  error: 500
 
 disabled_rules:
   - force_cast
