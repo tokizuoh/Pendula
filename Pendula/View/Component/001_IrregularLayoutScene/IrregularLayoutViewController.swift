@@ -28,6 +28,7 @@ final class IrregularLayoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationItem()
     }
 
     @IBAction func regenerate(_ sender: Any) {
@@ -44,6 +45,22 @@ final class IrregularLayoutViewController: UIViewController {
 
     }
 
+}
+
+// TODO: 共通化
+extension IrregularLayoutViewController {
+    private func setupNavigationItem() {
+        navigationItem.title = "001_IrregularLayout"
+        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(popViewController))
+        navigationItem.leftBarButtonItem = backButton
+    }
+
+    @objc private func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: DataSource
