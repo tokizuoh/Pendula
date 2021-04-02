@@ -19,10 +19,15 @@ final class ImosViewController: UIViewController {
 
     private let itemCountPerRow: CGFloat = 7
     private let itemSpacing: CGFloat = 5
-    private let topMargin: CGFloat = 10
-    private let bottomMargin: CGFloat = 10
+    private let topMargin: CGFloat = 2.5
+    private let bottomMargin: CGFloat = 2.5
     private let sideMargin: CGFloat = 25
     private let cellBorderWidth: CGFloat = 3
+
+    private struct SelectedCellStore {
+        var indexPath: IndexPath?
+    }
+    private var selectedCellStore = SelectedCellStore(indexPath: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +62,6 @@ extension ImosViewController {
                                            bottom: bottomMargin,
                                            right: sideMargin)
         layout.minimumInteritemSpacing = itemSpacing
-        layout.minimumLineSpacing = itemSpacing
         collectionView.collectionViewLayout = layout
     }
 
@@ -65,8 +69,12 @@ extension ImosViewController {
 
 extension ImosViewController: UICollectionViewDataSource {
 
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return Int(itemCountPerRow)
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(itemCountPerRow * itemCountPerRow)
+        return Int(itemCountPerRow)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,6 +83,19 @@ extension ImosViewController: UICollectionViewDataSource {
         cell.layer.borderColor = UIColor.darkGray.cgColor
         cell.layer.borderWidth = cellBorderWidth
         return cell
+    }
+
+}
+
+extension ImosViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let beforeIndexPath = selectedCellStore.indexPath {
+            // 2つのセルでなにか処理する
+            selectedCellStore.indexPath = nil
+        } else {
+            selectedCellStore.indexPath = indexPath
+        }
     }
 
 }
