@@ -29,6 +29,9 @@ final class ImosViewController: UIViewController {
     }
     private var selectedCellStore = SelectedCellStore(indexPath: nil)
 
+    // TODO: [[F, F, F, F], [F, F, F, F], ...] みたいな初期化をしたい
+    private var cellStatus: [[Int]]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationItem()
@@ -38,6 +41,7 @@ final class ImosViewController: UIViewController {
 
 // TODO: 共通化
 extension ImosViewController {
+
     private func setupNavigationItem() {
         navigationItem.title = "002_Imos"
         let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
@@ -90,8 +94,9 @@ extension ImosViewController: UICollectionViewDataSource {
 extension ImosViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        // TODO: セルの選択時にアニメーション付与する
         if let beforeIndexPath = selectedCellStore.indexPath {
-            // 2つのセルでなにか処理する
+            // TODO: 2つのセルでなにか処理する
             selectedCellStore.indexPath = nil
         } else {
             selectedCellStore.indexPath = indexPath
