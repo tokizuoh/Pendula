@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8f0-Ta-sS4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="410"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JA6-i0-7hJ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -37,18 +37,36 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvF-1D-Pzt">
+                                <rect key="frame" x="186" y="594" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsw-uW-ZJI">
+                                <rect key="frame" x="184" y="462" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="showResult:" destination="x1r-sx-lux" eventType="touchUpInside" id="2zf-Py-6pc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="p1a-pv-2jG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8f0-Ta-sS4" firstAttribute="top" secondItem="p1a-pv-2jG" secondAttribute="top" id="5HH-wz-aWv"/>
                             <constraint firstItem="p1a-pv-2jG" firstAttribute="trailing" secondItem="8f0-Ta-sS4" secondAttribute="trailing" id="Drr-Z2-Q0M"/>
+                            <constraint firstItem="TvF-1D-Pzt" firstAttribute="centerX" secondItem="hsw-uW-ZJI" secondAttribute="centerX" id="JKE-72-m50"/>
                             <constraint firstItem="8f0-Ta-sS4" firstAttribute="leading" secondItem="p1a-pv-2jG" secondAttribute="leading" id="OU8-Nb-ha5"/>
-                            <constraint firstItem="p1a-pv-2jG" firstAttribute="bottom" secondItem="8f0-Ta-sS4" secondAttribute="bottom" id="bPU-Li-cEe"/>
+                            <constraint firstItem="hsw-uW-ZJI" firstAttribute="centerX" secondItem="8f0-Ta-sS4" secondAttribute="centerX" id="WAu-Ch-iT6"/>
+                            <constraint firstItem="hsw-uW-ZJI" firstAttribute="top" secondItem="8f0-Ta-sS4" secondAttribute="bottom" constant="10" id="eSJ-H4-mFg"/>
+                            <constraint firstItem="TvF-1D-Pzt" firstAttribute="top" secondItem="hsw-uW-ZJI" secondAttribute="bottom" constant="100" id="iRJ-cz-vBl"/>
+                            <constraint firstItem="8f0-Ta-sS4" firstAttribute="height" secondItem="p1a-pv-2jG" secondAttribute="height" multiplier="0.5" constant="1" id="iwJ-rR-b5H"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="8f0-Ta-sS4" id="RJR-U6-gBB"/>
+                        <outlet property="resultLabel" destination="TvF-1D-Pzt" id="kLh-qI-LFO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p21-ce-a8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

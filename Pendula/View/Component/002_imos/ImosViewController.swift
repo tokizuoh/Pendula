@@ -16,7 +16,9 @@ final class ImosViewController: UIViewController {
             configureLayout()
         }
     }
+    @IBOutlet weak var resultLabel: UILabel!
 
+    // MARK: UICollectionView Property
     private let itemCountPerRow: CGFloat = 7
     private let itemSpacing: CGFloat = 5
     private let topMargin: CGFloat = 2.5
@@ -24,17 +26,28 @@ final class ImosViewController: UIViewController {
     private let sideMargin: CGFloat = 25
     private let cellBorderWidth: CGFloat = 3
 
+    // MARK: Cell Status Property
     private struct SelectedCellStore {
         var indexPath: IndexPath?
     }
     private var selectedCellStore = SelectedCellStore(indexPath: nil)
-
-    // TODO: [[F, F, F, F], [F, F, F, F], ...] みたいな初期化をしたい
-    private var cellStatus: [[Int]]?
+    private lazy var cellStatus: [Int] = [Int](repeating: 0, count: Int(itemCountPerRow + 1))
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItem()
+    }
+
+    @IBAction func showResult(_ sender: Any) {
+        var ans = ""
+        for i in 1..<(Int(itemCountPerRow)+1) {
+            cellStatus[i] += cellStatus[i - 1]
+            if i != Int(itemCountPerRow) {
+                ans += "\(cellStatus[i - 1])-"
+            }
+        }
+
+        cellStatus = [Int](repeating: 0, count: Int(itemCountPerRow + 1))
+        resultLabel.text = ans
     }
 
 }
@@ -74,7 +87,7 @@ extension ImosViewController {
 extension ImosViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return Int(itemCountPerRow)
+        return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -96,11 +109,17 @@ extension ImosViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         // TODO: セルの選択時にアニメーション付与する
         if let beforeIndexPath = selectedCellStore.indexPath {
-            // TODO: 2つのセルでなにか処理する
+            // TODO: swap
+            updateCellStatus(beginIndex: beforeIndexPath.row, endIndex: indexPath.row)
             selectedCellStore.indexPath = nil
         } else {
             selectedCellStore.indexPath = indexPath
         }
+    }
+
+    private func updateCellStatus(beginIndex: Int, endIndex: Int) {
+        cellStatus[beginIndex] += 1
+        cellStatus[endIndex + 1] -= 1
     }
 
 }
