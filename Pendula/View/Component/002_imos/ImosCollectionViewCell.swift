@@ -11,8 +11,4 @@ final class ImosCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var countLabel: UILabel!
 
-    func setup(text: String) {
-        countLabel.text = text
-    }
-
 }
