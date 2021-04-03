@@ -24,7 +24,6 @@ final class ImosViewController: UIViewController {
     private let topMargin: CGFloat = 2.5
     private let bottomMargin: CGFloat = 2.5
     private let sideMargin: CGFloat = 25
-    private let cellBorderWidth: CGFloat = 3
 
     // MARK: Cell Status Property
     private struct SelectedCellStore {
@@ -97,8 +96,7 @@ extension ImosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                       for: indexPath)
-        cell.layer.borderColor = UIColor.darkGray.cgColor
-        cell.layer.borderWidth = cellBorderWidth
+        cell.backgroundColor = .darkGray
         return cell
     }
 
@@ -107,12 +105,24 @@ extension ImosViewController: UICollectionViewDataSource {
 extension ImosViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        // TODO: セルの選択時にアニメーション付与する
         if let beforeIndexPath = selectedCellStore.indexPath {
+            guard beforeIndexPath.row < indexPath.row else {
+                return
+            }
+
+            alphaCell(indexPath: indexPath, alpha: 0.5)
+
             // TODO: swap
             updateCellStatus(beginIndex: beforeIndexPath.row, endIndex: indexPath.row)
             selectedCellStore.indexPath = nil
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.alphaCell(indexPath: beforeIndexPath, alpha: 1.0)
+                self?.alphaCell(indexPath: indexPath, alpha: 1.0)
+            }
         } else {
+            let cell = collectionView.cellForItem(at: indexPath)
+            cell?.alpha = 0.5
             selectedCellStore.indexPath = indexPath
         }
     }
@@ -120,6 +130,11 @@ extension ImosViewController: UICollectionViewDelegate {
     private func updateCellStatus(beginIndex: Int, endIndex: Int) {
         cellStatus[beginIndex] += 1
         cellStatus[endIndex + 1] -= 1
+    }
+
+    private func alphaCell(indexPath: IndexPath, alpha: CGFloat) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.alpha = alpha
     }
 
 }
