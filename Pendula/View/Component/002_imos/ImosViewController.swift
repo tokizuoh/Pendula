@@ -13,10 +13,10 @@ final class ImosViewController: UIViewController {
         didSet {
             collectionView.dataSource = self
             collectionView.delegate = self
+            collectionView.register(R.nib.imosCollectionViewCell)
             configureLayout()
         }
     }
-    @IBOutlet weak var resultLabel: UILabel!
 
     // MARK: UICollectionView Property
     private let itemCountPerRow: CGFloat = 7
@@ -43,10 +43,12 @@ final class ImosViewController: UIViewController {
             if i != Int(itemCountPerRow) {
                 ans += "\(cellStatus[i - 1])-"
             }
+            let cell = collectionView.cellForItem(at: IndexPath(row: i - 1, section: 0)) as? ImosCollectionViewCell
+            cell?.countLabel.text = "\(cellStatus[i - 1])"
+            cell?.backgroundColor = .black
         }
 
         cellStatus = [Int](repeating: 0, count: Int(itemCountPerRow + 1))
-        resultLabel.text = ans
     }
 
 }
@@ -94,8 +96,8 @@ extension ImosViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                      for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.imosCollectionViewCell,
+                                                      for: indexPath)!
         cell.backgroundColor = .darkGray
         return cell
     }
