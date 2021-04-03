@@ -48,10 +48,14 @@ final class VerificationListViewController: UIViewController {
     }
 
     private func setupViewModels() {
+        // TODO: DIの方法を考え直す（ymlなど）
         viewModels = [
             Verification(title: "不規則なCellを持つUICollectionViewを試す",
                          lastUpdateDate: "2021.03.31".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.irregularLayout.irregularLayout()!)
+                         viewController: R.storyboard.irregularLayout.irregularLayout()!),
+            Verification(title: "imos法でセルの状態を管理する",
+                         lastUpdateDate: "2021.04.02".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.imos.imos()!)
         ]
     }
 
