@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8f0-Ta-sS4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="410"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="410"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JA6-i0-7hJ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -38,8 +38,8 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsw-uW-ZJI">
-                                <rect key="frame" x="184" y="464" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="192" y="564" width="30" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <connections>
                                     <action selector="showResult:" destination="x1r-sx-lux" eventType="touchUpInside" id="2zf-Py-6pc"/>
                                 </connections>
@@ -48,7 +48,7 @@
                         <viewLayoutGuide key="safeArea" id="p1a-pv-2jG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8f0-Ta-sS4" firstAttribute="top" secondItem="p1a-pv-2jG" secondAttribute="top" id="5HH-wz-aWv"/>
+                            <constraint firstItem="8f0-Ta-sS4" firstAttribute="top" secondItem="p1a-pv-2jG" secondAttribute="top" constant="100" id="5HH-wz-aWv"/>
                             <constraint firstItem="p1a-pv-2jG" firstAttribute="trailing" secondItem="8f0-Ta-sS4" secondAttribute="trailing" id="Drr-Z2-Q0M"/>
                             <constraint firstItem="8f0-Ta-sS4" firstAttribute="leading" secondItem="p1a-pv-2jG" secondAttribute="leading" id="OU8-Nb-ha5"/>
                             <constraint firstItem="hsw-uW-ZJI" firstAttribute="centerX" secondItem="8f0-Ta-sS4" secondAttribute="centerX" id="WAu-Ch-iT6"/>
@@ -58,6 +58,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="8f0-Ta-sS4" id="RJR-U6-gBB"/>
+                        <outlet property="imosButton" destination="hsw-uW-ZJI" id="enu-mh-r1d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p21-ce-a8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

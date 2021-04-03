@@ -17,6 +17,7 @@ final class ImosViewController: UIViewController {
             configureLayout()
         }
     }
+    @IBOutlet weak var imosButton: UIButton!
 
     // MARK: UICollectionView Property
     private let itemCountPerRow: CGFloat = 7
@@ -25,30 +26,39 @@ final class ImosViewController: UIViewController {
     private let bottomMargin: CGFloat = 2.5
     private let sideMargin: CGFloat = 25
 
-    // MARK: Cell Status Property
-    private struct SelectedCellStore {
-        var indexPath: IndexPath?
-    }
-    private var selectedCellStore = SelectedCellStore(indexPath: nil)
-    private lazy var cellStatus: [Int] = [Int](repeating: 0, count: Int(itemCountPerRow + 1))
+    private lazy var imosManager = ImosManager(cellCount: Int(itemCountPerRow))
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationItem()
+        imosButton.setTitle("Show Result", for: .normal)
     }
 
     @IBAction func showResult(_ sender: Any) {
-        var ans = ""
-        for i in 1..<(Int(itemCountPerRow)+1) {
-            cellStatus[i] += cellStatus[i - 1]
-            if i != Int(itemCountPerRow) {
-                ans += "\(cellStatus[i - 1])-"
-            }
-            let cell = collectionView.cellForItem(at: IndexPath(row: i - 1, section: 0)) as? ImosCollectionViewCell
-            cell?.countLabel.text = "\(cellStatus[i - 1])"
-            cell?.backgroundColor = .black
+        switch imosManager.state {
+        case .processing:
+            imosManager.calculate()
+            updateAppearanceCells(state: .processing)
+            imosButton.setTitle("Refresh", for: .normal)
+        case .doneCalculate:
+            updateAppearanceCells(state: .doneCalculate)
+            imosButton.setTitle("Show Result", for: .normal)
+            imosManager.refresh()
         }
+    }
 
-        cellStatus = [Int](repeating: 0, count: Int(itemCountPerRow + 1))
+    private func updateAppearanceCells(state: ImosManager.State) {
+        for i in 0..<Int(itemCountPerRow) {
+            let cell = collectionView.cellForItem(at: IndexPath(row: i, section: 0)) as? ImosCollectionViewCell
+            switch state {
+            case .processing:
+                cell?.countLabel.text = "\(imosManager.calculatedCounts[i + 1])"
+                cell?.backgroundColor = .black
+            case .doneCalculate:
+                cell?.countLabel.text = ""
+                cell?.backgroundColor = .darkGray
+            }
+        }
     }
 
 }
@@ -68,6 +78,7 @@ extension ImosViewController {
     @objc private func popViewController() {
         navigationController?.popViewController(animated: true)
     }
+
 }
 
 // MARK: UICollectionViewFlowLayout
@@ -107,31 +118,24 @@ extension ImosViewController: UICollectionViewDataSource {
 extension ImosViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        if let beforeIndexPath = selectedCellStore.indexPath {
+        if let beforeIndexPath = imosManager.indexPath {
             guard beforeIndexPath.row < indexPath.row else {
                 return
             }
 
             alphaCell(indexPath: indexPath, alpha: 0.5)
 
-            // TODO: swap
-            updateCellStatus(beginIndex: beforeIndexPath.row, endIndex: indexPath.row)
-            selectedCellStore.indexPath = nil
+            imosManager.update(li: beforeIndexPath.row, ri: indexPath.row)
+            imosManager.indexPath = nil
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.alphaCell(indexPath: beforeIndexPath, alpha: 1.0)
                 self?.alphaCell(indexPath: indexPath, alpha: 1.0)
             }
         } else {
-            let cell = collectionView.cellForItem(at: indexPath)
-            cell?.alpha = 0.5
-            selectedCellStore.indexPath = indexPath
+            alphaCell(indexPath: indexPath, alpha: 0.5)
+            imosManager.indexPath = indexPath
         }
-    }
-
-    private func updateCellStatus(beginIndex: Int, endIndex: Int) {
-        cellStatus[beginIndex] += 1
-        cellStatus[endIndex + 1] -= 1
     }
 
     private func alphaCell(indexPath: IndexPath, alpha: CGFloat) {
