@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class IrregularLayoutViewController: UIViewController {
+final class IrregularLayoutViewController: ComponentBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -28,7 +28,9 @@ final class IrregularLayoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItem()
+        configureNavigationItem(navigationTitle: "001_IrregularLayout",
+                                blogURL: nil,
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/33"))
     }
 
     @IBAction func generate(_ sender: Any) {
@@ -45,22 +47,6 @@ final class IrregularLayoutViewController: UIViewController {
 
     }
 
-}
-
-// TODO: 共通化
-extension IrregularLayoutViewController {
-    private func setupNavigationItem() {
-        navigationItem.title = "001_IrregularLayout"
-        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(popViewController))
-        navigationItem.leftBarButtonItem = backButton
-    }
-
-    @objc private func popViewController() {
-        navigationController?.popViewController(animated: true)
-    }
 }
 
 // MARK: DataSource

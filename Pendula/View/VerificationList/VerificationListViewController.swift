@@ -26,8 +26,8 @@ final class VerificationListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItem()
-        setupViewModels()
+        configureNavigationItem()
+        configureViewModels()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +38,7 @@ final class VerificationListViewController: UIViewController {
         }
     }
 
-    private func setupNavigationItem() {
+    private func configureNavigationItem() {
         navigationItem.title = "Verifications"
         let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
                                          style: .plain,
@@ -47,7 +47,7 @@ final class VerificationListViewController: UIViewController {
         navigationItem.leftBarButtonItem = backButton
     }
 
-    private func setupViewModels() {
+    private func configureViewModels() {
         // TODO: DIの方法を考え直す（ymlなど）
         viewModels = [
             Verification(title: "不規則なCellを持つUICollectionViewを試す",

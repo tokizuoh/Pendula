@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ImosViewController: UIViewController {
+final class ImosViewController: ComponentBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -30,7 +30,9 @@ final class ImosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItem()
+        configureNavigationItem(navigationTitle: "002_Imos",
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/x3i7hx6idotanxen/"),
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/36"))
         imosButton.setTitle("Show Result", for: .normal)
     }
 
@@ -59,24 +61,6 @@ final class ImosViewController: UIViewController {
                 cell?.backgroundColor = .darkGray
             }
         }
-    }
-
-}
-
-// TODO: 共通化
-extension ImosViewController {
-
-    private func setupNavigationItem() {
-        navigationItem.title = "002_Imos"
-        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(popViewController))
-        navigationItem.leftBarButtonItem = backButton
-    }
-
-    @objc private func popViewController() {
-        navigationController?.popViewController(animated: true)
     }
 
 }
