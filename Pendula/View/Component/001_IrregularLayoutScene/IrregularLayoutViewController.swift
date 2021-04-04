@@ -28,7 +28,9 @@ final class IrregularLayoutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItem(title: "001_IrregularLayout")
+        setupNavigationItem(navigationTitle: "001_IrregularLayout",
+                            blogURL: nil,
+                            githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/33"))
     }
 
     @IBAction func generate(_ sender: Any) {
