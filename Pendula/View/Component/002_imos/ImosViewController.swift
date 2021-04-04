@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ImosViewController: UIViewController {
+final class ImosViewController: ComponentBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {

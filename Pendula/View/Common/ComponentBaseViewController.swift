@@ -1,5 +1,5 @@
 //
-//  ComponentViewController.swift
+//  ComponentBaseViewController.swift
 //  Pendula
 //
 //  Created by tokizo on 2021/04/04.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIViewController {
+class ComponentBaseViewController: UIViewController {
 
     func configureNavigationItem(navigationTitle: String, blogURL: URL?, githubPRURL: URL?) {
         navigationItem.title = navigationTitle
@@ -59,4 +59,5 @@ extension UIViewController {
                                           menu: menu)
         navigationItem.rightBarButtonItem = menuBarItem
     }
+
 }

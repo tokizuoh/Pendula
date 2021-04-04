@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class IrregularLayoutViewController: UIViewController {
+final class IrregularLayoutViewController: ComponentBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
