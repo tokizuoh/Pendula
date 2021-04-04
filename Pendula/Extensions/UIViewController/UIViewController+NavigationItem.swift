@@ -9,14 +9,10 @@ import UIKit
 
 extension UIViewController {
 
-    func setupNavigationItem(navigationTitle: String, blogURL: URL?, githubPRURL: URL?) {
+    func configureNavigationItem(navigationTitle: String, blogURL: URL?, githubPRURL: URL?) {
         navigationItem.title = navigationTitle
         configureLeftBarButtonItem()
         configureRightBarButtonItem(blogURL: blogURL, githubPRURL: githubPRURL)
-    }
-
-    @objc private func popViewController() {
-        navigationController?.popViewController(animated: true)
     }
 
     private func configureLeftBarButtonItem() {
@@ -25,6 +21,10 @@ extension UIViewController {
                                              target: self,
                                              action: #selector(popViewController))
         navigationItem.leftBarButtonItem = backButtonItem
+    }
+
+    @objc private func popViewController() {
+        navigationController?.popViewController(animated: true)
     }
 
     private func configureRightBarButtonItem(blogURL: URL?, githubPRURL: URL?) {
