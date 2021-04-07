@@ -55,7 +55,10 @@ final class VerificationListViewController: UIViewController {
                          viewController: R.storyboard.irregularLayout.irregularLayout()!),
             Verification(title: "imos法でセルの状態を管理する",
                          lastUpdateDate: "2021.04.02".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.imos.imos()!)
+                         viewController: R.storyboard.imos.imos()!),
+            Verification(title: "アイドルマスターシャイニーカラーズ公式サイトのユニットページのギャラリー生成器を作る",
+                         lastUpdateDate: "2021.04.07".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.shinyColorsGallery.shinyColorsGallery()!)
         ]
     }
 

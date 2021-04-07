@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// TODO: ID付与してソートできるようにする
 struct Verification {
     let title: String
     let lastUpdateDate: Date
