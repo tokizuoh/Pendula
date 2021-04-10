@@ -28,7 +28,7 @@ final class BezierPathViewController: ComponentBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureNavigationItem(navigationTitle: "003_BezierPath",
+        configureNavigationItem(navigationTitle: "003 BezierPath",
                                 blogURL: URL(string: "https://tokizuoh.dev/posts/gp1s8de74s7yg73i/"),
                                 githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/48"))
         configureViewModels()

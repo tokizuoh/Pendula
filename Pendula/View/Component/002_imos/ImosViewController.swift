@@ -30,7 +30,7 @@ final class ImosViewController: ComponentBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationItem(navigationTitle: "002_Imos",
+        configureNavigationItem(navigationTitle: "002 Imos",
                                 blogURL: URL(string: "https://tokizuoh.dev/posts/x3i7hx6idotanxen/"),
                                 githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/36"))
         imosButton.setTitle("Show Result", for: .normal)
