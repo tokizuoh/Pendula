@@ -15,8 +15,22 @@
                     <view key="view" contentMode="scaleToFill" id="gts-2v-zeV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ach-1u-xSy" customClass="CustomBezierPathView" customModule="Pendula" customModuleProvider="target">
+                                <rect key="frame" x="87" y="333.5" width="240" height="239"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ach-1u-xSy" secondAttribute="height" multiplier="1:1" constant="1" id="zRd-oK-C5y"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="PMZ-Zz-8MX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="Ach-1u-xSy" firstAttribute="centerX" secondItem="PMZ-Zz-8MX" secondAttribute="centerX" id="1hW-UT-WQ7"/>
+                            <constraint firstItem="Ach-1u-xSy" firstAttribute="centerY" secondItem="PMZ-Zz-8MX" secondAttribute="centerY" id="FGB-oI-dIe"/>
+                            <constraint firstItem="Ach-1u-xSy" firstAttribute="width" secondItem="gts-2v-zeV" secondAttribute="width" multiplier="0.57971" id="T4y-7Y-3gx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMe-p8-aGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -27,6 +41,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
