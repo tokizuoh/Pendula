@@ -16,34 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ach-1u-xSy" customClass="CustomBezierPathView" customModule="Pendula" customModuleProvider="target">
-                                <rect key="frame" x="87" y="333.5" width="240" height="239"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mup-Ef-E64">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ach-1u-xSy" secondAttribute="height" multiplier="1:1" constant="1" id="zRd-oK-C5y"/>
-                                </constraints>
-                            </view>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PMZ-Zz-8MX"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ach-1u-xSy" firstAttribute="centerX" secondItem="PMZ-Zz-8MX" secondAttribute="centerX" id="1hW-UT-WQ7"/>
-                            <constraint firstItem="Ach-1u-xSy" firstAttribute="centerY" secondItem="PMZ-Zz-8MX" secondAttribute="centerY" id="FGB-oI-dIe"/>
-                            <constraint firstItem="Ach-1u-xSy" firstAttribute="width" secondItem="gts-2v-zeV" secondAttribute="width" multiplier="0.57971" id="T4y-7Y-3gx"/>
+                            <constraint firstItem="Mup-Ef-E64" firstAttribute="top" secondItem="PMZ-Zz-8MX" secondAttribute="top" id="4xJ-Be-SeC"/>
+                            <constraint firstItem="Mup-Ef-E64" firstAttribute="leading" secondItem="PMZ-Zz-8MX" secondAttribute="leading" id="PAq-ZE-23D"/>
+                            <constraint firstItem="PMZ-Zz-8MX" firstAttribute="trailing" secondItem="Mup-Ef-E64" secondAttribute="trailing" id="god-Dn-ymj"/>
+                            <constraint firstItem="PMZ-Zz-8MX" firstAttribute="bottom" secondItem="Mup-Ef-E64" secondAttribute="bottom" id="nJa-CF-1jN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Mup-Ef-E64" id="utX-j0-8kO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMe-p8-aGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-313" y="118"/>
+            <point key="canvasLocation" x="288" y="106"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
