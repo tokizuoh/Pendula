@@ -46,9 +46,9 @@ extension BezierPathViewController {
                         path.move(to: CGPoint(x: rect.midX, y: rect.minY))
                         path.addLine(to: CGPoint(x: rect.midX, y: rect.midY))
                         path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
-                        
+
                         path.close()
-                        
+
                         UIColor.red.setStroke()
                         path.stroke()
                       }),
@@ -59,9 +59,9 @@ extension BezierPathViewController {
                         path.addLine(to: CGPoint(x: rect.midX, y: rect.midY / 2))
                         path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
                         path.addLine(to: CGPoint(x: rect.midX, y: rect.midY + rect.midY / 2))
-                        
+
                         path.close()
-                        
+
                         UIColor.red.setStroke()
                         path.stroke()
                       }),
@@ -73,11 +73,22 @@ extension BezierPathViewController {
 
                         let dashes: [CGFloat] = [7, 15]
                         path.setLineDash(dashes, count: dashes.count, phase: 0)
-                        
+
                         path.close()
-                        
+
                         UIColor.blue.setStroke()
                         path.stroke()
+                      }),
+            ViewModel(tital: "円",
+                      drawHandler: { rect in
+                        let circle = UIBezierPath(arcCenter: CGPoint(x: rect.midX, y: rect.midY),
+                                                  radius: rect.midY - 10,
+                                                  startAngle: 0,
+                                                  endAngle: CGFloat(Double.pi * 2),
+                                                  clockwise: true)
+                        UIColor.purple.setStroke()
+                        circle.lineWidth = 2.0
+                        circle.stroke()
                       })
         ]
     }
