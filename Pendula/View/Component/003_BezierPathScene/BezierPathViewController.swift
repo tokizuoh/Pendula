@@ -46,7 +46,9 @@ extension BezierPathViewController {
                         path.move(to: CGPoint(x: rect.midX, y: rect.minY))
                         path.addLine(to: CGPoint(x: rect.midX, y: rect.midY))
                         path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+                        
                         path.close()
+                        
                         UIColor.red.setStroke()
                         path.stroke()
                       }),
@@ -57,7 +59,9 @@ extension BezierPathViewController {
                         path.addLine(to: CGPoint(x: rect.midX, y: rect.midY / 2))
                         path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
                         path.addLine(to: CGPoint(x: rect.midX, y: rect.midY + rect.midY / 2))
+                        
                         path.close()
+                        
                         UIColor.red.setStroke()
                         path.stroke()
                       }),
@@ -68,9 +72,11 @@ extension BezierPathViewController {
                         path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
 
                         let dashes: [CGFloat] = [7, 15]
-                        path.close()
-                        UIColor.blue.setStroke()
                         path.setLineDash(dashes, count: dashes.count, phase: 0)
+                        
+                        path.close()
+                        
+                        UIColor.blue.setStroke()
                         path.stroke()
                       })
         ]
