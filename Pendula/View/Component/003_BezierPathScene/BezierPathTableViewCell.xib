@@ -24,8 +24,8 @@
                             <constraint firstAttribute="width" secondItem="Kjm-dj-hky" secondAttribute="height" multiplier="1:1" id="VL3-v4-ig9"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEE-HZ-01L">
-                        <rect key="frame" x="130" y="15" width="41.5" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEE-HZ-01L">
+                        <rect key="frame" x="130" y="15" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,6 +43,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bezierPathView" destination="Kjm-dj-hky" id="jom-qW-JyB"/>
+                <outlet property="titleLabel" destination="hEE-HZ-01L" id="5kN-EX-YiR"/>
+            </connections>
             <point key="canvasLocation" x="140.57971014492756" y="190.17857142857142"/>
         </tableViewCell>
     </objects>
