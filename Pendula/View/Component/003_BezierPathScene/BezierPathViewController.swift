@@ -60,6 +60,18 @@ extension BezierPathViewController {
                         path.close()
                         UIColor.red.setStroke()
                         path.stroke()
+                      }),
+            ViewModel(tital: "点線",
+                      drawHandler: { rect in
+                        let path = UIBezierPath()
+                        path.move(to: CGPoint(x: rect.minX, y: rect.midY))
+                        path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+
+                        let dashes: [CGFloat] = [7, 15]
+                        path.close()
+                        UIColor.blue.setStroke()
+                        path.setLineDash(dashes, count: dashes.count, phase: 0)
+                        path.stroke()
                       })
         ]
     }
