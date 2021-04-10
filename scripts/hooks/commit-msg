@@ -1,0 +1,14 @@
+#!/bin/sh
+
+mv $1 $1.tmp
+commit_message=`cat $1.tmp`
+issue_number=`git branch | grep '*' | awk '{print $2}' | egrep --only-matching '#\d+'`
+
+if [ -z "$issue_number" ]; then
+  echo "[ERROR] Please include issue number in branch name."
+  echo "ex.) feature/#13"
+  exit 1
+fi
+
+res="[${issue_number}] ${commit_message}"
+echo $res > $1

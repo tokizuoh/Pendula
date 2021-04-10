@@ -36,8 +36,20 @@ Version: 0.14.2
 sh ./scripts/setup.sh
 ```
   
-2. Grant permissions to shell scripts.  
+2. Grant permission to shell-script.  
 ```bash
 chmod +x .git/hooks/post-checkout
+```
+  
+### Add commit-message an issue number
+  
+1. Write the content of the following file in `.git/hooks/commit-msg`.  
+  
+  - `./scripts/hooks/commit-msg`
+  
+2. Grant permission to shell-script.  
+  
+```bash
+chmod +x .git/hooks/commit-msg
 ```
   
