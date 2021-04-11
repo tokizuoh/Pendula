@@ -75,15 +75,15 @@ final class VerificationListViewController: UIViewController {
 
     @objc private func configureRightBarButtonItem() {
         var children = [UIMenuElement]()
-        let dateAscendingAction = UIAction(title: "最終更新日時 昇順") { [unowned self] _ in
-            self.sortAscending()
+        let sortAscendingDateAction = UIAction(title: "最終更新日 昇順") { [unowned self] _ in
+            self.sortAscendingDate()
         }
-        children.append(dateAscendingAction)
+        children.append(sortAscendingDateAction)
 
-        let dateDescendingAction = UIAction(title: "最終更新日時 降順") { [unowned self] _ in
-            self.sortDescending()
+        let sortDescendingDateAction = UIAction(title: "最終更新日 降順") { [unowned self] _ in
+            self.sortDescendingDate()
         }
-        children.append(dateDescendingAction)
+        children.append(sortDescendingDateAction)
 
         let menu = UIMenu(title: "ソートする",
                           image: nil,
@@ -94,13 +94,13 @@ final class VerificationListViewController: UIViewController {
         navigationItem.rightBarButtonItem = menuBarButtonItem
     }
 
-    private func sortAscending() {
+    private func sortAscendingDate() {
         viewModels?.sort(by: { (lve, rve) -> Bool in
             return lve.lastUpdateDate < rve.lastUpdateDate
         })
     }
 
-    private func sortDescending() {
+    private func sortDescendingDate() {
         viewModels?.sort(by: { (lve, rve) -> Bool in
             return lve.lastUpdateDate > rve.lastUpdateDate
         })
