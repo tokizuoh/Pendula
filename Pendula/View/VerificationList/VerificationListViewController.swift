@@ -38,16 +38,9 @@ final class VerificationListViewController: UIViewController {
         }
     }
 
-    private func configureNavigationItem() {
-        navigationItem.title = "Verifications"
-        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(backView))
-        navigationItem.leftBarButtonItem = backButton
+}
 
-        configureRightBarButtonItem()
-    }
+extension VerificationListViewController {
 
     private func configureViewModels() {
         // TODO: DIの方法を考え直す（ymlなど）
@@ -64,6 +57,21 @@ final class VerificationListViewController: UIViewController {
         ]
     }
 
+    private func configureNavigationItem() {
+        navigationItem.title = "Verifications"
+        configureLeftBarButtonItem()
+        configureRightBarButtonItem()
+    }
+
+    private func configureLeftBarButtonItem() {
+        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(backView))
+        navigationItem.leftBarButtonItem = backButton
+
+    }
+
     @objc private func backView() {
         let transition = CATransition()
         transition.type = .push
@@ -73,59 +81,49 @@ final class VerificationListViewController: UIViewController {
         dismiss(animated: false)
     }
 
-    @objc private func configureRightBarButtonItem() {
-        var children = [UIMenuElement]()
-        let sortAscendingDateAction = UIAction(title: "最終更新日 昇順") { [unowned self] _ in
-            self.sortAscendingDate()
-        }
-        children.append(sortAscendingDateAction)
+    private func configureRightBarButtonItem() {
+        func configureMenuElements() -> [UIMenuElement] {
+            var children = [UIMenuElement]()
 
-        let sortDescendingDateAction = UIAction(title: "最終更新日 降順") { [unowned self] _ in
-            self.sortDescendingDate()
-        }
-        children.append(sortDescendingDateAction)
+            let sortAscendingDateAction = UIAction(title: "最終更新日 昇順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.lastUpdateDate < rve.lastUpdateDate
+                })
+            }
+            children.append(sortAscendingDateAction)
 
-        let sortAscendingTitle = UIAction(title: "タイトル 昇順") { [unowned self] _ in
-            self.sortAscendingTitle()
-        }
-        children.append(sortAscendingTitle)
+            let sortDescendingDateAction = UIAction(title: "最終更新日 降順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.lastUpdateDate > rve.lastUpdateDate
+                })
+            }
+            children.append(sortDescendingDateAction)
 
-        let sortDescendingTitle = UIAction(title: "タイトル 降順") { [unowned self] _ in
-            self.sortDescendingTitle()
-        }
-        children.append(sortDescendingTitle)
+            let sortAscendingTitle = UIAction(title: "タイトル 昇順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.title < rve.title
+                })
+            }
+            children.append(sortAscendingTitle)
 
+            let sortDescendingTitle = UIAction(title: "タイトル 降順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.title > rve.title
+                })
+            }
+            children.append(sortDescendingTitle)
+
+            return children
+        }
+
+        let children = configureMenuElements()
         let menu = UIMenu(title: "ソートする",
                           image: nil,
-                          options: .destructive,
+                          options: .displayInline,
                           children: children)
         let menuBarButtonItem = UIBarButtonItem(image: R.image.sort()?.withRenderingMode(.alwaysOriginal),
                                                 menu: menu)
         navigationItem.rightBarButtonItem = menuBarButtonItem
-    }
-
-    private func sortAscendingDate() {
-        viewModels?.sort(by: { (lve, rve) -> Bool in
-            return lve.lastUpdateDate < rve.lastUpdateDate
-        })
-    }
-
-    private func sortDescendingDate() {
-        viewModels?.sort(by: { (lve, rve) -> Bool in
-            return lve.lastUpdateDate > rve.lastUpdateDate
-        })
-    }
-
-    private func sortAscendingTitle() {
-        viewModels?.sort(by: { (lve, rve) -> Bool in
-            return lve.title < rve.title
-        })
-    }
-
-    private func sortDescendingTitle() {
-        viewModels?.sort(by: { (lve, rve) -> Bool in
-            return lve.title > rve.title
-        })
     }
 
 }
