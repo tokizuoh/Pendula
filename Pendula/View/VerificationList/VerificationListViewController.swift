@@ -85,6 +85,16 @@ final class VerificationListViewController: UIViewController {
         }
         children.append(sortDescendingDateAction)
 
+        let sortAscendingTitle = UIAction(title: "タイトル 昇順") { [unowned self] _ in
+            self.sortAscendingTitle()
+        }
+        children.append(sortAscendingTitle)
+
+        let sortDescendingTitle = UIAction(title: "タイトル 降順") { [unowned self] _ in
+            self.sortDescendingTitle()
+        }
+        children.append(sortDescendingTitle)
+
         let menu = UIMenu(title: "ソートする",
                           image: nil,
                           options: .destructive,
@@ -103,6 +113,18 @@ final class VerificationListViewController: UIViewController {
     private func sortDescendingDate() {
         viewModels?.sort(by: { (lve, rve) -> Bool in
             return lve.lastUpdateDate > rve.lastUpdateDate
+        })
+    }
+
+    private func sortAscendingTitle() {
+        viewModels?.sort(by: { (lve, rve) -> Bool in
+            return lve.title < rve.title
+        })
+    }
+
+    private func sortDescendingTitle() {
+        viewModels?.sort(by: { (lve, rve) -> Bool in
+            return lve.title > rve.title
         })
     }
 
