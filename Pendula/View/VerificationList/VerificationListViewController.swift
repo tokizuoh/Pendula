@@ -45,6 +45,8 @@ final class VerificationListViewController: UIViewController {
                                          target: self,
                                          action: #selector(backView))
         navigationItem.leftBarButtonItem = backButton
+
+        configureRightBarButtonItem()
     }
 
     private func configureViewModels() {
@@ -69,6 +71,21 @@ final class VerificationListViewController: UIViewController {
         transition.subtype = .fromLeft
         view.window?.layer.add(transition, forKey: kCATransition)
         dismiss(animated: false)
+    }
+
+    @objc private func configureRightBarButtonItem() {
+        var children = [UIMenuElement]()
+        let dateAscendingAction = UIAction(title: "最終更新日時 昇順") { _ in
+            // TODO
+        }
+        children.append(dateAscendingAction)
+        let menu = UIMenu(title: "ソートする",
+                          image: R.image.sort()?.withRenderingMode(.alwaysOriginal),
+                          options: .destructive,
+                          children: children)
+        let menuBarButtonItem = UIBarButtonItem(image: R.image.sort()?.withRenderingMode(.alwaysOriginal),
+                                                menu: menu)
+        navigationItem.rightBarButtonItem = menuBarButtonItem
     }
 
 }
