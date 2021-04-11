@@ -59,7 +59,7 @@ final class VerificationListViewController: UIViewController {
             Verification(title: "UIBezierPathを使って図形の描画をする",
                          lastUpdateDate: "2021.4.10".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.bezierPath.bezierPath()!),
-            Verification(title: "セルが円環上に並ぶUICollectionViewを試す"
+            Verification(title: "セルが円環上に並ぶUICollectionViewを試す",
                          lastUpdateDate: "2021.4.11".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.circleLayout.circleLayout()!)
         ]
