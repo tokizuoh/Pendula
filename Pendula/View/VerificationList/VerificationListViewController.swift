@@ -38,14 +38,9 @@ final class VerificationListViewController: UIViewController {
         }
     }
 
-    private func configureNavigationItem() {
-        navigationItem.title = "Verifications"
-        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(backView))
-        navigationItem.leftBarButtonItem = backButton
-    }
+}
+
+extension VerificationListViewController {
 
     private func configureViewModels() {
         // TODO: DIの方法を考え直す（ymlなど）
@@ -65,6 +60,21 @@ final class VerificationListViewController: UIViewController {
         ]
     }
 
+    private func configureNavigationItem() {
+        navigationItem.title = "Verifications"
+        configureLeftBarButtonItem()
+        configureRightBarButtonItem()
+    }
+
+    private func configureLeftBarButtonItem() {
+        let backButton = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(backView))
+        navigationItem.leftBarButtonItem = backButton
+
+    }
+
     @objc private func backView() {
         let transition = CATransition()
         transition.type = .push
@@ -72,6 +82,51 @@ final class VerificationListViewController: UIViewController {
         transition.subtype = .fromLeft
         view.window?.layer.add(transition, forKey: kCATransition)
         dismiss(animated: false)
+    }
+
+    private func configureRightBarButtonItem() {
+        func configureMenuElements() -> [UIMenuElement] {
+            var children = [UIMenuElement]()
+
+            let sortAscendingDateAction = UIAction(title: "最終更新日 昇順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.lastUpdateDate < rve.lastUpdateDate
+                })
+            }
+            children.append(sortAscendingDateAction)
+
+            let sortDescendingDateAction = UIAction(title: "最終更新日 降順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.lastUpdateDate > rve.lastUpdateDate
+                })
+            }
+            children.append(sortDescendingDateAction)
+
+            let sortAscendingTitle = UIAction(title: "タイトル 昇順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.title < rve.title
+                })
+            }
+            children.append(sortAscendingTitle)
+
+            let sortDescendingTitle = UIAction(title: "タイトル 降順") { [unowned self] _ in
+                self.viewModels?.sort(by: { (lve, rve) -> Bool in
+                    return lve.title > rve.title
+                })
+            }
+            children.append(sortDescendingTitle)
+
+            return children
+        }
+
+        let children = configureMenuElements()
+        let menu = UIMenu(title: "ソートする",
+                          image: nil,
+                          options: .displayInline,
+                          children: children)
+        let menuBarButtonItem = UIBarButtonItem(image: R.image.sort()?.withRenderingMode(.alwaysOriginal),
+                                                menu: menu)
+        navigationItem.rightBarButtonItem = menuBarButtonItem
     }
 
 }
