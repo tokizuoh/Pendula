@@ -20,6 +20,9 @@ final class CircleLayoutCollectionViewCell: UICollectionViewCell {
             return
         }
         layer.anchorPoint = circleLayoutAttributes.anchorPoint
+
+        // layoutAttributesを用いてセルの中心（= 円の中心）を補正する
+        // circleLayoutAttributes.anchorPoint.y は セル自体の高さを基準とした数値なので、実測値としてbound.height (= セルの高さ)をかける
         center.y += (circleLayoutAttributes.anchorPoint.y - 0.5) * bounds.height
     }
 
