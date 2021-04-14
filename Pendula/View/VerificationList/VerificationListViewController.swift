@@ -53,7 +53,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.imos.imos()!),
             Verification(title: "UIBezierPathを使って図形の描画をする",
                          lastUpdateDate: "2021.4.10".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.bezierPath.bezierPath()!)
+                         viewController: R.storyboard.bezierPath.bezierPath()!),
+            Verification(title: "UIPageViewControllerを使ってスワイプで画面切り替えを行う",
+                         lastUpdateDate: "2021.4.14".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.swipePanel.swipePanel()!)
         ]
     }
 
