@@ -51,25 +51,10 @@
         <!--Page View Controller-->
         <scene sceneID="z5N-q0-lXa">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="cAg-cv-91I" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="cAg-cv-91I" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZf-wY-8Wk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1274" y="-30"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="H8K-xK-qCV">
-            <objects>
-                <viewController id="ghi-IG-LhI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1sv-bg-P4u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="GTi-lR-BNr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lYq-XV-UGO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1272" y="498"/>
+            <point key="canvasLocation" x="1283" y="-35"/>
         </scene>
     </scenes>
     <resources>
