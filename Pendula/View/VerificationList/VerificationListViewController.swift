@@ -56,7 +56,7 @@ extension VerificationListViewController {
                          viewController: R.storyboard.bezierPath.bezierPath()!),
             Verification(title: "UIPageViewControllerを使ってスワイプで画面切り替えを行う",
                          lastUpdateDate: "2021.4.14".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.swipePanel.swipePanel()!)
+                         viewController: R.storyboard.swipePage.swipePage()!)
         ]
     }
 
