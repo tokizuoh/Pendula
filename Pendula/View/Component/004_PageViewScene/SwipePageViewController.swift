@@ -35,11 +35,15 @@ final class SwipePageViewController: ComponentBaseViewController {
 extension SwipePageViewController {
 
     private func configurePageView() {
-        pageViewController = UIPageViewController()
-
         firstViewController = R.storyboard.swipePageFirst.swipePageFirst()!
         secondViewController = R.storyboard.swipePageSecond.swipePageSecond()!
         thirdViewController = R.storyboard.swipePageThird.swipePageThird()!
+
+        pageViewController = children.first as? UIPageViewController
+        pageViewController?.setViewControllers([firstViewController!],
+                                               direction: .forward,
+                                               animated: true,
+                                               completion: nil)
     }
 
 }
