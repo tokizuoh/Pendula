@@ -66,7 +66,6 @@ extension SwipePageViewController: UIPageViewControllerDataSource {
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-
         if viewController is SwipePageFirstViewController {
             return nil
         } else if viewController is SwipePageSecondViewController {
@@ -78,7 +77,6 @@ extension SwipePageViewController: UIPageViewControllerDataSource {
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-
         if viewController is SwipePageFirstViewController {
             return secondViewController
         } else if viewController is SwipePageSecondViewController {
