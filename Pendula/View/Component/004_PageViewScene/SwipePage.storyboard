@@ -22,9 +22,9 @@
                                     <segue destination="cAg-cv-91I" kind="embed" id="GVQ-7q-axM"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebi-G5-GWh">
-                                <rect key="frame" x="207" y="522" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebi-G5-GWh">
+                                <rect key="frame" x="20" y="522" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -32,7 +32,9 @@
                         <viewLayoutGuide key="safeArea" id="DiE-15-hst"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ebi-G5-GWh" secondAttribute="trailing" constant="20" id="Njv-gD-GB1"/>
                             <constraint firstItem="ebi-G5-GWh" firstAttribute="centerX" secondItem="38U-B8-tNv" secondAttribute="centerX" id="W5h-5R-Irc"/>
+                            <constraint firstItem="ebi-G5-GWh" firstAttribute="leading" secondItem="dTC-lB-ZCr" secondAttribute="leading" constant="20" id="bUe-N5-8DM"/>
                             <constraint firstItem="38U-B8-tNv" firstAttribute="leading" secondItem="DiE-15-hst" secondAttribute="leading" id="cw3-f8-eWd"/>
                             <constraint firstItem="38U-B8-tNv" firstAttribute="height" secondItem="dTC-lB-ZCr" secondAttribute="height" multiplier="0.5" id="iOn-Sv-l9g"/>
                             <constraint firstItem="DiE-15-hst" firstAttribute="trailing" secondItem="38U-B8-tNv" secondAttribute="trailing" id="m7h-1X-0rU"/>

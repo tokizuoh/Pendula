@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SwipePageThirdViewController: UIViewController {
+final class SwipePageThirdViewController: SwipePageChildViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

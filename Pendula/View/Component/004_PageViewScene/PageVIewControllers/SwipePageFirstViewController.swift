@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class SwipePageFirstViewController: UIViewController {
+class SwipePageChildViewController: UIViewController {
+    var index: Int?
+}
+
+final class SwipePageFirstViewController: SwipePageChildViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
