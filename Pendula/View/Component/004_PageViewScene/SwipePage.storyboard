@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Swipe Page View Controller-->
+        <scene sceneID="DlM-V1-D1j">
+            <objects>
+                <viewController storyboardIdentifier="swipePage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4xs-Pi-8ot" customClass="SwipePageViewController" customModule="Pendula" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dTC-lB-ZCr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38U-B8-tNv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="448"/>
+                                <connections>
+                                    <segue destination="cAg-cv-91I" kind="embed" id="GVQ-7q-axM"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebi-G5-GWh">
+                                <rect key="frame" x="20" y="522" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DiE-15-hst"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ebi-G5-GWh" secondAttribute="trailing" constant="20" id="Njv-gD-GB1"/>
+                            <constraint firstItem="ebi-G5-GWh" firstAttribute="centerX" secondItem="38U-B8-tNv" secondAttribute="centerX" id="W5h-5R-Irc"/>
+                            <constraint firstItem="ebi-G5-GWh" firstAttribute="leading" secondItem="dTC-lB-ZCr" secondAttribute="leading" constant="20" id="bUe-N5-8DM"/>
+                            <constraint firstItem="38U-B8-tNv" firstAttribute="leading" secondItem="DiE-15-hst" secondAttribute="leading" id="cw3-f8-eWd"/>
+                            <constraint firstItem="38U-B8-tNv" firstAttribute="height" secondItem="dTC-lB-ZCr" secondAttribute="height" multiplier="0.5" id="iOn-Sv-l9g"/>
+                            <constraint firstItem="DiE-15-hst" firstAttribute="trailing" secondItem="38U-B8-tNv" secondAttribute="trailing" id="m7h-1X-0rU"/>
+                            <constraint firstItem="38U-B8-tNv" firstAttribute="top" secondItem="DiE-15-hst" secondAttribute="top" id="p9E-HO-uE1"/>
+                            <constraint firstItem="ebi-G5-GWh" firstAttribute="top" secondItem="38U-B8-tNv" secondAttribute="bottom" constant="30" id="s64-8t-1kv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pageIndexLabel" destination="ebi-G5-GWh" id="SVy-2z-IjD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pEl-so-snS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509" y="-30"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="z5N-q0-lXa">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="cAg-cv-91I" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZf-wY-8Wk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1283" y="-35"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
