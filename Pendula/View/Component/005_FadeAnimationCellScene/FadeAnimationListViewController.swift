@@ -93,13 +93,16 @@ extension FadeAnimationListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let beforeIndexPath = beforeIndexPath,
            let cell = tableView.cellForRow(at: beforeIndexPath) as? FadeAnimationTableViewCell {
-            cell.fadeAnimateBackgroundView(alpha: 0.0)
+            guard beforeIndexPath != indexPath else {
+                return
+            }
+            cell.removeAnimationBackgroundViewFromSuperViewWithFadeOut()
         }
 
         guard let cell = tableView.cellForRow(at: indexPath) as? FadeAnimationTableViewCell else {
             return
         }
-        cell.fadeAnimateBackgroundView(alpha: 0.5)
+        cell.configureAnimationViewWithFadeInFromLeading()
         beforeIndexPath = indexPath
     }
 

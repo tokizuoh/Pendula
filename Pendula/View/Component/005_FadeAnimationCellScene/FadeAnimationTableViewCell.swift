@@ -10,7 +10,7 @@ import UIKit
 final class FadeAnimationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var fadeAnimationBackgroundView: UIView!
+    var animationBackgroundView: UIView?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,34 +28,54 @@ extension FadeAnimationTableViewCell {
         titleLabel.text = title
     }
 
-    func generateCustomPurple(colorAlpha: CGFloat) -> UIColor {
+    func generateCustomPurple(alpha: CGFloat) -> UIColor {
         return UIColor(red: 178/255,
                        green: 161/255,
                        blue: 216/255,
-                       alpha: colorAlpha)
+                       alpha: alpha)
     }
 
-    func fadeAnimateBackgroundView(alpha: CGFloat) {
-        let view1 = UIView(frame: CGRect(x: 0, y: 0,
-                                         width: bounds.width,
-                                         height: bounds.height))
-        view1.backgroundColor = generateCustomPurple(colorAlpha: 0.5)
-        self.addSubview(view1)
-        self.sendSubviewToBack(view1)
-        self.bringSubviewToFront(textLabel!)
-        view1.widthAnchor.constraint(equalToConstant: bounds.width).isActive = true
-        view1.heightAnchor.constraint(equalToConstant: bounds.height).isActive = true
-        view1.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        view1.layer.zPosition = textLabel!.layer.zPosition - 1
+    func configureAnimationViewWithFadeInFromLeading() {
+        animationBackgroundView?.removeFromSuperview()
 
-        // TODO [feature/#58]: Animation
-        let constraint = NSLayoutConstraint(item: view1,
-                                            attribute: NSLayoutConstraint.Attribute.top,
-                                            relatedBy: NSLayoutConstraint.Relation.equal,
+        animationBackgroundView = UIView(frame: CGRect(x: 0, y: 0,
+                                                       width: bounds.width,
+                                                       height: bounds.height))
+        guard let animationBackgroundView = animationBackgroundView else {
+            return
+        }
+
+        animationBackgroundView.backgroundColor = generateCustomPurple(alpha: 0.5)
+        animationBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(animationBackgroundView)
+        self.sendSubviewToBack(animationBackgroundView)
+        self.bringSubviewToFront(textLabel!)
+        animationBackgroundView.widthAnchor.constraint(equalToConstant: bounds.width).isActive = true
+        animationBackgroundView.heightAnchor.constraint(equalToConstant: bounds.height).isActive = true
+        animationBackgroundView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+
+        let constraint = NSLayoutConstraint(item: animationBackgroundView,
+                                            attribute: .leading,
+                                            relatedBy: .equal,
                                             toItem: self,
-                                            attribute: NSLayoutConstraint.Attribute.top,
+                                            attribute: .leading,
                                             multiplier: 1.0,
-                                            constant: bounds.width - 100)
+                                            constant: 0)
+        self.addConstraint(constraint)
+        UIView.animate(withDuration: 1.0) {
+            animationBackgroundView.center.x += self.bounds.width
+        }
+    }
+
+    func removeAnimationBackgroundViewFromSuperViewWithFadeOut() {
+        UIView.animate(withDuration: 1.0) {
+            self.animationBackgroundView?.alpha = 0.0
+        } completion: { finised in
+            guard finised else {
+                return
+            }
+            self.animationBackgroundView?.removeFromSuperview()
+        }
     }
 
 }
