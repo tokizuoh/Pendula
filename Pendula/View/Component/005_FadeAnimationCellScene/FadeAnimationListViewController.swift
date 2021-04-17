@@ -34,7 +34,7 @@ final class FadeAnimationListViewController: ComponentBaseViewController {
 
         configureNavigationItem(navigationTitle: "005 CellAnimation",
                                 blogURL: nil,
-                                githubPRURL: nil)
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/60"))
         configtureViewModels()
     }
 
