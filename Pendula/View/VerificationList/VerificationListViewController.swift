@@ -56,7 +56,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.bezierPath.bezierPath()!),
             Verification(title: "UIPageViewControllerを使ってスワイプで画面切り替えを行う",
                          lastUpdateDate: "2021.4.14".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.swipePage.swipePage()!)
+                         viewController: R.storyboard.swipePage.swipePage()!),
+            Verification(title: "UITableViewCell選択時にCellにアニメーションをかける",
+                         lastUpdateDate: "2021.4.17".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!)
         ]
     }
 
