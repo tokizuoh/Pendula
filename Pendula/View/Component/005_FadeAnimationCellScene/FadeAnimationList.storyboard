@@ -15,9 +15,25 @@
                     <view key="view" contentMode="scaleToFill" id="rur-gT-3iu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fd6-p8-P1b">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="xGp-A0-EYh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Fd6-p8-P1b" firstAttribute="top" secondItem="xGp-A0-EYh" secondAttribute="top" id="Q6D-al-FcS"/>
+                            <constraint firstItem="Fd6-p8-P1b" firstAttribute="leading" secondItem="xGp-A0-EYh" secondAttribute="leading" id="VNm-Oj-202"/>
+                            <constraint firstItem="xGp-A0-EYh" firstAttribute="bottom" secondItem="Fd6-p8-P1b" secondAttribute="bottom" id="ZcD-QD-pDA"/>
+                            <constraint firstItem="xGp-A0-EYh" firstAttribute="trailing" secondItem="Fd6-p8-P1b" secondAttribute="trailing" id="owJ-dh-33F"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Fd6-p8-P1b" id="uFX-MR-TUZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pqw-AH-aqQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
