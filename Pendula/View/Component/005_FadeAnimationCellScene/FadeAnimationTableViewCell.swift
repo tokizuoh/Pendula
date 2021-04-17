@@ -35,7 +35,7 @@ extension FadeAnimationTableViewCell {
                        alpha: alpha)
     }
 
-    func configureAnimationViewWithFadeInFromLeading() {
+    func animateWithSlideFromLeading() {
         animationBackgroundView?.removeFromSuperview()
 
         animationBackgroundView = UIView(frame: CGRect(x: 0, y: 0,

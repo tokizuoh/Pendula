@@ -102,7 +102,7 @@ extension FadeAnimationListViewController: UITableViewDelegate {
         guard let cell = tableView.cellForRow(at: indexPath) as? FadeAnimationTableViewCell else {
             return
         }
-        cell.configureAnimationViewWithFadeInFromLeading()
+        cell.animateWithSlideFromLeading()
         beforeIndexPath = indexPath
     }
 
