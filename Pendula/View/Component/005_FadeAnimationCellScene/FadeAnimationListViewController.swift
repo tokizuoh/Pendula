@@ -27,6 +27,7 @@ final class FadeAnimationListViewController: ComponentBaseViewController {
             tableView.reloadData()
         }
     }
+    var beforeIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +77,7 @@ extension FadeAnimationListViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.fadeAnimationTableViewCell, for: indexPath)!
         cell.setTitleLabel(title: viewModels[indexPath.row].title)
+        cell.selectionStyle = .none
         return cell
     }
 
@@ -85,6 +87,19 @@ extension FadeAnimationListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let beforeIndexPath = beforeIndexPath,
+           let cell = tableView.cellForRow(at: beforeIndexPath) as? FadeAnimationTableViewCell {
+            cell.fadeAnimateBackgroundView(alpha: 0.0)
+        }
+
+        guard let cell = tableView.cellForRow(at: indexPath) as? FadeAnimationTableViewCell else {
+            return
+        }
+        cell.fadeAnimateBackgroundView(alpha: 0.5)
+        beforeIndexPath = indexPath
     }
 
 }

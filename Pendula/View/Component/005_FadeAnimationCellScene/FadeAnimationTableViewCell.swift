@@ -10,16 +10,16 @@ import UIKit
 final class FadeAnimationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var fadeAnimationBackgroundView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        fadeAnimationBackgroundView.backgroundColor = generateCustomPurple(colorAlpha: 0.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
@@ -28,6 +28,17 @@ extension FadeAnimationTableViewCell {
 
     func setTitleLabel(title: String) {
         titleLabel.text = title
+    }
+
+    func generateCustomPurple(colorAlpha: CGFloat) -> UIColor {
+        return UIColor(red: 178/255,
+                       green: 161/255,
+                       blue: 216/255,
+                       alpha: colorAlpha)
+    }
+
+    func fadeAnimateBackgroundView(alpha: CGFloat) {
+        fadeAnimationBackgroundView.backgroundColor = generateCustomPurple(colorAlpha: alpha)
     }
 
 }

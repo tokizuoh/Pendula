@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,29 +17,43 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRP-UI-kUi">
-                        <rect key="frame" x="20" y="20" width="280" height="20.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ga-Ab-a48">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdc-xb-Uxu">
+                                <rect key="frame" x="20" y="20" width="280" height="4"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="tW6-Ep-oRG"/>
+                            <constraint firstAttribute="trailing" secondItem="Mdc-xb-Uxu" secondAttribute="trailing" constant="20" id="AjE-y9-E1S"/>
+                            <constraint firstAttribute="bottom" secondItem="Mdc-xb-Uxu" secondAttribute="bottom" constant="20" id="Mzr-bL-VRh"/>
+                            <constraint firstItem="Mdc-xb-Uxu" firstAttribute="leading" secondItem="7Ga-Ab-a48" secondAttribute="leading" constant="20" id="eQq-vw-aXM"/>
+                            <constraint firstItem="Mdc-xb-Uxu" firstAttribute="top" secondItem="7Ga-Ab-a48" secondAttribute="top" constant="20" id="ixk-GP-PJk"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="SRP-UI-kUi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="KoE-cc-6Vc"/>
-                    <constraint firstAttribute="bottom" secondItem="SRP-UI-kUi" secondAttribute="bottom" constant="20" id="T8F-Nv-moX"/>
-                    <constraint firstAttribute="trailing" secondItem="SRP-UI-kUi" secondAttribute="trailing" constant="20" id="bSc-jy-nqt"/>
-                    <constraint firstItem="SRP-UI-kUi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ogf-Vh-pNS"/>
-                    <constraint firstItem="SRP-UI-kUi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="tB2-L3-0S9"/>
+                    <constraint firstAttribute="bottom" secondItem="7Ga-Ab-a48" secondAttribute="bottom" id="058-me-Hbg"/>
+                    <constraint firstItem="7Ga-Ab-a48" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Hlx-vC-Dts"/>
+                    <constraint firstItem="7Ga-Ab-a48" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OXs-e9-wjv"/>
+                    <constraint firstAttribute="trailing" secondItem="7Ga-Ab-a48" secondAttribute="trailing" id="UsU-G6-9x8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="titleLabel" destination="SRP-UI-kUi" id="6mx-Tu-c9k"/>
+                <outlet property="fadeAnimationBackgroundView" destination="7Ga-Ab-a48" id="129-Ig-oJF"/>
+                <outlet property="titleLabel" destination="Mdc-xb-Uxu" id="rfo-eT-p31"/>
             </connections>
             <point key="canvasLocation" x="106" y="68"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
