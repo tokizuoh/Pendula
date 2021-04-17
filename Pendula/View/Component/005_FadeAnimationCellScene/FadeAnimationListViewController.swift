@@ -77,6 +77,7 @@ extension FadeAnimationListViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.fadeAnimationTableViewCell, for: indexPath)!
         cell.setTitleLabel(title: viewModels[indexPath.row].title)
+        cell.backgroundColor = .clear
         cell.selectionStyle = .none
         return cell
     }

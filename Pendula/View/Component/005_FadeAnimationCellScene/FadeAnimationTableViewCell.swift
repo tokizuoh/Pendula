@@ -14,8 +14,6 @@ final class FadeAnimationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        fadeAnimationBackgroundView.backgroundColor = generateCustomPurple(colorAlpha: 0.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,7 +36,26 @@ extension FadeAnimationTableViewCell {
     }
 
     func fadeAnimateBackgroundView(alpha: CGFloat) {
-        fadeAnimationBackgroundView.backgroundColor = generateCustomPurple(colorAlpha: alpha)
+        let view1 = UIView(frame: CGRect(x: 0, y: 0,
+                                         width: bounds.width,
+                                         height: bounds.height))
+        view1.backgroundColor = generateCustomPurple(colorAlpha: 0.5)
+        self.addSubview(view1)
+        self.sendSubviewToBack(view1)
+        self.bringSubviewToFront(textLabel!)
+        view1.widthAnchor.constraint(equalToConstant: bounds.width).isActive = true
+        view1.heightAnchor.constraint(equalToConstant: bounds.height).isActive = true
+        view1.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        view1.layer.zPosition = textLabel!.layer.zPosition - 1
+
+        // TODO [feature/#58]: Animation
+        let constraint = NSLayoutConstraint(item: view1,
+                                            attribute: NSLayoutConstraint.Attribute.top,
+                                            relatedBy: NSLayoutConstraint.Relation.equal,
+                                            toItem: self,
+                                            attribute: NSLayoutConstraint.Attribute.top,
+                                            multiplier: 1.0,
+                                            constant: bounds.width - 100)
     }
 
 }
