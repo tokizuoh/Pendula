@@ -33,7 +33,7 @@ final class FadeAnimationListViewController: ComponentBaseViewController {
         super.viewDidLoad()
 
         configureNavigationItem(navigationTitle: "005 CellAnimation",
-                                blogURL: nil,
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/xna37tq6upz2biqj/"),
                                 githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/60"))
         configtureViewModels()
     }
