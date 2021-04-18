@@ -138,7 +138,7 @@ extension WorkoutViewController: UITableViewDataSource {
 
     private func generateDurationSecondsText(startDate: Date, endDate: Date) -> String {
         let difference = endDate.timeIntervalSince(startDate)
-        return "\(Int(difference / 60).description)m"
+        return "\(Int(difference / 60).description)min"
     }
 
 }
