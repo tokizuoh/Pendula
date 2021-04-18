@@ -59,7 +59,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.swipePage.swipePage()!),
             Verification(title: "UITableViewCell選択時にCellにアニメーションをかける",
                          lastUpdateDate: "2021.4.17".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!)
+                         viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!),
+            Verification(title: "HealthKitを使ってワークアウトのデータを取り扱う",
+                         lastUpdateDate: "2021.4.18".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.workout.workout()!)
         ]
     }
 
