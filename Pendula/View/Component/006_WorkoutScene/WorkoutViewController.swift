@@ -11,6 +11,12 @@ import HealthKit
 final class WorkoutViewController: ComponentBaseViewController {
 
     var healthStore: HKHealthStore?
+    var workouts: [HKWorkout]? {
+        didSet {
+
+            print(workouts)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +25,7 @@ final class WorkoutViewController: ComponentBaseViewController {
                                 blogURL: nil,
                                 githubPRURL: nil)
         configureHelathStore()
+        getWorkouts()
     }
 
 }
@@ -33,12 +40,30 @@ extension WorkoutViewController {
         ])
 
         healthStore?.requestAuthorization(toShare: nil, read: allTypes) { success, _ in
-            if success {
-                print(1)
-            } else {
-                print(2)
+            guard success else {
+                return
             }
+
+            self.getWorkouts()
         }
+    }
+
+    private func getWorkouts() {
+        let type = HKWorkoutType.workoutType()
+        let predicate = HKQuery.predicateForWorkouts(with: .walking)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+
+        let query = HKSampleQuery(sampleType: type,
+                                  predicate: predicate,
+                                  limit: HKObjectQueryNoLimit,
+                                  sortDescriptors: [sortDescriptor]) { _, samples, error in
+            guard let workouts = samples as? [HKWorkout],
+                  error == nil else {
+                return
+            }
+            self.workouts = workouts
+        }
+        healthStore?.execute(query)
     }
 
 }
