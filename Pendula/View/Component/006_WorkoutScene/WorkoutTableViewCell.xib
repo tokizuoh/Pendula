@@ -37,12 +37,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6Z-7R-yEc">
+                        <rect key="frame" x="255.5" y="56" width="44.5" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xdd-fI-GQv" secondAttribute="trailing" constant="20" id="B2Y-PD-7Ul"/>
+                    <constraint firstAttribute="bottom" secondItem="H6Z-7R-yEc" secondAttribute="bottom" constant="20" id="Iqx-Tg-0HS"/>
+                    <constraint firstAttribute="trailing" secondItem="H6Z-7R-yEc" secondAttribute="trailing" constant="20" id="Li9-nm-dfu"/>
                     <constraint firstItem="Xdd-fI-GQv" firstAttribute="leading" secondItem="F4i-Bq-4dU" secondAttribute="trailing" constant="20" id="M2d-UF-y4s"/>
                     <constraint firstItem="Hcb-X0-sVg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OHs-Rv-XeJ"/>
                     <constraint firstAttribute="bottom" secondItem="Hcb-X0-sVg" secondAttribute="bottom" constant="20" id="Ubs-Ej-amf"/>
+                    <constraint firstItem="H6Z-7R-yEc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hcb-X0-sVg" secondAttribute="trailing" constant="15" id="Yhc-Yb-BPN"/>
                     <constraint firstItem="Xdd-fI-GQv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="eSX-9D-pRt"/>
                     <constraint firstItem="F4i-Bq-4dU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uvH-C4-lkG"/>
                     <constraint firstItem="F4i-Bq-4dU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="wcG-gv-brd"/>
@@ -51,7 +60,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="durationLabel" destination="Hcb-X0-sVg" id="atJ-Qo-Kwt"/>
+                <outlet property="durationDateLabel" destination="Hcb-X0-sVg" id="atJ-Qo-Kwt"/>
+                <outlet property="durationSecondsLabel" destination="H6Z-7R-yEc" id="m04-mv-fam"/>
                 <outlet property="totalDistanceLabel" destination="F4i-Bq-4dU" id="EUN-8P-mvl"/>
                 <outlet property="totalEnergyBurnedLabel" destination="Xdd-fI-GQv" id="Csj-Yx-PUi"/>
             </connections>

@@ -11,18 +11,20 @@ final class WorkoutTableViewCell: UITableViewCell {
 
     @IBOutlet weak var totalDistanceLabel: UILabel!
     @IBOutlet weak var totalEnergyBurnedLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-
+    @IBOutlet weak var durationDateLabel: UILabel!
+    @IBOutlet weak var durationSecondsLabel: UILabel!
 }
 
 extension WorkoutTableViewCell {
 
     func configureLabels(totalDistance: String,
                          totalEnergyBurned: String,
-                         duration: String) {
+                         durationDate: String,
+                         durationSeconds: String) {
         totalDistanceLabel.text = totalDistance
         totalEnergyBurnedLabel.text = totalEnergyBurned
-        durationLabel.text = duration
+        durationDateLabel.text = durationDate
+        durationSecondsLabel.text = durationSeconds
     }
 
 }

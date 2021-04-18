@@ -118,12 +118,14 @@ extension WorkoutViewController: UITableViewDataSource {
         let workout = workouts[indexPath.row]
         cell.configureLabels(totalDistance: workout.totalDistance?.debugDescription ?? "",
                              totalEnergyBurned: workout.totalEnergyBurned?.description ?? "",
-                             duration: generateDurationText(startDate: workout.startDate,
-                                                            endDate: workout.endDate))
+                             durationDate: generateDurationDateText(startDate: workout.startDate,
+                                                                    endDate: workout.endDate),
+                             durationSeconds: generateDurationSecondsText(startDate: workout.startDate,
+                                                                          endDate: workout.endDate))
         return cell
     }
 
-    private func generateDurationText(startDate: Date, endDate: Date) -> String {
+    private func generateDurationDateText(startDate: Date, endDate: Date) -> String {
         let startDateString = startDate.string(format: .yyyyMMddHHmmssPd)
         let endDateString = endDate.string(format: .yyyyMMddHHmmssPd)
 
@@ -132,6 +134,11 @@ extension WorkoutViewController: UITableViewDataSource {
         } else {
             return "\(startDateString) ~ \(endDateString)"
         }
+    }
+
+    private func generateDurationSecondsText(startDate: Date, endDate: Date) -> String {
+        let difference = endDate.timeIntervalSince(startDate)
+        return "\(Int(difference / 60).description)m"
     }
 
 }
