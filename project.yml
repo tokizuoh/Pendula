@@ -20,8 +20,13 @@ targets:
       - Pendula
     settings:
       base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.tokizuoh.Pendula-2
         INFOPLIST_FILE: Pendula/Info.plist
         DEVELOPMENT_LANGUAGE: jp
+      configs:
+          CODE_SIGN_IDENTITY: Apple Development
+          PROVISIONING_PROFILE_SPECIFIER: Pendura-2
+
     preBuildScripts:
       - script: |
                 "$PODS_ROOT/R.swift/rswift" generate "$SRCROOT/$TARGET_NAME/Generated/R.generated.swift"
