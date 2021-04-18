@@ -26,12 +26,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-X0-sVg">
-                        <rect key="frame" x="20" y="55" width="42" height="21"/>
+                        <rect key="frame" x="20" y="55" width="34.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Yj5-ee-LeN"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdd-fI-GQv">
@@ -43,34 +43,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGU-5i-WUF">
-                        <rect key="frame" x="20" y="86" width="42" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="aRC-EV-V5l"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="JGU-5i-WUF" firstAttribute="top" secondItem="Hcb-X0-sVg" secondAttribute="bottom" constant="10" id="2db-7A-SAa"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Hcb-X0-sVg" secondAttribute="bottom" constant="20" id="Dbg-g4-7dn"/>
                     <constraint firstItem="Xdd-fI-GQv" firstAttribute="leading" secondItem="F4i-Bq-4dU" secondAttribute="trailing" constant="20" id="FhK-Sz-lj9"/>
                     <constraint firstItem="Hcb-X0-sVg" firstAttribute="top" secondItem="F4i-Bq-4dU" secondAttribute="bottom" constant="14" id="Frp-hH-JeA"/>
                     <constraint firstItem="Hcb-X0-sVg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ZQv-L5-lcD"/>
                     <constraint firstItem="Hcb-X0-sVg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="ffS-Kx-EQa"/>
                     <constraint firstAttribute="trailing" secondItem="Xdd-fI-GQv" secondAttribute="trailing" constant="20" id="llG-kR-4tI"/>
-                    <constraint firstItem="JGU-5i-WUF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nRv-pI-fcN"/>
                     <constraint firstItem="Xdd-fI-GQv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="p2A-Gh-u0B"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="JGU-5i-WUF" secondAttribute="bottom" constant="20" id="tBo-gB-e2S"/>
                     <constraint firstItem="F4i-Bq-4dU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uvH-C4-lkG"/>
                     <constraint firstItem="F4i-Bq-4dU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="wcG-gv-brd"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="endDateLabel" destination="JGU-5i-WUF" id="gxv-sx-OY3"/>
-                <outlet property="startDateLabel" destination="Hcb-X0-sVg" id="atJ-Qo-Kwt"/>
+                <outlet property="durationLabel" destination="Hcb-X0-sVg" id="atJ-Qo-Kwt"/>
                 <outlet property="totalDistanceLabel" destination="F4i-Bq-4dU" id="EUN-8P-mvl"/>
                 <outlet property="totalEnergyBurnedLabel" destination="Xdd-fI-GQv" id="Csj-Yx-PUi"/>
             </connections>
