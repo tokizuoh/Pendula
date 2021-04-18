@@ -19,10 +19,12 @@ final class WorkoutViewController: ComponentBaseViewController {
         }
     }
 
+    var activityIndicator: UIActivityIndicatorView!
     var healthStore: HKHealthStore?
     var workouts: [HKWorkout]? {
         didSet {
             DispatchQueue.main.async { [unowned self] in
+                self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             }
 
@@ -35,12 +37,31 @@ final class WorkoutViewController: ComponentBaseViewController {
         configureNavigationItem(navigationTitle: "006 Workout",
                                 blogURL: nil,
                                 githubPRURL: nil)
+        configureActivityIndicator()
         configureHelathStore()
         getWorkouts()
     }
 
 }
 
+// MARK: - UIActivityIndicator
+extension WorkoutViewController {
+
+    private func configureActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0,
+                                         y: 0,
+                                         width: 50,
+                                         height: 50)
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+
+}
+
+// MARK: - HealthKit
 extension WorkoutViewController {
 
     private func configureHelathStore() {
@@ -79,6 +100,7 @@ extension WorkoutViewController {
 
 }
 
+// MARK: - UITableViewDataSource
 extension WorkoutViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,6 +137,7 @@ extension WorkoutViewController: UITableViewDataSource {
 
 }
 
+// MARK: - UITableViewDelegate
 extension WorkoutViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
