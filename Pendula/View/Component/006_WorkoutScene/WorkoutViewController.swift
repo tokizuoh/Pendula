@@ -97,8 +97,8 @@ extension WorkoutViewController: UITableViewDataSource {
         let workout = workouts[indexPath.row]
         cell.configureLabels(totalDistance: workout.totalDistance?.debugDescription ?? "",
                              totalEnergyBurned: workout.totalEnergyBurned?.description ?? "",
-                             startDate: workout.startDate.string(format: .yyyyMMddPd),
-                             endDate: workout.endDate.string(format: .yyyyMMddPd))
+                             startDate: workout.startDate.string(format: .yyyyMMddHHmmssPd),
+                             endDate: workout.endDate.string(format: .yyyyMMddHHmmssPd))
         return cell
     }
 

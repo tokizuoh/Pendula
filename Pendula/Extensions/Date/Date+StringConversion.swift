@@ -11,6 +11,7 @@ extension Date {
 
     enum StringFormat {
         case yyyyMMddPd
+        case yyyyMMddHHmmssPd
     }
 
     func string(format: StringFormat) -> String {
@@ -20,6 +21,8 @@ extension Date {
         switch format {
         case .yyyyMMddPd:
             formatter.dateFormat = "yyyy.MM.dd"
+        case .yyyyMMddHHmmssPd:
+            formatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
         }
 
         return formatter.string(from: self)
