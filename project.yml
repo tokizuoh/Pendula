@@ -21,11 +21,12 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: dev.tokizuoh.Pendula-2
+        CODE_SIGN_ENTITLEMENTS: Pendula/Pendula.entitlements
         INFOPLIST_FILE: Pendula/Info.plist
         DEVELOPMENT_LANGUAGE: jp
       configs:
           CODE_SIGN_IDENTITY: Apple Development
-          PROVISIONING_PROFILE_SPECIFIER: Pendura-2
+          PROVISIONING_PROFILE_SPECIFIER: Pendura-2.1
 
     preBuildScripts:
       - script: |
