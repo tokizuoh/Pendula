@@ -23,11 +23,10 @@ final class WorkoutViewController: ComponentBaseViewController {
     var healthStore: HKHealthStore?
     var workouts: [HKWorkout]? {
         didSet {
-            DispatchQueue.main.async { [unowned self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
                 self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             }
-
         }
     }
 
