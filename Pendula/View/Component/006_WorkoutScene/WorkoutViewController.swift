@@ -35,7 +35,7 @@ final class WorkoutViewController: ComponentBaseViewController {
 
         configureNavigationItem(navigationTitle: "006 Workout",
                                 blogURL: nil,
-                                githubPRURL: nil)
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/63"))
         configureActivityIndicator()
         configureHelathStore()
         getWorkouts()
