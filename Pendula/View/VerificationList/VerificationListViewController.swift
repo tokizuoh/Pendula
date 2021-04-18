@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import HealthKit
 
 final class VerificationListViewController: UIViewController {
 
@@ -59,11 +60,22 @@ extension VerificationListViewController {
                          viewController: R.storyboard.swipePage.swipePage()!),
             Verification(title: "UITableViewCell選択時にCellにアニメーションをかける",
                          lastUpdateDate: "2021.4.17".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!),
-            Verification(title: "HealthKitを使ってワークアウトのデータを取り扱う",
-                         lastUpdateDate: "2021.4.18".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.workout.workout()!)
+                         viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!)
         ]
+
+        // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
+        // -> HealthKitをワークアウト取得以外の箇所でimportしたくない
+        if HKHealthStore.isHealthDataAvailable() {
+            let verification = Verification(title: "HealthKitを使ってワークアウトのデータを取り扱う",
+                                            lastUpdateDate: "2021.4.18".date(format: .yyyyMMddPd),
+                                            viewController: R.storyboard.workout.workout()!)
+            viewModels?.append(verification)
+        }
+
+        viewModels?.sort(by: { (lve, rve) -> Bool in
+            return lve.lastUpdateDate < rve.lastUpdateDate
+        })
+
     }
 
     private func configureNavigationItem() {
