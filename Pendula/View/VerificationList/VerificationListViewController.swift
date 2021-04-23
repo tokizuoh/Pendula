@@ -60,7 +60,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.swipePage.swipePage()!),
             Verification(title: "UITableViewCell選択時にCellにアニメーションをかける",
                          lastUpdateDate: "2021.4.17".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!)
+                         viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!),
+            Verification(title: "ピンチアウトでUIViewを生成する",
+                         lastUpdateDate: "2021.04.23".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.pinchOut.pinchOut()!)
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
