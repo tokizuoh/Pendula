@@ -80,8 +80,8 @@ extension PinchOutViewController {
                                                   y: min(startPoint.y, endPoint.y),
                                                   width: abs(width),
                                                   height: abs(height)))
-            squareView.backgroundColor = UIColor(hue: CGFloat.random(in: 0..<1.0),
-                                                 saturation: 100/100,
+            squareView.backgroundColor = UIColor(hue: 0.5 + CGFloat.random(in: 0..<0.2),
+                                                 saturation: 1.0,
                                                  brightness: 100/42,
                                                  alpha: 0.5)
             squareView.alpha = 0.3
