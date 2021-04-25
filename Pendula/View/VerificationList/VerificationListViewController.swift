@@ -61,9 +61,9 @@ extension VerificationListViewController {
             Verification(title: "UITableViewCell選択時にCellにアニメーションをかける",
                          lastUpdateDate: "2021.4.17".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!),
-            Verification(title: "ピンチアウトでUIViewを生成する",
+            Verification(title: "2回タップで2点を対角線とする四角形のUIViewを作る",
                          lastUpdateDate: "2021.04.23".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.pinchOut.pinchOut()!)
+                         viewController: R.storyboard.squareCanvas.squareCanvas()!)
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう

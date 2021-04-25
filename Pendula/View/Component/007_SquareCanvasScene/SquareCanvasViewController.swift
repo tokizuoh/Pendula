@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PinchOutViewController: ComponentBaseViewController {
+final class SquareCanvasViewController: ComponentBaseViewController {
 
     var startPoint: CGPoint?
     var startPointView: UIView?
@@ -18,7 +18,7 @@ final class PinchOutViewController: ComponentBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureNavigationItem(navigationTitle: "007 PinchOut",
+        configureNavigationItem(navigationTitle: "007 SquareCanvas",
                                 blogURL: nil,
                                 githubPRURL: nil)
         configureGestures()
@@ -27,7 +27,7 @@ final class PinchOutViewController: ComponentBaseViewController {
 }
 
 // MARK: - UIGestureRecognizer
-extension PinchOutViewController {
+extension SquareCanvasViewController {
 
     private func configureGestures() {
         let singleTapGesture = UITapGestureRecognizer(target: self,
@@ -61,7 +61,7 @@ extension PinchOutViewController {
 }
 
 // MARK: - Animation
-extension PinchOutViewController {
+extension SquareCanvasViewController {
 
     private func beginAnimation(location: CGPoint) {
         startPointView = UIView(frame: CGRect(x: location.x,

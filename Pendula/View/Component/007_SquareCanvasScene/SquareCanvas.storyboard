@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pinch Out View Controller-->
+        <!--Square Canvas View Controller-->
         <scene sceneID="Zrx-zs-JhL">
             <objects>
-                <viewController storyboardIdentifier="pinchOut" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wb2-pU-14A" customClass="PinchOutViewController" customModule="Pendula" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="squareCanvas" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wb2-pU-14A" customClass="SquareCanvasViewController" customModule="Pendula" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cO1-Dw-Ute">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
