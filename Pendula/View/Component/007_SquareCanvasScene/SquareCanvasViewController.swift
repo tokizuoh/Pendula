@@ -19,8 +19,8 @@ final class SquareCanvasViewController: ComponentBaseViewController {
         super.viewDidLoad()
 
         configureNavigationItem(navigationTitle: "007 SquareCanvas",
-                                blogURL: nil,
-                                githubPRURL: nil)
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/k72id1x6ukxxybod/"),
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/66"))
         configureGestures()
     }
 
@@ -82,7 +82,7 @@ extension SquareCanvasViewController {
                                                   height: abs(height)))
             squareView.backgroundColor = UIColor(hue: 0.5 + CGFloat.random(in: 0..<0.2),
                                                  saturation: 1.0,
-                                                 brightness: 100/42,
+                                                 brightness: 42/100,
                                                  alpha: 0.5)
             squareView.alpha = 0.3
             view.addSubview(squareView)
