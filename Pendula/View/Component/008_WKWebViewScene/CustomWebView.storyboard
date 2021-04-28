@@ -24,6 +24,9 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="wvY-ZS-M7s">
+                                <rect key="frame" x="197" y="325" width="20" height="20"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkY-42-1SW">
                                 <rect key="frame" x="20" y="646.5" width="374" height="195.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -36,15 +39,18 @@
                         <constraints>
                             <constraint firstItem="d3R-gp-nWs" firstAttribute="top" secondItem="qkr-Jj-2QE" secondAttribute="top" id="6Xh-rg-VYL"/>
                             <constraint firstItem="qkr-Jj-2QE" firstAttribute="trailing" secondItem="CkY-42-1SW" secondAttribute="trailing" constant="20" id="HyR-bI-JRK"/>
+                            <constraint firstItem="wvY-ZS-M7s" firstAttribute="centerY" secondItem="d3R-gp-nWs" secondAttribute="centerY" id="TDT-lL-467"/>
                             <constraint firstItem="qkr-Jj-2QE" firstAttribute="bottom" secondItem="CkY-42-1SW" secondAttribute="bottom" constant="20" id="VLW-js-Wjj"/>
                             <constraint firstItem="CkY-42-1SW" firstAttribute="top" secondItem="d3R-gp-nWs" secondAttribute="bottom" constant="20" id="XhF-sW-4rp"/>
                             <constraint firstItem="d3R-gp-nWs" firstAttribute="height" secondItem="e7E-nD-Gtr" secondAttribute="height" multiplier="0.65" id="d2S-vf-pUX"/>
                             <constraint firstItem="CkY-42-1SW" firstAttribute="leading" secondItem="qkr-Jj-2QE" secondAttribute="leading" constant="20" id="gnr-W5-zSM"/>
                             <constraint firstItem="d3R-gp-nWs" firstAttribute="leading" secondItem="qkr-Jj-2QE" secondAttribute="leading" id="lxB-NP-gAt"/>
                             <constraint firstItem="qkr-Jj-2QE" firstAttribute="trailing" secondItem="d3R-gp-nWs" secondAttribute="trailing" id="r7v-99-Yma"/>
+                            <constraint firstItem="wvY-ZS-M7s" firstAttribute="centerX" secondItem="d3R-gp-nWs" secondAttribute="centerX" id="r9h-F8-WAz"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="wvY-ZS-M7s" id="6Sh-O4-CsH"/>
                         <outlet property="dummyLabel" destination="CkY-42-1SW" id="TWv-ee-ubi"/>
                         <outlet property="webView" destination="d3R-gp-nWs" id="emx-Ad-E2H"/>
                     </connections>
