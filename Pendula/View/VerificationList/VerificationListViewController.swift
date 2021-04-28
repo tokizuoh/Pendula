@@ -45,6 +45,7 @@ extension VerificationListViewController {
 
     private func configureViewModels() {
         // TODO: DIの方法を考え直す（ymlなど）
+        // TODO: 各ViewControllerに値を渡すことを考えてBuilderを作る
         viewModels = [
             Verification(title: "不規則なCellを持つUICollectionViewを試す",
                          lastUpdateDate: "2021.03.31".date(format: .yyyyMMddPd),
@@ -63,7 +64,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.fadeAnimationList.fadeAnimationList()!),
             Verification(title: "2回タップで2点を対角線とする四角形のUIViewを作る",
                          lastUpdateDate: "2021.04.25".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.squareCanvas.squareCanvas()!)
+                         viewController: R.storyboard.squareCanvas.squareCanvas()!),
+            Verification(title: "WKWebViewでhtmlやjsの取得・操作を試す",
+                         lastUpdateDate: "2021.04.28".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.customWebView.customWeb()!)
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
