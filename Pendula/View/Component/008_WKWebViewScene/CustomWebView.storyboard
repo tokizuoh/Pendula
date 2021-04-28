@@ -15,9 +15,39 @@
                     <view key="view" contentMode="scaleToFill" id="e7E-nD-Gtr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3R-gp-nWs">
+                                <rect key="frame" x="0.0" y="44" width="414" height="582.5"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkY-42-1SW">
+                                <rect key="frame" x="20" y="646.5" width="374" height="195.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qkr-Jj-2QE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="d3R-gp-nWs" firstAttribute="top" secondItem="qkr-Jj-2QE" secondAttribute="top" id="6Xh-rg-VYL"/>
+                            <constraint firstItem="qkr-Jj-2QE" firstAttribute="trailing" secondItem="CkY-42-1SW" secondAttribute="trailing" constant="20" id="HyR-bI-JRK"/>
+                            <constraint firstItem="qkr-Jj-2QE" firstAttribute="bottom" secondItem="CkY-42-1SW" secondAttribute="bottom" constant="20" id="VLW-js-Wjj"/>
+                            <constraint firstItem="CkY-42-1SW" firstAttribute="top" secondItem="d3R-gp-nWs" secondAttribute="bottom" constant="20" id="XhF-sW-4rp"/>
+                            <constraint firstItem="d3R-gp-nWs" firstAttribute="height" secondItem="e7E-nD-Gtr" secondAttribute="height" multiplier="0.65" id="d2S-vf-pUX"/>
+                            <constraint firstItem="CkY-42-1SW" firstAttribute="leading" secondItem="qkr-Jj-2QE" secondAttribute="leading" constant="20" id="gnr-W5-zSM"/>
+                            <constraint firstItem="d3R-gp-nWs" firstAttribute="leading" secondItem="qkr-Jj-2QE" secondAttribute="leading" id="lxB-NP-gAt"/>
+                            <constraint firstItem="qkr-Jj-2QE" firstAttribute="trailing" secondItem="d3R-gp-nWs" secondAttribute="trailing" id="r7v-99-Yma"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dummyLabel" destination="CkY-42-1SW" id="TWv-ee-ubi"/>
+                        <outlet property="webView" destination="d3R-gp-nWs" id="emx-Ad-E2H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tkb-v3-9o5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -25,8 +55,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
