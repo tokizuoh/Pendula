@@ -84,8 +84,8 @@ extension CustomWebViewController {
 extension CustomWebViewController: WKNavigationDelegate {
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
-            self.activityIndicator.stopAnimating()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.activityIndicator.stopAnimating()
             decisionHandler(.allow)
         }
     }
