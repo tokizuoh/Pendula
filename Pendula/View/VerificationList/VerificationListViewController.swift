@@ -65,7 +65,7 @@ extension VerificationListViewController {
             Verification(title: "2回タップで2点を対角線とする四角形のUIViewを作る",
                          lastUpdateDate: "2021.04.25".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.squareCanvas.squareCanvas()!),
-            Verification(title: "WKWebViewでhtmlの取得を試す",
+            Verification(title: "WKWebViewでHTMLの取得を試す",
                          lastUpdateDate: "2021.04.29".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.customWebView.customWeb()!)
         ]
