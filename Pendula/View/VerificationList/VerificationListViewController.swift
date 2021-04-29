@@ -66,7 +66,7 @@ extension VerificationListViewController {
                          lastUpdateDate: "2021.04.25".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.squareCanvas.squareCanvas()!),
             Verification(title: "WKWebViewでhtmlやjsの取得・操作を試す",
-                         lastUpdateDate: "2021.04.28".date(format: .yyyyMMddPd),
+                         lastUpdateDate: "2021.04.29".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.customWebView.customWeb()!)
         ]
 

@@ -8,20 +8,14 @@
 import UIKit
 import WebKit
 
-// TODO [#67]: 戻る進むボタンくらいはあったほうが良いかも
-// TODO [#67]: NavigationItemのタイトル押下で上にスクロール
 final class CustomWebViewController: ComponentBaseViewController {
 
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    // TODO [#67]: 取得したhtmlのなにかを取得する
-    @IBOutlet weak var dummyLabel: UILabel! {
-        didSet {
-            dummyLabel.text = "DUMMY"
-        }
-    }
+    @IBOutlet weak var firstArticleTitleLabel: UILabel!
     @IBOutlet weak var getHTMLButton: UIButton! {
         didSet {
+            getHTMLButton.isEnabled = false
             getHTMLButton.layer.shadowOffset = CGSize(width: 0, height: 2)
             getHTMLButton.layer.shadowColor = UIColor.black.cgColor
             getHTMLButton.layer.shadowOpacity = 0.5
@@ -29,6 +23,27 @@ final class CustomWebViewController: ComponentBaseViewController {
             getHTMLButton.backgroundColor = .white
             getHTMLButton.layer.cornerRadius = 4
         }
+    }
+
+    @IBAction private func getHTML(_ sender: Any) {
+        webView.evaluateJavaScript("document.getElementsByClassName('inner')[0].innerHTML") { [weak self] (value, error) in
+            guard error == nil,
+                  let htmlStr = value as? String else {
+                return
+            }
+
+            guard let regex = try? NSRegularExpression(pattern: "<h2 class=\"title\">(.*)</h2>") else {return}
+            let matches = regex.matches(in: htmlStr, range: NSRange(location: 0, length: htmlStr.count))
+
+            for match in matches {
+                let start = htmlStr.index(htmlStr.startIndex, offsetBy: match.range(at: 1).location)
+                let end = htmlStr.index(start, offsetBy: match.range(at: 1).length)
+                let text = String(htmlStr[start..<end])
+                self?.firstArticleTitleLabel.text = text
+                break
+            }
+        }
+
     }
 
     override func viewDidLoad() {
@@ -73,6 +88,10 @@ extension CustomWebViewController: WKNavigationDelegate {
             self.activityIndicator.stopAnimating()
             decisionHandler(.allow)
         }
+    }
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        getHTMLButton.isEnabled = true
     }
 
 }

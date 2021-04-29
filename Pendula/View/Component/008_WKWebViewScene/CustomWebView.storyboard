@@ -39,6 +39,9 @@
                                     <constraint firstAttribute="width" constant="75" id="cdI-Hn-Hr1"/>
                                 </constraints>
                                 <state key="normal" title="HTML"/>
+                                <connections>
+                                    <action selector="getHTML:" destination="NUV-Ac-1Jn" eventType="touchUpInside" id="Was-tV-SZ3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qkr-Jj-2QE"/>
@@ -60,7 +63,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="wvY-ZS-M7s" id="6Sh-O4-CsH"/>
-                        <outlet property="dummyLabel" destination="CkY-42-1SW" id="TWv-ee-ubi"/>
+                        <outlet property="firstArticleTitleLabel" destination="CkY-42-1SW" id="TWv-ee-ubi"/>
                         <outlet property="getHTMLButton" destination="2il-hs-Xxh" id="JJP-l3-G4d"/>
                         <outlet property="webView" destination="d3R-gp-nWs" id="emx-Ad-E2H"/>
                     </connections>
