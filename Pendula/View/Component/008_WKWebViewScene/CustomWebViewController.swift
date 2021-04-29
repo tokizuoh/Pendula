@@ -8,6 +8,8 @@
 import UIKit
 import WebKit
 
+// TODO [#67]: 戻る進むボタンくらいはあったほうが良いかも
+// TODO [#67]: NavigationItemのタイトル押下で上にスクロール
 final class CustomWebViewController: ComponentBaseViewController {
 
     @IBOutlet weak var webView: WKWebView!
@@ -16,6 +18,16 @@ final class CustomWebViewController: ComponentBaseViewController {
     @IBOutlet weak var dummyLabel: UILabel! {
         didSet {
             dummyLabel.text = "DUMMY"
+        }
+    }
+    @IBOutlet weak var getHTMLButton: UIButton! {
+        didSet {
+            getHTMLButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+            getHTMLButton.layer.shadowColor = UIColor.black.cgColor
+            getHTMLButton.layer.shadowOpacity = 0.5
+            getHTMLButton.layer.shadowRadius = 4
+            getHTMLButton.backgroundColor = .white
+            getHTMLButton.layer.cornerRadius = 4
         }
     }
 
