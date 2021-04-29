@@ -50,8 +50,8 @@ final class CustomWebViewController: ComponentBaseViewController {
         super.viewDidLoad()
 
         configureNavigationItem(navigationTitle: "008 WebView",
-                                blogURL: nil,
-                                githubPRURL: nil)
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/yjuphsa1e8ujulrg/"),
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/68"))
         configureActivityIndicator()
         configureWebView()
     }
