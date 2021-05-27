@@ -99,6 +99,9 @@
                                 <state key="normal" title="Go">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="go:" destination="fPU-by-VFb" eventType="touchUpInside" id="7bo-vy-Y0C"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TAt-qr-q9J"/>

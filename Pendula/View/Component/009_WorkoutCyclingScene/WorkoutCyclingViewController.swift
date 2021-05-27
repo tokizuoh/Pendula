@@ -57,6 +57,12 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
         configureHelathStore()
     }
 
+    @IBAction func go(_ sender: Any) {
+        let vc = R.storyboard.workoutCyclingResult.workoutCyclingResult()!
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
+
 }
 
 // MARK: - HealthKit
