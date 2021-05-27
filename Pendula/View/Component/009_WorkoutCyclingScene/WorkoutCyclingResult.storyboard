@@ -15,9 +15,47 @@
                     <view key="view" contentMode="scaleToFill" id="e7K-Cx-10x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-fE-atv">
+                                <rect key="frame" x="207" y="453" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bu-2R-FIU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgl-1G-60h">
+                                        <rect key="frame" x="10" y="3" width="394" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Vgl-1G-60h" secondAttribute="trailing" constant="10" id="6pj-Dd-Gwd"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vgl-1G-60h" secondAttribute="bottom" constant="3" id="MK6-gt-qia"/>
+                                    <constraint firstAttribute="height" constant="35" id="dwf-MR-rMg"/>
+                                    <constraint firstItem="Vgl-1G-60h" firstAttribute="top" secondItem="8Bu-2R-FIU" secondAttribute="top" constant="3" id="eTo-9F-WWQ"/>
+                                    <constraint firstItem="Vgl-1G-60h" firstAttribute="leading" secondItem="8Bu-2R-FIU" secondAttribute="leading" constant="10" id="moT-XA-jo8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rc0-xR-9XP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mB8-fE-atv" firstAttribute="centerX" secondItem="rc0-xR-9XP" secondAttribute="centerX" id="NMD-8q-nUl"/>
+                            <constraint firstItem="mB8-fE-atv" firstAttribute="centerY" secondItem="rc0-xR-9XP" secondAttribute="centerY" id="SG3-fG-TM6"/>
+                            <constraint firstItem="rc0-xR-9XP" firstAttribute="trailing" secondItem="8Bu-2R-FIU" secondAttribute="trailing" id="nzb-a9-ILc"/>
+                            <constraint firstItem="8Bu-2R-FIU" firstAttribute="leading" secondItem="rc0-xR-9XP" secondAttribute="leading" id="qEd-0b-mHf"/>
+                            <constraint firstItem="8Bu-2R-FIU" firstAttribute="top" secondItem="rc0-xR-9XP" secondAttribute="top" id="rwF-V8-umq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="durationLabel" destination="Vgl-1G-60h" id="D6H-Ww-d2f"/>
+                        <outlet property="totalDistanceLabel" destination="mB8-fE-atv" id="H5z-ku-2bJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjA-Z7-bUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,6 +65,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

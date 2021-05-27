@@ -21,12 +21,15 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
     struct ViewModel {
         var startDate: Date
         var endDate: Date
+        var totalDistance: Double
     }
+
     var viewModel: ViewModel? {
         didSet {
             guard let viewModel = viewModel else {
                 return
             }
+
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else {
                     return
@@ -36,15 +39,14 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
             }
         }
     }
+
     var healthStore: HKHealthStore?
     var workouts: [HKWorkout]? {
         didSet {
-            guard let workouts = workouts,
-                  workouts.count > 0 else {
+            guard let workouts = workouts else {
                 return
             }
-            viewModel = ViewModel(startDate: workouts.first!.startDate,
-                                  endDate: workouts.last!.startDate)
+            updateViewModel(workouts: workouts)
         }
     }
 
@@ -58,7 +60,13 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
     }
 
     @IBAction func go(_ sender: Any) {
+        guard let viewModel = viewModel else {
+            return
+        }
         let vc = R.storyboard.workoutCyclingResult.workoutCyclingResult()!
+        vc.viewModel = WorkoutCyclingResultViewController.ViewModel(startDate: viewModel.startDate.string(format: .yyyyMMddPd),
+                                                                    endDate: viewModel.endDate.string(format: .yyyyMMddPd),
+                                                                    totalDistance: viewModel.totalDistance)
         navigationController?.pushViewController(vc,
                                                  animated: true)
     }
@@ -101,4 +109,23 @@ extension WorkoutCyclingViewController {
         healthStore?.execute(query)
     }
 
+}
+
+// MARK: - UI
+extension WorkoutCyclingViewController {
+
+    private func updateViewModel(workouts: [HKWorkout]) {
+        // FIXME: エラー潰してる
+        guard workouts.count > 0 else {
+            return
+        }
+
+        let totalDistance = workouts.map({ (workout: HKWorkout) -> Double in
+            workout.totalDistance!.doubleValue(for: .meter()) / 1000
+        }).reduce(0) {$0 + $1}
+
+        viewModel = ViewModel(startDate: workouts.first!.startDate,
+                              endDate: workouts.last!.endDate,
+                              totalDistance: totalDistance)
+    }
 }
