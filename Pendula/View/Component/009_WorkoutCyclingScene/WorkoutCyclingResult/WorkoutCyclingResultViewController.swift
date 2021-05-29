@@ -22,6 +22,7 @@ final class WorkoutCyclingResultViewController: UIViewController {
             }
             configureTableViewHeader()
 
+            tableView.tableFooterView = UIView(frame: .zero)
         }
     }
 
@@ -33,13 +34,18 @@ final class WorkoutCyclingResultViewController: UIViewController {
     }
 
     struct CyclingWorkoutViewModel {
-        var totalDistance: Double
-        var totalTime: Date
-        var date: Date
-        var averageSpeed: Double
+        var totalDistance: String
+        var totalTime: String
+        var date: String
     }
 
-    var viewModel: ViewModel?
+    var viewModel: ViewModel? {
+        didSet {
+            for i in viewModel!.cyclingWorkouts {
+                print(i)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

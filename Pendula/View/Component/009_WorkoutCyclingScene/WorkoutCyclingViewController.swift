@@ -61,14 +61,20 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
     }
 
     @IBAction func go(_ sender: Any) {
-        guard let viewModel = viewModel else {
+        guard let viewModel = viewModel,
+              let workouts = workouts else {
             return
         }
+
+        let workoutsFilteredByDate = workouts.filter { viewModel.startDate <= $0.startDate && $0.endDate <= viewModel.endDate}
+        let cyclingWorkouts  = workoutsFilteredByDate.map { workout in WorkoutCyclingResultViewController.CyclingWorkoutViewModel(totalDistance: String(workout.totalDistance?.doubleValue(for: .meter()) ?? 0.0 / 1000),
+                                                                                                                                  totalTime: workout.duration.description,
+                                                                                                                                  date: workout.startDate.string(format: .yyyyMMddPd)) }
         let vc = R.storyboard.workoutCyclingResult.workoutCyclingResult()!
         vc.viewModel = WorkoutCyclingResultViewController.ViewModel(startDate: viewModel.startDate.string(format: .yyyyMMddPd),
                                                                     endDate: viewModel.endDate.string(format: .yyyyMMddPd),
                                                                     totalDistance: totalDistance ?? 0,
-                                                                    cyclingWorkouts: [])
+                                                                    cyclingWorkouts: cyclingWorkouts)
         navigationController?.pushViewController(vc,
                                                  animated: true)
     }
