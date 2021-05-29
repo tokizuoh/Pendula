@@ -16,13 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="aaaaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-fE-atv">
-                                <rect key="frame" x="207" y="453" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bu-2R-FIU">
                                 <rect key="frame" x="0.0" y="44" width="414" height="35"/>
                                 <subviews>
@@ -42,10 +35,18 @@
                                     <constraint firstItem="Vgl-1G-60h" firstAttribute="leading" secondItem="8Bu-2R-FIU" secondAttribute="leading" constant="10" id="moT-XA-jo8"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lr0-Ca-QkJ">
+                                <rect key="frame" x="0.0" y="76" width="414" height="786"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rc0-xR-9XP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="rc0-xR-9XP" firstAttribute="trailing" secondItem="lr0-Ca-QkJ" secondAttribute="trailing" id="24a-MQ-a4H"/>
+                            <constraint firstItem="rc0-xR-9XP" firstAttribute="bottom" secondItem="lr0-Ca-QkJ" secondAttribute="bottom" id="9pp-jh-uw0"/>
+                            <constraint firstItem="lr0-Ca-QkJ" firstAttribute="top" secondItem="Vgl-1G-60h" secondAttribute="bottom" id="EjB-4l-nB0"/>
+                            <constraint firstItem="lr0-Ca-QkJ" firstAttribute="leading" secondItem="rc0-xR-9XP" secondAttribute="leading" id="NYL-nj-RvA"/>
                             <constraint firstItem="rc0-xR-9XP" firstAttribute="trailing" secondItem="8Bu-2R-FIU" secondAttribute="trailing" id="nzb-a9-ILc"/>
                             <constraint firstItem="8Bu-2R-FIU" firstAttribute="leading" secondItem="rc0-xR-9XP" secondAttribute="leading" id="qEd-0b-mHf"/>
                             <constraint firstItem="8Bu-2R-FIU" firstAttribute="top" secondItem="rc0-xR-9XP" secondAttribute="top" id="rwF-V8-umq"/>
@@ -53,7 +54,7 @@
                     </view>
                     <connections>
                         <outlet property="durationLabel" destination="Vgl-1G-60h" id="D6H-Ww-d2f"/>
-                        <outlet property="totalDistanceLabel" destination="mB8-fE-atv" id="H5z-ku-2bJ"/>
+                        <outlet property="tableView" destination="lr0-Ca-QkJ" id="jZr-Qa-Ah4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjA-Z7-bUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

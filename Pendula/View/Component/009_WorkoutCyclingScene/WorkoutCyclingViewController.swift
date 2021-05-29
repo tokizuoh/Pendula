@@ -21,8 +21,9 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
     struct ViewModel {
         var startDate: Date
         var endDate: Date
-        var totalDistance: Double
     }
+
+    var totalDistance: Double?
 
     var viewModel: ViewModel? {
         didSet {
@@ -66,7 +67,8 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
         let vc = R.storyboard.workoutCyclingResult.workoutCyclingResult()!
         vc.viewModel = WorkoutCyclingResultViewController.ViewModel(startDate: viewModel.startDate.string(format: .yyyyMMddPd),
                                                                     endDate: viewModel.endDate.string(format: .yyyyMMddPd),
-                                                                    totalDistance: viewModel.totalDistance)
+                                                                    totalDistance: totalDistance ?? 0,
+                                                                    cyclingWorkouts: [])
         navigationController?.pushViewController(vc,
                                                  animated: true)
     }
@@ -114,18 +116,18 @@ extension WorkoutCyclingViewController {
 // MARK: - UI
 extension WorkoutCyclingViewController {
 
+    // TODO [feature/#71]: 命名は適切か？（ViewModel以外の更新を行っていないか？）
     private func updateViewModel(workouts: [HKWorkout]) {
         // FIXME: エラー潰してる
         guard workouts.count > 0 else {
             return
         }
 
-        let totalDistance = workouts.map({ (workout: HKWorkout) -> Double in
+        totalDistance = workouts.map({ (workout: HKWorkout) -> Double in
             workout.totalDistance!.doubleValue(for: .meter()) / 1000
         }).reduce(0) {$0 + $1}
 
         viewModel = ViewModel(startDate: workouts.first!.startDate,
-                              endDate: workouts.last!.endDate,
-                              totalDistance: totalDistance)
+                              endDate: workouts.last!.endDate)
     }
 }

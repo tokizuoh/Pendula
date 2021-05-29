@@ -9,13 +9,25 @@ import UIKit
 
 final class WorkoutCyclingResultViewController: UIViewController {
 
-    @IBOutlet weak var totalDistanceLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+        }
+    }
 
     struct ViewModel {
         var startDate: String
         var endDate: String
         var totalDistance: Double
+        var cyclingWorkouts: [CyclingWorkoutViewModel]
+    }
+
+    struct CyclingWorkoutViewModel {
+        var totalDistance: Double
+        var totalTime: Date
+        var date: Date
+        var averageSpeed: Double
     }
 
     var viewModel: ViewModel?
@@ -24,7 +36,18 @@ final class WorkoutCyclingResultViewController: UIViewController {
         super.viewDidLoad()
 
         // optional chaining より、UI要素に使うデータが確立したタイミングで更新したほうがnilのときのことを考えなくて良いので良さそう
-        totalDistanceLabel.text = String(format: "%.2f", viewModel?.totalDistance ?? 0) + "km"
         durationLabel.text = String(format: "%@ - %@", viewModel?.startDate ?? "?", viewModel?.endDate ?? "?")
     }
+}
+
+extension WorkoutCyclingResultViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.cyclingWorkouts.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+
 }
