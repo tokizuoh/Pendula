@@ -9,12 +9,80 @@ import UIKit
 
 final class ConvertPictureViewController: ComponentBaseViewController {
 
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.tableFooterView = UIView(frame: .zero)
+        }
+    }
+
+    @IBOutlet weak var convertButton: UIButton! {
+        didSet {
+            convertButton.layer.cornerRadius = 4.0
+        }
+    }
+
+    @IBOutlet weak var convertedImageView: UIImageView! {
+        didSet {
+            convertedImageView.layer.borderWidth = 1.0
+            convertedImageView.layer.borderColor = UIColor.gray.cgColor
+        }
+    }
+
+    private let items = ["りんご", "バナナ", "カレー", "ホットケーキ", "ラベンダー"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureNavigationItem(navigationTitle: "010 ConvertPicture",
                                 blogURL: nil,
                                 githubPRURL: nil)
+    }
+
+    @IBAction func convert(_ sender: Any) {
+        let image = convertUIViewToPicture(from: tableView)
+        convertedImageView.image = rotate(from: image)
+    }
+
+}
+
+// MARK: - Convert UIView to Picture
+extension ConvertPictureViewController {
+
+    private func convertUIViewToPicture(from: UIView) -> UIImage {
+        let targetBounds = from.bounds
+        UIGraphicsBeginImageContextWithOptions(targetBounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()!
+        from.layer.render(in: context)
+
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+}
+
+// MARK: - Rotate UIImage
+extension ConvertPictureViewController {
+
+    // TODO [feature/#74]: UIImageの回転処理を書く
+    private func rotate(from: UIImage) -> UIImage {
+        return UIImage()
+    }
+
+}
+
+extension ConvertPictureViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        cell.textLabel?.text = items[indexPath.row]
+        cell.detailTextLabel?.text = "\(indexPath.row)"
+        return cell
     }
 
 }
