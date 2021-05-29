@@ -16,8 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-fE-atv">
-                                <rect key="frame" x="207" y="453" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="aaaaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mB8-fE-atv">
+                                <rect key="frame" x="207" y="453" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,8 +46,6 @@
                         <viewLayoutGuide key="safeArea" id="rc0-xR-9XP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mB8-fE-atv" firstAttribute="centerX" secondItem="rc0-xR-9XP" secondAttribute="centerX" id="NMD-8q-nUl"/>
-                            <constraint firstItem="mB8-fE-atv" firstAttribute="centerY" secondItem="rc0-xR-9XP" secondAttribute="centerY" id="SG3-fG-TM6"/>
                             <constraint firstItem="rc0-xR-9XP" firstAttribute="trailing" secondItem="8Bu-2R-FIU" secondAttribute="trailing" id="nzb-a9-ILc"/>
                             <constraint firstItem="8Bu-2R-FIU" firstAttribute="leading" secondItem="rc0-xR-9XP" secondAttribute="leading" id="qEd-0b-mHf"/>
                             <constraint firstItem="8Bu-2R-FIU" firstAttribute="top" secondItem="rc0-xR-9XP" secondAttribute="top" id="rwF-V8-umq"/>
