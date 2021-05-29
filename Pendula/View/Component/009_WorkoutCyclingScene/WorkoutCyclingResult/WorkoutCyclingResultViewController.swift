@@ -13,6 +13,15 @@ final class WorkoutCyclingResultViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
+
+            func configureTableViewHeader() {
+                let xib = UINib(nibName: WorkoutCyclingResultHeaderView.nibName, bundle: nil)
+                tableView.register(xib,
+                                   forHeaderFooterViewReuseIdentifier: WorkoutCyclingResultHeaderView.nibName)
+            }
+            configureTableViewHeader()
+
         }
     }
 
@@ -48,6 +57,21 @@ extension WorkoutCyclingResultViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+
+}
+
+extension WorkoutCyclingResultViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: WorkoutCyclingResultHeaderView.nibName) as! WorkoutCyclingResultHeaderView
+        header.tintColor = .clear
+        header.setup(totalDistance: "101010100km")
+        return header
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return WorkoutCyclingResultHeaderView.height
     }
 
 }
