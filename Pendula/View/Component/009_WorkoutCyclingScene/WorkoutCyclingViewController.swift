@@ -58,7 +58,7 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
         super.viewDidLoad()
 
         configureNavigationItem(navigationTitle: "009 WorkoutCycling",
-                                blogURL: nil,
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/x01z649toqnxa8no/"),
                                 githubPRURL: nil)
         configureHelathStore()
     }
