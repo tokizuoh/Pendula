@@ -70,7 +70,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.customWebView.customWeb()!),
             Verification(title: "ワークアウトのサイクリングのデータを表示する",
                          lastUpdateDate: "2021.05.29".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.workoutCycling.workoutCycling()!)
+                         viewController: R.storyboard.workoutCycling.workoutCycling()!),
+            Verification(title: "UIViewを画像に変換する",
+                         lastUpdateDate: "2021.05.29".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.convertPicture.convertPicture()!)
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
