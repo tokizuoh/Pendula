@@ -52,7 +52,25 @@ final class WorkoutCyclingResultViewController: UIViewController {
 
         // optional chaining より、UI要素に使うデータが確立したタイミングで更新したほうがnilのときのことを考えなくて良いので良さそう
         durationLabel.text = String(format: "%@ - %@", viewModel?.startDate ?? "?", viewModel?.endDate ?? "?")
+        configureNavigationItem()
     }
+}
+
+extension WorkoutCyclingResultViewController {
+
+    private func configureNavigationItem() {
+        navigationItem.title = "009 WorkoutCycling"
+        let backButtonItem = UIBarButtonItem(image: R.image.back_arrow()?.withRenderingMode(.alwaysOriginal),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(popViewController))
+        navigationItem.leftBarButtonItem = backButtonItem
+    }
+
+    @objc private func popViewController() {
+        navigationController?.popViewController(animated: true)
+    }
+
 }
 
 extension WorkoutCyclingResultViewController: UITableViewDataSource {
@@ -62,7 +80,11 @@ extension WorkoutCyclingResultViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        cell.textLabel?.text = viewModel?.cyclingWorkouts[indexPath.row].date
+        cell.detailTextLabel?.text = "\(viewModel?.cyclingWorkouts[indexPath.row].totalDistance ?? "?") km"
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return cell
     }
 
 }
@@ -72,7 +94,7 @@ extension WorkoutCyclingResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: WorkoutCyclingResultHeaderView.nibName) as! WorkoutCyclingResultHeaderView
         header.tintColor = .clear
-        header.setup(totalDistance: "101010100km")
+        header.setup(totalDistance: String(format: "%.2f km", viewModel?.totalDistance ?? "0"))
         return header
     }
 

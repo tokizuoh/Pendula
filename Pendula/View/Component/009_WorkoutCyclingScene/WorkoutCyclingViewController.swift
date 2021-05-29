@@ -47,6 +47,9 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
             guard let workouts = workouts else {
                 return
             }
+            self.workouts = workouts.sorted(by: { (lw, rw) -> Bool in
+                return lw.startDate > rw.startDate
+            })
             updateViewModel(workouts: workouts)
         }
     }
@@ -67,7 +70,7 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
         }
 
         let workoutsFilteredByDate = workouts.filter { viewModel.startDate <= $0.startDate && $0.endDate <= viewModel.endDate}
-        let cyclingWorkouts  = workoutsFilteredByDate.map { workout in WorkoutCyclingResultViewController.CyclingWorkoutViewModel(totalDistance: String(workout.totalDistance?.doubleValue(for: .meter()) ?? 0.0 / 1000),
+        let cyclingWorkouts  = workoutsFilteredByDate.map { workout in WorkoutCyclingResultViewController.CyclingWorkoutViewModel(totalDistance: String(format: "%.2f", workout.totalDistance!.doubleValue(for: .meter()) / 1000),
                                                                                                                                   totalTime: workout.duration.description,
                                                                                                                                   date: workout.startDate.string(format: .yyyyMMddPd)) }
         let vc = R.storyboard.workoutCyclingResult.workoutCyclingResult()!
