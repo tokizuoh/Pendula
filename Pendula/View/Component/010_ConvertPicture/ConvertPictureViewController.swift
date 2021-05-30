@@ -40,7 +40,7 @@ final class ConvertPictureViewController: ComponentBaseViewController {
     }
 
     @IBAction func convert(_ sender: Any) {
-        let image = convertUIViewToPicture(from: tableView)
+        let image = convertUIViewToPicture(from: tableView, to: convertedImageView)
         convertedImageView.image = rotate(from: image)
     }
 
@@ -49,14 +49,11 @@ final class ConvertPictureViewController: ComponentBaseViewController {
 // MARK: - Convert UIView to Picture
 extension ConvertPictureViewController {
 
-    private func convertUIViewToPicture(from: UIView) -> UIImage {
-        let targetBounds = from.bounds
-        UIGraphicsBeginImageContextWithOptions(targetBounds.size, false, 0.0)
-        let context = UIGraphicsGetCurrentContext()!
-        from.layer.render(in: context)
-
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
+    private func convertUIViewToPicture(from: UIView, to: UIImageView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: to.bounds.size)
+        let image = renderer.image { context in
+            from.layer.render(in: context.cgContext)
+        }
         return image
     }
 
@@ -67,7 +64,17 @@ extension ConvertPictureViewController {
 
     // TODO [feature/#74]: UIImageの回転処理を書く
     private func rotate(from: UIImage) -> UIImage {
-        return UIImage()
+        //        UIGraphicsBeginImageContextWithOptions(CGSize(width: from.size.width, height: from.size.height), false, 0.0)
+        //        let context: CGContext = UIGraphicsGetCurrentContext()!
+        //
+        //        let radian: CGFloat = 0
+        //        context.rotate(by: radian)
+        //        context.draw(from.cgImage!, in: CGRect(x: 0, y: 0, width: from.size.width, height: from.size.height))
+        //
+        //        let rotatedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        //        UIGraphicsEndImageContext()
+        //        return rotatedImage
+        return from
     }
 
 }
