@@ -53,7 +53,7 @@ final class ConvertPictureViewController: ComponentBaseViewController {
         super.viewDidLoad()
 
         configureNavigationItem(navigationTitle: "010 ConvertPicture",
-                                blogURL: nil,
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/g62b0grtisx7b8n7/"),
                                 githubPRURL: nil)
     }
 
