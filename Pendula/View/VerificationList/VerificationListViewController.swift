@@ -72,8 +72,11 @@ extension VerificationListViewController {
                          lastUpdateDate: "2021.05.29".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.workoutCycling.workoutCycling()!),
             Verification(title: "UIViewを画像に変換する",
-                         lastUpdateDate: "2021.05.29".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.convertPicture.convertPicture()!)
+                         lastUpdateDate: "2021.05.30".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.convertPicture.convertPicture()!),
+            Verification(title: "六角柱を描画する",
+                         lastUpdateDate: "2021.05.30".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.hexagonalColumn.hexagonalColumn()!)
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
