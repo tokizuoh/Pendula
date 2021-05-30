@@ -16,6 +16,13 @@ final class ConvertPictureViewController: ComponentBaseViewController {
         }
     }
 
+    /// Center of tableView
+    @IBOutlet weak var tableViewCenterPointView: UIView! {
+        didSet {
+            tableViewCenterPointView.layer.cornerRadius = 25
+        }
+    }
+
     @IBOutlet weak var convertButton: UIButton! {
         didSet {
             convertButton.layer.cornerRadius = 4.0
@@ -29,7 +36,18 @@ final class ConvertPictureViewController: ComponentBaseViewController {
         }
     }
 
-    private let items = ["りんご", "バナナ", "カレー", "ホットケーキ", "ラベンダー"]
+    /// Center of imageView
+    @IBOutlet weak var imageViewCenterPointView: UIView! {
+        didSet {
+            imageViewCenterPointView.layer.cornerRadius = 25
+        }
+    }
+
+    private let items = ["りんご りんご りんご りんご りんご",
+                         "バナナ バナナ バナナ バナナ バナナ",
+                         "カレー カレー カレー カレー カレー",
+                         "ホットケーキ ホットケーキ ホットケーキ ホットケーキ ホットケーキ",
+                         "ラベンダー ラベンダー ラベンダー ラベンダー ラベンダー"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +58,8 @@ final class ConvertPictureViewController: ComponentBaseViewController {
     }
 
     @IBAction func convert(_ sender: Any) {
-        let image = convertUIViewToPicture(from: tableView, to: convertedImageView)
+        let image = convertUIViewToUIImage(from: tableView)
+        convertedImageView.contentMode = .center
         convertedImageView.image = rotate(from: image)
     }
 
@@ -49,8 +68,8 @@ final class ConvertPictureViewController: ComponentBaseViewController {
 // MARK: - Convert UIView to Picture
 extension ConvertPictureViewController {
 
-    private func convertUIViewToPicture(from: UIView, to: UIImageView) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: to.bounds.size)
+    private func convertUIViewToUIImage(from: UIView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: from.bounds.size)
         let image = renderer.image { context in
             from.layer.render(in: context.cgContext)
         }
@@ -62,19 +81,24 @@ extension ConvertPictureViewController {
 // MARK: - Rotate UIImage
 extension ConvertPictureViewController {
 
-    // TODO [feature/#74]: UIImageの回転処理を書く
-    private func rotate(from: UIImage) -> UIImage {
-        //        UIGraphicsBeginImageContextWithOptions(CGSize(width: from.size.width, height: from.size.height), false, 0.0)
-        //        let context: CGContext = UIGraphicsGetCurrentContext()!
-        //
-        //        let radian: CGFloat = 0
-        //        context.rotate(by: radian)
-        //        context.draw(from.cgImage!, in: CGRect(x: 0, y: 0, width: from.size.width, height: from.size.height))
-        //
-        //        let rotatedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        //        UIGraphicsEndImageContext()
-        //        return rotatedImage
-        return from
+    private func rotate(from: UIImage, angle: CGFloat = CGFloat.random(in: 0...360)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(from.size, false, UIScreen.main.scale)
+
+        let context = UIGraphicsGetCurrentContext()!
+        context.translateBy(x: from.size.width / 2, y: from.size.height / 2)
+        context.scaleBy(x: 1.0, y: -1.0)
+
+        let radian = -angle * CGFloat.pi / 180
+        context.rotate(by: radian)
+
+        context.draw(from.cgImage!, in: CGRect(x: -(from.size.width / 2), y: -(from.size.height / 2),
+                                               width: from.size.width, height: from.size.height))
+
+        let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return rotatedImage
+
     }
 
 }

@@ -18,7 +18,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z8h-XI-0U0">
                                 <rect key="frame" x="0.0" y="44" width="414" height="409"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhd-G3-w5v">
@@ -39,16 +39,36 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WRn-3u-ZSn">
                                 <rect key="frame" x="40" y="618" width="334" height="204"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iX4-v4-lWI">
+                                <rect key="frame" x="194.5" y="236" width="25" height="25"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iX4-v4-lWI" secondAttribute="height" multiplier="1:1" id="NiT-mD-zTl"/>
+                                    <constraint firstAttribute="width" constant="25" id="xpt-Q7-L40"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CO-nr-Bi9">
+                                <rect key="frame" x="194.5" y="707.5" width="25" height="25"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="et4-dD-1xd"/>
+                                    <constraint firstAttribute="width" secondItem="6CO-nr-Bi9" secondAttribute="height" multiplier="1:1" id="rkU-ic-4hT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZSt-PC-Gz9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z8h-XI-0U0" firstAttribute="height" secondItem="ZSt-PC-Gz9" secondAttribute="height" multiplier="0.5" id="6uq-rW-76O"/>
+                            <constraint firstItem="6CO-nr-Bi9" firstAttribute="centerY" secondItem="WRn-3u-ZSn" secondAttribute="centerY" id="BXh-gd-9gz"/>
+                            <constraint firstItem="iX4-v4-lWI" firstAttribute="centerY" secondItem="z8h-XI-0U0" secondAttribute="centerY" id="J2X-mE-dPc"/>
+                            <constraint firstItem="iX4-v4-lWI" firstAttribute="centerX" secondItem="z8h-XI-0U0" secondAttribute="centerX" id="KCD-c8-DAi"/>
                             <constraint firstItem="ZSt-PC-Gz9" firstAttribute="trailing" secondItem="WRn-3u-ZSn" secondAttribute="trailing" constant="40" id="MNY-Lw-hzJ"/>
                             <constraint firstItem="dhd-G3-w5v" firstAttribute="centerX" secondItem="z8h-XI-0U0" secondAttribute="centerX" id="S9i-Ss-JoZ"/>
                             <constraint firstItem="dhd-G3-w5v" firstAttribute="top" secondItem="z8h-XI-0U0" secondAttribute="bottom" constant="40" id="U84-S8-kAD"/>
                             <constraint firstItem="ZSt-PC-Gz9" firstAttribute="trailing" secondItem="z8h-XI-0U0" secondAttribute="trailing" id="jJ7-ZU-Eht"/>
                             <constraint firstItem="WRn-3u-ZSn" firstAttribute="leading" secondItem="ZSt-PC-Gz9" secondAttribute="leading" constant="40" id="l45-1k-HQM"/>
+                            <constraint firstItem="6CO-nr-Bi9" firstAttribute="centerX" secondItem="WRn-3u-ZSn" secondAttribute="centerX" id="nGW-WF-DLU"/>
                             <constraint firstItem="z8h-XI-0U0" firstAttribute="leading" secondItem="ZSt-PC-Gz9" secondAttribute="leading" id="qP8-pb-mEd"/>
                             <constraint firstItem="z8h-XI-0U0" firstAttribute="top" secondItem="ZSt-PC-Gz9" secondAttribute="top" id="utD-aJ-Cj0"/>
                             <constraint firstItem="WRn-3u-ZSn" firstAttribute="top" secondItem="dhd-G3-w5v" secondAttribute="bottom" constant="80" id="wPU-el-Jcz"/>
@@ -58,7 +78,9 @@
                     <connections>
                         <outlet property="convertButton" destination="dhd-G3-w5v" id="VLK-Si-qvh"/>
                         <outlet property="convertedImageView" destination="WRn-3u-ZSn" id="DPD-C5-Pra"/>
+                        <outlet property="imageViewCenterPointView" destination="6CO-nr-Bi9" id="TgY-ZE-f6M"/>
                         <outlet property="tableView" destination="z8h-XI-0U0" id="CyJ-qi-SoN"/>
+                        <outlet property="tableViewCenterPointView" destination="iX4-v4-lWI" id="Hu0-EA-2Je"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cr-1B-UUv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -70,8 +92,14 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
