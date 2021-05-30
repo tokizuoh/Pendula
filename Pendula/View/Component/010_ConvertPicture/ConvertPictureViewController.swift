@@ -98,7 +98,6 @@ extension ConvertPictureViewController {
         UIGraphicsEndImageContext()
 
         return rotatedImage
-
     }
 
 }
