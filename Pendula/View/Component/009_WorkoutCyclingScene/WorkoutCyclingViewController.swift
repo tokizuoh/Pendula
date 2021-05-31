@@ -10,7 +10,9 @@ import HealthKit
 
 final class WorkoutCyclingViewController: ComponentBaseViewController {
 
+    @IBOutlet weak var startDateView: UIView!
     @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateView: UIView!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var goButton: UIButton! {
         didSet {
@@ -60,6 +62,7 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
         configureNavigationItem(navigationTitle: "009 WorkoutCycling",
                                 blogURL: URL(string: "https://tokizuoh.dev/posts/x01z649toqnxa8no/"),
                                 githubPRURL: nil)
+        configureTapEvent()
         configureHelathStore()
     }
 
@@ -80,6 +83,25 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
                                                                     cyclingWorkouts: cyclingWorkouts)
         navigationController?.pushViewController(vc,
                                                  animated: true)
+    }
+
+}
+
+// MARK: - Tap Event
+extension WorkoutCyclingViewController {
+
+    private func configureTapEvent() {
+        let tapStartDateViewGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                       action: #selector(moveDateList))
+        let tapEndDateViewGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                     action: #selector(moveDateList))
+        startDateView.addGestureRecognizer(tapStartDateViewGestureRecognizer)
+        endDateView.addGestureRecognizer(tapEndDateViewGestureRecognizer)
+    }
+
+    @objc private func moveDateList() {
+        let vc = R.storyboard.workoutCyclingDateList.workoutCyclingDateList()!
+        present(vc, animated: true, completion: nil)
     }
 
 }

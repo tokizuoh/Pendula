@@ -126,8 +126,10 @@
                     </view>
                     <connections>
                         <outlet property="endDateLabel" destination="fiB-e0-31J" id="FF1-4H-n4p"/>
+                        <outlet property="endDateView" destination="kFQ-Ua-m8T" id="loB-Dx-4IP"/>
                         <outlet property="goButton" destination="2KV-pI-gKy" id="Jzm-3X-cL3"/>
                         <outlet property="startDateLabel" destination="Gy0-ge-a7E" id="ak0-5i-64i"/>
+                        <outlet property="startDateView" destination="WtS-rE-Rh8" id="kc3-px-bRq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEe-Cu-Ip5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
