@@ -55,6 +55,7 @@ final class WorkoutCyclingViewController: ComponentBaseViewController {
             updateViewModel(workouts: workouts)
         }
     }
+    var dateList: [Date]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +101,11 @@ extension WorkoutCyclingViewController {
     }
 
     @objc private func moveDateList() {
+        guard let dateList = dateList else {
+            return
+        }
         let vc = R.storyboard.workoutCyclingDateList.workoutCyclingDateList()!
+        vc.viewModel = WorkoutCyclingDateListViewController.ViewModel(dateList: dateList)
         present(vc, animated: true, completion: nil)
     }
 
@@ -157,6 +162,10 @@ extension WorkoutCyclingViewController {
         totalDistance = workouts.map({ (workout: HKWorkout) -> Double in
             workout.totalDistance!.doubleValue(for: .meter()) / 1000
         }).reduce(0) {$0 + $1}
+
+        dateList = workouts.map({ (workout: HKWorkout) -> Date in
+            workout.startDate
+        })
 
         viewModel = ViewModel(startDate: workouts.first!.startDate,
                               endDate: workouts.last!.endDate)
