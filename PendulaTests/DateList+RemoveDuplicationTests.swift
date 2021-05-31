@@ -26,7 +26,7 @@ final class DateListPlusRemoveDuplicationTests: XCTestCase {
         XCTAssertEqual(value, expected)
     }
 
-    func test_重複なし_重複削除されるか() throws {
+    func test_重複なし_重複削除されないか() throws {
         let date = Date()
         let dates: [Date] = [
             date,
