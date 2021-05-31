@@ -1,5 +1,6 @@
 # Pendula
-Repository for verification related to iOS apps.
+  
+![Pendula](https://socialify.git.ci/tokizuoh/Pendula/image?description=1&font=Inter&language=1&logo=https%3A%2F%2Fuser-images.githubusercontent.com%2F37968814%2F119221357-ebdb4080-bb29-11eb-9474-ed254d7627b8.png&owner=1&pattern=Charlie%20Brown&theme=Light)
   
 ## Xcode
   
