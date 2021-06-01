@@ -166,6 +166,7 @@ extension WorkoutCyclingViewController {
         dateList = workouts.map({ (workout: HKWorkout) -> Date in
             workout.startDate
         })
+        dateList = dateList?.removeDuplication()
 
         viewModel = ViewModel(startDate: workouts.first!.startDate,
                               endDate: workouts.last!.endDate)
