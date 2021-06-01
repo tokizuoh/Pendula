@@ -12,11 +12,18 @@ final class WorkoutCyclingDateListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.tableFooterView = UIView(frame: .zero)
         }
     }
 
     struct ViewModel {
-        var dateList: [Date]
+        let dateList: [Date]
+        let type: DateListType
+
+        enum DateListType {
+            case start
+            case end
+        }
     }
 
     var viewModel: ViewModel?
@@ -40,6 +47,15 @@ extension WorkoutCyclingDateListViewController: UITableViewDataSource {
         }
         cell.textLabel?.text = date.string(format: .yyyyMMddPd)
         return cell
+    }
+
+}
+
+extension WorkoutCyclingDateListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // タップした日付を前画面のVCにわたす
+        // タップしたら画面を閉じる
     }
 
 }

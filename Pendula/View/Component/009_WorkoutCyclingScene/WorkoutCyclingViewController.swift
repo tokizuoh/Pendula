@@ -93,19 +93,30 @@ extension WorkoutCyclingViewController {
 
     private func configureTapEvent() {
         let tapStartDateViewGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                       action: #selector(moveDateList))
+                                                                       action: #selector(moveStartDateList))
         let tapEndDateViewGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                     action: #selector(moveDateList))
+                                                                     action: #selector(moveEndDateList))
         startDateView.addGestureRecognizer(tapStartDateViewGestureRecognizer)
         endDateView.addGestureRecognizer(tapEndDateViewGestureRecognizer)
     }
 
-    @objc private func moveDateList() {
+    @objc private func moveStartDateList() {
         guard let dateList = dateList else {
             return
         }
         let vc = R.storyboard.workoutCyclingDateList.workoutCyclingDateList()!
-        vc.viewModel = WorkoutCyclingDateListViewController.ViewModel(dateList: dateList)
+        vc.viewModel = WorkoutCyclingDateListViewController.ViewModel(dateList: dateList,
+                                                                      type: .start)
+        present(vc, animated: true, completion: nil)
+    }
+
+    @objc private func moveEndDateList() {
+        guard let dateList = dateList else {
+            return
+        }
+        let vc = R.storyboard.workoutCyclingDateList.workoutCyclingDateList()!
+        vc.viewModel = WorkoutCyclingDateListViewController.ViewModel(dateList: dateList,
+                                                                      type: .end)
         present(vc, animated: true, completion: nil)
     }
 
