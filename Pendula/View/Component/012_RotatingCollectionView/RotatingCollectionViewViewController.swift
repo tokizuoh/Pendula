@@ -29,7 +29,7 @@ final class RotatingCollectionViewViewController: ComponentBaseViewController {
         let vc = R.storyboard.rotatingCollectionViewComponent.rotatingCollectionViewComponent()!
         foundationView.clipsToBounds = true
         foundationView.addSubview(vc.view)
-        foundationView.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI/1.5))
+        foundationView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/1.5))
     }
 
 }
