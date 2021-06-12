@@ -9,6 +9,12 @@ import UIKit
 
 final class RotatingCollectionViewViewController: ComponentBaseViewController {
 
+    @IBOutlet weak var foundationView: UIView! {
+        didSet {
+            foundationView.layer.cornerRadius = foundationView.bounds.width / 2
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -15,9 +15,26 @@
                     <view key="view" contentMode="scaleToFill" id="eHN-3V-W8i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaB-hY-dPV">
+                                <rect key="frame" x="93" y="339" width="228" height="228"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jaB-hY-dPV" secondAttribute="height" multiplier="1:1" id="acs-HO-sE5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="u6h-yk-GLW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="jaB-hY-dPV" firstAttribute="centerX" secondItem="u6h-yk-GLW" secondAttribute="centerX" id="DVz-p2-A6h"/>
+                            <constraint firstItem="jaB-hY-dPV" firstAttribute="centerY" secondItem="u6h-yk-GLW" secondAttribute="centerY" id="SeJ-fu-Ixc"/>
+                            <constraint firstItem="jaB-hY-dPV" firstAttribute="width" secondItem="eHN-3V-W8i" secondAttribute="width" multiplier="0.55" id="kog-4O-fYA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="foundationView" destination="jaB-hY-dPV" id="teR-Nh-P1O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OD1-7W-jiu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,6 +44,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
