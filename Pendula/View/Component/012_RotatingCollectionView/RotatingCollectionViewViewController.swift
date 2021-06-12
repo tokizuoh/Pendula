@@ -20,8 +20,8 @@ final class RotatingCollectionViewViewController: ComponentBaseViewController {
         super.viewDidLoad()
 
         configureNavigationItem(navigationTitle: "012 RotatingCollectionView",
-                                blogURL: nil,
-                                githubPRURL: nil)
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/sptq23cs5108r7et/ｇ"),
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/80"))
         setupCollectionViewViewController()
     }
 
