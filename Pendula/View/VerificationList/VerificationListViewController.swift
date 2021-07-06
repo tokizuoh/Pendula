@@ -79,7 +79,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.hexagonalColumn.hexagonalColumn()!),
             Verification(title: "UICollectionViewを回転させる",
                          lastUpdateDate: "2021.06.12".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.rotatingCollectionView.rotatingCollectionView()!)
+                         viewController: R.storyboard.rotatingCollectionView.rotatingCollectionView()!),
+            Verification(title: "UIViewPropertyAnimatorを試す",
+                         lastUpdateDate: "2021.07.06".date(format: .yyyyMMddPd),
+                         viewController: R.storyboard.propertyAnimator.propertyAnimator()!)
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
