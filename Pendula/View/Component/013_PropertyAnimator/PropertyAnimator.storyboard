@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Property Animator View Controller-->
+        <scene sceneID="dmP-fU-cP1">
+            <objects>
+                <viewController storyboardIdentifier="propertyAnimator" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v83-BE-W8B" customClass="PropertyAnimatorViewController" customModule="Pendula" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q4G-tA-7ZE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pis-X4-Y06">
+                                <rect key="frame" x="169.5" y="415.5" width="75" height="75"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pis-X4-Y06" secondAttribute="height" multiplier="1:1" id="R9R-NN-xnr"/>
+                                    <constraint firstAttribute="width" constant="75" id="ZNn-To-wYC"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1hp-r2-cgj">
+                                <rect key="frame" x="158.5" y="546" width="97" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-hz-TGT">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="startAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="4Ul-lo-Vgs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-rk-lFb">
+                                        <rect key="frame" x="48" y="0.0" width="49" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Pause"/>
+                                        <connections>
+                                            <action selector="pauseAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="flf-3J-53A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LBP-V5-zub"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pis-X4-Y06" firstAttribute="centerX" secondItem="LBP-V5-zub" secondAttribute="centerX" id="AZi-b2-ib2"/>
+                            <constraint firstItem="Pis-X4-Y06" firstAttribute="centerY" secondItem="LBP-V5-zub" secondAttribute="centerY" id="ONF-VR-bMA"/>
+                            <constraint firstItem="1hp-r2-cgj" firstAttribute="top" secondItem="Pis-X4-Y06" secondAttribute="bottom" constant="55.5" id="TpY-4H-6mc"/>
+                            <constraint firstItem="1hp-r2-cgj" firstAttribute="centerX" secondItem="LBP-V5-zub" secondAttribute="centerX" id="oyf-KO-6JV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="squareView" destination="Pis-X4-Y06" id="hT5-Ea-5J0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="duy-eC-isM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="204" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
