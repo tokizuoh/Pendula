@@ -15,9 +15,52 @@
                     <view key="view" contentMode="scaleToFill" id="Q4G-tA-7ZE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pis-X4-Y06">
+                                <rect key="frame" x="169.5" y="415.5" width="75" height="75"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pis-X4-Y06" secondAttribute="height" multiplier="1:1" id="R9R-NN-xnr"/>
+                                    <constraint firstAttribute="width" constant="75" id="ZNn-To-wYC"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hp-r2-cgj">
+                                <rect key="frame" x="107" y="546" width="200" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-hz-TGT">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="startAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="4Ul-lo-Vgs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-rk-lFb">
+                                        <rect key="frame" x="100" y="0.0" width="100" height="30"/>
+                                        <state key="normal" title="Stop"/>
+                                        <connections>
+                                            <action selector="stopAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="flf-3J-53A"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jef-hz-TGT" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.5" id="1q9-xA-AMd"/>
+                                    <constraint firstItem="1tV-rk-lFb" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.5" id="ofM-x1-urP"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="LBP-V5-zub"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1hp-r2-cgj" firstAttribute="width" secondItem="Q4G-tA-7ZE" secondAttribute="width" multiplier="0.483092" id="7sE-qh-RZc"/>
+                            <constraint firstItem="Pis-X4-Y06" firstAttribute="centerX" secondItem="LBP-V5-zub" secondAttribute="centerX" id="AZi-b2-ib2"/>
+                            <constraint firstItem="Pis-X4-Y06" firstAttribute="centerY" secondItem="LBP-V5-zub" secondAttribute="centerY" id="ONF-VR-bMA"/>
+                            <constraint firstItem="1hp-r2-cgj" firstAttribute="top" secondItem="Pis-X4-Y06" secondAttribute="bottom" constant="55.5" id="TpY-4H-6mc"/>
+                            <constraint firstItem="1hp-r2-cgj" firstAttribute="centerX" secondItem="LBP-V5-zub" secondAttribute="centerX" id="oyf-KO-6JV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="squareView" destination="Pis-X4-Y06" id="hT5-Ea-5J0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duy-eC-isM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,6 +70,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

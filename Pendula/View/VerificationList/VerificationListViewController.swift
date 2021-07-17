@@ -81,7 +81,7 @@ extension VerificationListViewController {
                          lastUpdateDate: "2021.06.12".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.rotatingCollectionView.rotatingCollectionView()!),
             Verification(title: "UIViewPropertyAnimatorを試す",
-                         lastUpdateDate: "2021.07.06".date(format: .yyyyMMddPd),
+                         lastUpdateDate: "2021.07.17".date(format: .yyyyMMddPd),
                          viewController: R.storyboard.propertyAnimator.propertyAnimator()!)
         ]
 
