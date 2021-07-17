@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,18 +25,30 @@
                                     <constraint firstAttribute="width" constant="75" id="ZNn-To-wYC"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hp-r2-cgj">
-                                <rect key="frame" x="107" y="546" width="200" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1hp-r2-cgj">
+                                <rect key="frame" x="127" y="546" width="160" height="34"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-hz-TGT">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Start"/>
                                         <connections>
                                             <action selector="startAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="4Ul-lo-Vgs"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7Q-fI-SsL">
+                                        <rect key="frame" x="56" y="0.0" width="48" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" red="0.089415025339627863" green="0.60757059010152292" blue="0.082242600176308689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="xXE-J0-qIg"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-rk-lFb">
-                                        <rect key="frame" x="100" y="0.0" width="100" height="30"/>
+                                        <rect key="frame" x="112" y="0.0" width="48" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Stop"/>
                                         <connections>
                                             <action selector="stopAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="flf-3J-53A"/>
@@ -43,15 +56,15 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jef-hz-TGT" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.5" id="1q9-xA-AMd"/>
-                                    <constraint firstItem="1tV-rk-lFb" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.5" id="ofM-x1-urP"/>
+                                    <constraint firstItem="jef-hz-TGT" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.3" id="1q9-xA-AMd"/>
+                                    <constraint firstItem="h7Q-fI-SsL" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.3" id="KMa-Be-e5A"/>
+                                    <constraint firstItem="1tV-rk-lFb" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.3" id="ofM-x1-urP"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LBP-V5-zub"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1hp-r2-cgj" firstAttribute="width" secondItem="Q4G-tA-7ZE" secondAttribute="width" multiplier="0.483092" id="7sE-qh-RZc"/>
                             <constraint firstItem="Pis-X4-Y06" firstAttribute="centerX" secondItem="LBP-V5-zub" secondAttribute="centerX" id="AZi-b2-ib2"/>
                             <constraint firstItem="Pis-X4-Y06" firstAttribute="centerY" secondItem="LBP-V5-zub" secondAttribute="centerY" id="ONF-VR-bMA"/>
                             <constraint firstItem="1hp-r2-cgj" firstAttribute="top" secondItem="Pis-X4-Y06" secondAttribute="bottom" constant="55.5" id="TpY-4H-6mc"/>
