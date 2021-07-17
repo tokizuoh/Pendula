@@ -26,40 +26,25 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1hp-r2-cgj">
-                                <rect key="frame" x="127" y="546" width="160" height="34"/>
+                                <rect key="frame" x="158.5" y="546" width="97" height="34"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-hz-TGT">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Start"/>
                                         <connections>
                                             <action selector="startAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="4Ul-lo-Vgs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7Q-fI-SsL">
-                                        <rect key="frame" x="56" y="0.0" width="48" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Reset">
-                                            <color key="titleColor" red="0.089415025339627863" green="0.60757059010152292" blue="0.082242600176308689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="resetAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="xXE-J0-qIg"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-rk-lFb">
-                                        <rect key="frame" x="112" y="0.0" width="48" height="34"/>
+                                        <rect key="frame" x="48" y="0.0" width="49" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Stop"/>
+                                        <state key="normal" title="Pause"/>
                                         <connections>
-                                            <action selector="stopAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="flf-3J-53A"/>
+                                            <action selector="pauseAnimation:" destination="v83-BE-W8B" eventType="touchUpInside" id="flf-3J-53A"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="jef-hz-TGT" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.3" id="1q9-xA-AMd"/>
-                                    <constraint firstItem="h7Q-fI-SsL" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.3" id="KMa-Be-e5A"/>
-                                    <constraint firstItem="1tV-rk-lFb" firstAttribute="width" secondItem="1hp-r2-cgj" secondAttribute="width" multiplier="0.3" id="ofM-x1-urP"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LBP-V5-zub"/>

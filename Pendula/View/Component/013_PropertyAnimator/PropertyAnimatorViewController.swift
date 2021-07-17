@@ -12,6 +12,7 @@ final class PropertyAnimatorViewController: ComponentBaseViewController {
     @IBOutlet weak var squareView: UIView!
 
     private var animator: UIViewPropertyAnimator!
+    private var fractionComplete: CGFloat?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +24,24 @@ final class PropertyAnimatorViewController: ComponentBaseViewController {
     }
 
     @IBAction func startAnimation(_ sender: Any) {
-        animator.startAnimation()
+        switch animator.state {
+        case .active:
+            let durationFactor: CGFloat = 1.0 - animator.fractionComplete
+            animator.continueAnimation(withTimingParameters: nil, durationFactor: durationFactor)
+
+        case .inactive:
+            animator.startAnimation()
+
+        case .stopped:
+            // NOP
+            break
+        }
     }
 
-    @IBAction func resetAnimation(_ sender: Any) {
-        // TODO [#82]: アニメーションリセット処理
-    }
-
-    @IBAction func stopAnimation(_ sender: Any) {
-        // TODO [#82]: アニメーション停止処理
+    @IBAction func pauseAnimation(_ sender: Any) {
+        // アニメーションの進行度（0.0 ~ 1.0）を保存
+        fractionComplete = animator.fractionComplete
+        animator.pauseAnimation()
     }
 
 }
