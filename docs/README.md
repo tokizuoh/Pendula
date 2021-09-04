@@ -4,4 +4,5 @@
 | ----  | ----------------------------- | ---- |
 | 一覧   | <img src="./images/list.png" width="225"> | 業務や趣味で学んだことを1つのセルとし、そのセルの一覧画面 |
 | 003 Bezier Path | <img src="./images/003_bezier_path.png" width="225"> | [UIBezierPath](https://developer.apple.com/documentation/uikit/uibezierpath) を使った図形の描画 |
+| 006 Workout | <img src="./images/006_workout.png" width="225"> | [HKWorkout](https://developer.apple.com/documentation/healthkit/hkworkout) を使って、Apple Watch経由で取得したランニングとウォーキングのデータをシンプルに表示するページ |
   
