@@ -12,42 +12,23 @@ enum DianthusError: Error {
 }
 
 protocol DianthusPresenterProtocol {
-    func fetchWordList(from: String) -> Result<[String], DianthusError>
+    func fetchWordList(from: String)
 }
 
 struct DianthusPresenter: DianthusPresenterProtocol {
-    func fetchWordList(from: String) -> Result<[String], DianthusError> {
-        let session = URLSession.shared
-        guard var urlComponents = URLComponents(string: "http://localhost:8080/v1/roman") else {
-            return .failure(.unknown)
+
+    var model: DianthusModelProtocol!
+
+    func fetchWordList(from: String) {
+        switch model.fetchWordList(from: from) {
+        case .success(let wordList):
+            // TODO [#86]: outputにわたす
+            break
+
+        case .failure(let error):
+            // TODO [#86]: outputにわたす
+            break
         }
-
-        urlComponents.queryItems = [
-            URLQueryItem(name: "target", value: from)
-        ]
-
-        var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = "GET"
-
-        let plistManager = PlistManager(fileName: "basic")
-        guard let username = plistManager?.getValue(key: "username"),
-              let password = plistManager?.getValue(key: "password") else {
-            return .failure(.unknown)
-        }
-
-        guard let basicAuthenticationData = "\(username):\(password)".data(using: .utf8) else {
-            return .failure(.unknown)
-        }
-
-        let basicAuthentication = basicAuthenticationData.base64EncodedString()
-        let basicData = "Basic \(basicAuthentication)"
-
-        request.setValue(basicData, forHTTPHeaderField: "Authorization")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        session.dataTask(with: request) { (_, _, _) in
-            // TODO [#86]: 変換する
-        }.resume()
-
-        return .success([])
     }
+
 }
