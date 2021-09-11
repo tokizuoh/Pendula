@@ -26,7 +26,6 @@ final class DianthusPresenter: DianthusPresenterProtocol {
     }
 
     func fetchWordList(from: String) {
-
         model.fetchWordList(from: "hoge") { [weak self] result in
             guard let self = self else {
                 return
