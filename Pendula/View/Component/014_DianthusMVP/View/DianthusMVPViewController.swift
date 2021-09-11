@@ -9,15 +9,23 @@ import UIKit
 
 final class DianthusMVPViewController: ComponentBaseViewController {
 
-    var presenter: DianthusPresenterProtocol?
+    @IBOutlet weak var textField: UITextField!
+
+    var presenter: DianthusPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem(navigationTitle: "014 Dianthus by MVP",
                                 blogURL: nil,
                                 githubPRURL: nil)
+    }
 
-        presenter?.fetchWordList(from: "kasumi")
+    @IBAction func go(_ sender: Any) {
+        guard let text = textField.text else {
+            return
+        }
+
+        presenter.fetchWordList(from: text)
     }
 
 }
