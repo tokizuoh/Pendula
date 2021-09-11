@@ -15,19 +15,18 @@ protocol DianthusPresenterProtocol {
     func fetchWordList(from: String)
 }
 
-struct DianthusPresenter: DianthusPresenterProtocol {
+final class DianthusPresenter: DianthusPresenterProtocol {
 
     var model: DianthusModelProtocol!
+    weak var output: DianthusPresenterOutputProtocol!
 
     func fetchWordList(from: String) {
         switch model.fetchWordList(from: from) {
         case .success(let wordList):
-            // TODO [#86]: outputにわたす
-            break
+            output.updateWordList(wordList)
 
         case .failure(let error):
-            // TODO [#86]: outputにわたす
-            break
+            output.handleError(error)
         }
     }
 

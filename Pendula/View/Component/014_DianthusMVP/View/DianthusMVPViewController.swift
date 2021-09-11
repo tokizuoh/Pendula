@@ -23,3 +23,15 @@ final class DianthusMVPViewController: ComponentBaseViewController {
     }
 
 }
+
+extension DianthusMVPViewController: DianthusPresenterOutputProtocol {
+
+    func updateWordList(_ wordList: [String]) {
+        // TODO [#86] 画面更新
+    }
+
+    func handleError(_ error: DianthusError) {
+        // TODO [#86] エラーハンドリング: エラーをユーザーに伝える or 何もしない
+    }
+
+}
