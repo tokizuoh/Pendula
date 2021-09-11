@@ -41,11 +41,28 @@ final class DianthusModel: DianthusModelProtocol {
 
         request.setValue(basicData, forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        session.dataTask(with: request) { (_, _, _) in
-            // TODO [#86]: 変換する
+
+        let semaphore = DispatchSemaphore(value: 1)
+
+        var wordList: [String]?
+
+        session.dataTask(with: request) { (_, _, error) in
+            guard error == nil else {
+                semaphore.signal()
+                return
+            }
+
+            semaphore.signal()
+            return
         }.resume()
 
-        return .success([])
+        semaphore.wait()
+
+        if let wordList = wordList {
+            return .success(wordList)
+        } else {
+            return .failure(.unknown)
+        }
     }
 
 }
