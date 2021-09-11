@@ -8,6 +8,6 @@
 import Foundation
 
 protocol DianthusPresenterOutputProtocol: AnyObject {
-    func updateWordList(_ wordList: [String])
+    func updateWordList(_ wordList: [Word])
     func handleError(_ error: DianthusError)
 }

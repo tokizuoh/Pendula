@@ -24,7 +24,7 @@ final class DianthusMVPViewController: ComponentBaseViewController {
 
 extension DianthusMVPViewController: DianthusPresenterOutputProtocol {
 
-    func updateWordList(_ wordList: [String]) {
+    func updateWordList(_ wordList: [Word]) {
         // TODO [#86] 画面更新
     }
 

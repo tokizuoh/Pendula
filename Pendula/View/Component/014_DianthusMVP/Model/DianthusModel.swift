@@ -8,12 +8,18 @@
 import Foundation
 
 protocol DianthusModelProtocol {
-    func fetchWordList(from: String) -> Result<[String], DianthusError>
+    func fetchWordList(from: String) -> Result<[Word], DianthusError>
+}
+
+struct Word: Codable {
+    let raw: String
+    let roman: String
+    let vowels: String
 }
 
 final class DianthusModel: DianthusModelProtocol {
 
-    func fetchWordList(from: String) -> Result<[String], DianthusError> {
+    func fetchWordList(from: String) -> Result<[Word], DianthusError> {
         let session = URLSession.shared
         guard var urlComponents = URLComponents(string: "http://localhost:8080/v1/roman") else {
             return .failure(.unknown)
@@ -44,14 +50,16 @@ final class DianthusModel: DianthusModelProtocol {
 
         let semaphore = DispatchSemaphore(value: 1)
 
-        var wordList: [String]?
+        var wordList: [Word]?
 
-        session.dataTask(with: request) { (_, _, error) in
-            guard error == nil else {
+        session.dataTask(with: request) { [weak self] (data, _, error) in
+            guard error == nil,
+                  let self = self else {
                 semaphore.signal()
                 return
             }
 
+            wordList = self.decode(data: data)
             semaphore.signal()
             return
         }.resume()
@@ -62,6 +70,19 @@ final class DianthusModel: DianthusModelProtocol {
             return .success(wordList)
         } else {
             return .failure(.unknown)
+        }
+    }
+
+    private func decode(data: Data?) -> [Word]? {
+        guard let data = data else {
+            return nil
+        }
+
+        do {
+            let wordList = try JSONDecoder().decode([Word].self, from: data)
+            return wordList
+        } catch {
+            return nil
         }
     }
 
