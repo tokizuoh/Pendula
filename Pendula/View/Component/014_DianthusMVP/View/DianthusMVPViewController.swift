@@ -17,7 +17,7 @@ final class DianthusMVPViewController: ComponentBaseViewController {
                                 blogURL: nil,
                                 githubPRURL: nil)
 
-        presenter?.fetchWordList(from: "hoge")
+        presenter?.fetchWordList(from: "kasumi")
     }
 
 }
@@ -25,7 +25,9 @@ final class DianthusMVPViewController: ComponentBaseViewController {
 extension DianthusMVPViewController: DianthusPresenterOutputProtocol {
 
     func updateWordList(_ wordList: [Word]) {
-        // TODO [#86] 画面更新
+        for i in wordList {
+            print(i.raw, i.roman, i.vowels)
+        }
     }
 
     func handleError(_ error: DianthusError) {

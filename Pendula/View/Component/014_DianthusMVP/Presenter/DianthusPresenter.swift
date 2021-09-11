@@ -26,12 +26,19 @@ final class DianthusPresenter: DianthusPresenterProtocol {
     }
 
     func fetchWordList(from: String) {
-        switch model.fetchWordList(from: from) {
-        case .success(let wordList):
-            output.updateWordList(wordList)
 
-        case .failure(let error):
-            output.handleError(error)
+        model.fetchWordList(from: "hoge") { [weak self] result in
+            guard let self = self else {
+                return
+            }
+
+            switch result {
+            case .success(let wordList):
+                self.output.updateWordList(wordList)
+
+            case .failure(let error):
+                self.output.handleError(error)
+            }
         }
     }
 

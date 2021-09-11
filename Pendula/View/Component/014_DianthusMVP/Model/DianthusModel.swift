@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DianthusModelProtocol {
-    func fetchWordList(from: String) -> Result<[Word], DianthusError>
+    func fetchWordList(from: String, completion: @escaping ((Result<[Word], DianthusError>) -> Void))
 }
 
 struct Word: Codable {
@@ -18,11 +18,11 @@ struct Word: Codable {
 }
 
 final class DianthusModel: DianthusModelProtocol {
-
-    func fetchWordList(from: String) -> Result<[Word], DianthusError> {
+    func fetchWordList(from: String, completion: @escaping (Result<[Word], DianthusError>) -> Void) {
         let session = URLSession.shared
         guard var urlComponents = URLComponents(string: "http://localhost:8080/v1/roman") else {
-            return .failure(.unknown)
+            completion(.failure(.unknown))
+            return
         }
 
         urlComponents.queryItems = [
@@ -35,11 +35,13 @@ final class DianthusModel: DianthusModelProtocol {
         let plistManager = PlistManager(fileName: "basic")
         guard let username = plistManager?.getValue(key: "username"),
               let password = plistManager?.getValue(key: "password") else {
-            return .failure(.unknown)
+            completion(.failure(.unknown))
+            return
         }
 
         guard let basicAuthenticationData = "\(username):\(password)".data(using: .utf8) else {
-            return .failure(.unknown)
+            completion(.failure(.unknown))
+            return
         }
 
         let basicAuthentication = basicAuthenticationData.base64EncodedString()
@@ -48,29 +50,21 @@ final class DianthusModel: DianthusModelProtocol {
         request.setValue(basicData, forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
-        let semaphore = DispatchSemaphore(value: 1)
-
-        var wordList: [Word]?
-
         session.dataTask(with: request) { [weak self] (data, _, error) in
             guard error == nil,
                   let self = self else {
-                semaphore.signal()
+                completion(.failure(.unknown))
                 return
             }
 
-            wordList = self.decode(data: data)
-            semaphore.signal()
+            guard let wordList = self.decode(data: data) else {
+                completion(.failure(.unknown))
+                return
+            }
+
+            completion(.success(wordList))
             return
         }.resume()
-
-        semaphore.wait()
-
-        if let wordList = wordList {
-            return .success(wordList)
-        } else {
-            return .failure(.unknown)
-        }
     }
 
     private func decode(data: Data?) -> [Word]? {
