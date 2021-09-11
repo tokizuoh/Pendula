@@ -20,6 +20,11 @@ final class DianthusPresenter: DianthusPresenterProtocol {
     var model: DianthusModelProtocol!
     weak var output: DianthusPresenterOutputProtocol!
 
+    init(model: DianthusModelProtocol, output: DianthusPresenterOutputProtocol) {
+        self.model = model
+        self.output = output
+    }
+
     func fetchWordList(from: String) {
         switch model.fetchWordList(from: from) {
         case .success(let wordList):

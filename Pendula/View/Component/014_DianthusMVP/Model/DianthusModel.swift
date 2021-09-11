@@ -11,7 +11,7 @@ protocol DianthusModelProtocol {
     func fetchWordList(from: String) -> Result<[String], DianthusError>
 }
 
-struct DianthusModel: DianthusModelProtocol {
+final class DianthusModel: DianthusModelProtocol {
 
     func fetchWordList(from: String) -> Result<[String], DianthusError> {
         let session = URLSession.shared

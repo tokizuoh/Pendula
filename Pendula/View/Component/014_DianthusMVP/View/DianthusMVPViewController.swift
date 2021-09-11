@@ -17,8 +17,6 @@ final class DianthusMVPViewController: ComponentBaseViewController {
                                 blogURL: nil,
                                 githubPRURL: nil)
 
-        // TODO [#86]: Builderかなにかを作ってそこでDIする
-        presenter = DianthusPresenter()
         presenter?.fetchWordList(from: "hoge")
     }
 
