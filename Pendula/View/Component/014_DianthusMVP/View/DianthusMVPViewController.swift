@@ -14,6 +14,13 @@ final class DianthusMVPViewController: ComponentBaseViewController {
         configureNavigationItem(navigationTitle: "014 Dianthus by MVP",
                                 blogURL: nil,
                                 githubPRURL: nil)
+        fetch()
+    }
+
+    private func fetch() {
+        let plistManager = PlistManager(fileName: "basic")
+        print(plistManager?.getValue(key: "username"))
+        print(plistManager?.getValue(key: "password"))
     }
 
 }
