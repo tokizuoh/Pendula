@@ -18,8 +18,8 @@ final class DianthusMVPViewController: ComponentBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem(navigationTitle: "014 Dianthus by MVP",
-                                blogURL: nil,
-                                githubPRURL: nil)
+                                blogURL: URL(string: "https://tokizuoh.dev/posts/zqt8wi4ago9mqlse/"),
+                                githubPRURL: URL(string: "https://github.com/tokizuoh/Pendula/pull/88"))
         configureCollectionView()
     }
 
