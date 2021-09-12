@@ -12,8 +12,13 @@ struct DianthusTranslator: Translator {
     typealias To = [DianthusMVPViewController.Item]
 
     static func translate(from: From) -> To {
-        return from.compactMap { word in
-            .init(word: word)
+        var set = Set<Word>()
+        return from.reduce(into: []) { (tmp, word) in
+            guard !set.contains(word) else {
+                return
+            }
+            set.insert(word)
+            tmp.append(.init(word: word))
         }
     }
 }
