@@ -91,7 +91,7 @@ extension DianthusMVPViewController: DianthusPresenterOutputProtocol {
     }
 
     func handleError(_ error: DianthusError) {
-        // TODO [#86] エラーハンドリング: エラーをユーザーに伝える or 何もしない
+        // TODO [#87] エラーハンドリング: エラーをユーザーに伝える or 何もしない
     }
 
 }
