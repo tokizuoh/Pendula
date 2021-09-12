@@ -8,9 +8,7 @@
 import Foundation
 
 protocol Builder {
-
     associatedtype ViewController
 
     func build() -> ViewController
-
 }
