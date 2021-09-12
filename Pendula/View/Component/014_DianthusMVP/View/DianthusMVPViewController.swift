@@ -75,7 +75,7 @@ extension DianthusMVPViewController {
 // MARK: - Update UICollectionView Items
 extension DianthusMVPViewController {
 
-    func update(_ items: [Item], in section: Section) {
+    private func update(_ items: [Item], in section: Section) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([section])
         snapshot.appendItems(items, toSection: section)
