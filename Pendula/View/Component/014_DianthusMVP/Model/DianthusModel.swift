@@ -11,7 +11,7 @@ protocol DianthusModelProtocol {
     func fetchWordList(from: String, completion: @escaping ((Result<[Word], DianthusError>) -> Void))
 }
 
-struct Word: Codable {
+struct Word: Codable, Hashable {
     let raw: String
     let roman: String
     let vowels: String

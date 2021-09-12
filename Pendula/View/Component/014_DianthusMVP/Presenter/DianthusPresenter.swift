@@ -33,7 +33,8 @@ final class DianthusPresenter: DianthusPresenterProtocol {
 
             switch result {
             case .success(let wordList):
-                self.output.updateWordList(wordList)
+                let items = DianthusTranslator.translate(from: wordList)
+                self.output.updateItems(items)
 
             case .failure(let error):
                 self.output.handleError(error)

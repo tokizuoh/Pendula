@@ -71,6 +71,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="S22-4N-aAd" id="M2o-0g-SfK"/>
                         <outlet property="textField" destination="dG2-E6-r6W" id="74t-9b-2kF"/>
                     </connections>
                 </viewController>
