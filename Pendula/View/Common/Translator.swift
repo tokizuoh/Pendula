@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+protocol Translator {
+    associatedtype From
+    associatedtype To
+
+    static func translate(from: From) -> To
+}
