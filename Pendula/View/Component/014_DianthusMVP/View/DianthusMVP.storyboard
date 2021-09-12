@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DianthusMVP View Controller-->
+        <scene sceneID="6lW-6w-3NM">
+            <objects>
+                <viewController storyboardIdentifier="dianthusMVP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vlR-ou-vdy" customClass="DianthusMVPViewController" customModule="Pendula" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E4k-i0-d6Q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S22-4N-aAd">
+                                <rect key="frame" x="0.0" y="178" width="414" height="684"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZMS-7g-Hfa">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kzl-bH-z94">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yF5-GZ-Zsg">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="dCa-fP-LYe">
+                                <rect key="frame" x="106.5" y="94" width="201" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dG2-E6-r6W">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Q1U-uq-EAQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-bh-FY5">
+                                        <rect key="frame" x="171" y="0.0" width="30" height="34"/>
+                                        <state key="normal" title="Go"/>
+                                        <connections>
+                                            <action selector="go:" destination="vlR-ou-vdy" eventType="touchUpInside" id="zoe-3L-7X8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xPa-oj-kHK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dCa-fP-LYe" firstAttribute="centerX" secondItem="xPa-oj-kHK" secondAttribute="centerX" id="HSM-yC-2R3"/>
+                            <constraint firstItem="xPa-oj-kHK" firstAttribute="trailing" secondItem="S22-4N-aAd" secondAttribute="trailing" id="T00-dJ-aHM"/>
+                            <constraint firstItem="xPa-oj-kHK" firstAttribute="bottom" secondItem="S22-4N-aAd" secondAttribute="bottom" id="nPS-V1-iVt"/>
+                            <constraint firstItem="S22-4N-aAd" firstAttribute="leading" secondItem="xPa-oj-kHK" secondAttribute="leading" id="oR8-Rh-ooA"/>
+                            <constraint firstItem="S22-4N-aAd" firstAttribute="centerX" secondItem="xPa-oj-kHK" secondAttribute="centerX" id="owr-MS-2YZ"/>
+                            <constraint firstItem="S22-4N-aAd" firstAttribute="top" secondItem="dCa-fP-LYe" secondAttribute="bottom" constant="50" id="pF9-HV-e68"/>
+                            <constraint firstItem="dCa-fP-LYe" firstAttribute="top" secondItem="xPa-oj-kHK" secondAttribute="top" constant="50" id="zMp-dS-sli"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="S22-4N-aAd" id="M2o-0g-SfK"/>
+                        <outlet property="textField" destination="dG2-E6-r6W" id="74t-9b-2kF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9dO-wr-uAy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="117"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

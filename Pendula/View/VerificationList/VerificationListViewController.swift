@@ -82,7 +82,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.rotatingCollectionView.rotatingCollectionView()!),
             Verification(title: "UIViewPropertyAnimatorを試す",
                          lastUpdateDate: "2021.07.17".date(format: .yyyyMMddPd),
-                         viewController: R.storyboard.propertyAnimator.propertyAnimator()!)
+                         viewController: R.storyboard.propertyAnimator.propertyAnimator()!),
+            Verification(title: "単語を送ったらその単語と同じ母音を持つ単語のリストを返すAPIを利用する",
+                         lastUpdateDate: "2021.09.11".date(format: .yyyyMMddPd),
+                         viewController: DianthusMVPBuilder().build())
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう

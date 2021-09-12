@@ -5,3 +5,6 @@ R.generated.swift
 
 Pods/*
 .DS_Store
+
+# basic authentication information
+basic.plist
