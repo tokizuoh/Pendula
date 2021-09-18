@@ -4,7 +4,7 @@ options:
   developmentLanguage: ja
   deploymentTarget:
     iOS: 14.0
-  xcodeVersion: "12.3"
+  xcodeVersion: "13.0"
   postGenCommand: pod install
 
 settings:
