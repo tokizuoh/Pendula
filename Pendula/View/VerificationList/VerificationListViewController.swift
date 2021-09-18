@@ -85,7 +85,10 @@ extension VerificationListViewController {
                          viewController: R.storyboard.propertyAnimator.propertyAnimator()!),
             Verification(title: "単語を送ったらその単語と同じ母音を持つ単語のリストを返すAPIを利用する",
                          lastUpdateDate: "2021.09.11".date(format: .yyyyMMddPd),
-                         viewController: DianthusMVPBuilder().build())
+                         viewController: DianthusMVPBuilder().build()),
+            Verification(title: "AppStore の画面を UICollectionView で再現する",
+                         lastUpdateDate: "2021.09.18".date(format: .yyyyMMddPd),
+                         viewController: AppStoreBuilder().build())
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
