@@ -9,47 +9,54 @@ import UIKit
 
 final class FlowLayoutViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView! {
-        didSet {
-            func configureLayout() -> UICollectionViewLayout {
-                let layout = UICollectionViewFlowLayout()
-                layout.itemSize = .init(width: 75, height: 50)
-                layout.minimumInteritemSpacing = 75
-                layout.minimumLineSpacing = 50
-                layout.sectionInset = .init(top: 10,
-                                            left: 5,
-                                            bottom: 10,
-                                            right: 10)
-                return layout
-            }
+    @IBOutlet weak var collectionView: UICollectionView!
 
-            collectionView.dataSource = self
-            collectionView.collectionViewLayout = configureLayout()
-        }
-    }
-
-    private let itemCount: Int = 10
+    private let colors: [UIColor] = [
+        .red, .blue, .yellow,
+        .brown, .black, .cyan,
+        .green, .orange, .purple
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configureCollectionView()
+    }
+
+}
+
+extension FlowLayoutViewController {
+
+    private func configureCollectionView() {
+        func configureLayout() -> UICollectionViewLayout {
+            let itemSpacing: CGFloat = 20
+            let itemCountPerRow: CGFloat = 3
+            let cellWidth: CGFloat = (view.bounds.width - (itemCountPerRow - 1) * itemSpacing) / itemCountPerRow - 0.1
+            let cellSize = CGSize(width: cellWidth, height: cellWidth)
+
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = cellSize
+            layout.minimumLineSpacing = itemSpacing
+            layout.minimumInteritemSpacing = itemSpacing
+            return layout
+        }
+
+        collectionView.dataSource = self
+        collectionView.collectionViewLayout = configureLayout()
     }
 
 }
 
 extension FlowLayoutViewController: UICollectionViewDataSource {
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
-    }
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemCount
+        return colors.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.flowLayoutCell.identifier,
                                                       for: indexPath)
-        cell.backgroundColor = .blue
+        cell.backgroundColor = colors[indexPath.row]
         return cell
     }
 
