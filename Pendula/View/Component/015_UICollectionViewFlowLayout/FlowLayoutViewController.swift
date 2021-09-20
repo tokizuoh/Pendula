@@ -11,8 +11,20 @@ final class FlowLayoutViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
+            func configureLayout() -> UICollectionViewLayout {
+                let layout = UICollectionViewFlowLayout()
+                layout.itemSize = .init(width: 75, height: 50)
+                layout.minimumInteritemSpacing = 75
+                layout.minimumLineSpacing = 50
+                layout.sectionInset = .init(top: 10,
+                                            left: 5,
+                                            bottom: 10,
+                                            right: 10)
+                return layout
+            }
+
             collectionView.dataSource = self
-            collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+            collectionView.collectionViewLayout = configureLayout()
         }
     }
 
@@ -25,6 +37,10 @@ final class FlowLayoutViewController: UIViewController {
 }
 
 extension FlowLayoutViewController: UICollectionViewDataSource {
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemCount
