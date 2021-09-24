@@ -6,8 +6,8 @@
   
 ```bash
 > xcodebuild -version
-Xcode 12.3
-Build version 12C33
+Xcode 13.0
+Build version 13A233
 ```
   
 ## Setup
