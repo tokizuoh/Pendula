@@ -11,12 +11,6 @@ final class FlowLayoutViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    private var colors: [UIColor] = [
-        .red, .blue, .yellow,
-        .brown, .black, .cyan,
-        .green, .orange, .purple
-    ]
-
     private var transparencies: [CGFloat] = []
 
     override func viewDidLoad() {
