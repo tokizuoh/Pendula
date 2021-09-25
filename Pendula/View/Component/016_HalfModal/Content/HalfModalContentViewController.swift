@@ -7,22 +7,27 @@
 
 import UIKit
 
-class HalfModalContentViewController: UIViewController {
+final class HalfModalContentViewController: UIViewController, UISheetPresentationControllerDelegate {
+
+    override var sheetPresentationController: UISheetPresentationController {
+        presentationController as! UISheetPresentationController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureHaldModal()
     }
 
-    /*
-     // MARK: - Navigation
+}
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+extension HalfModalContentViewController {
+
+    private func configureHaldModal() {
+        sheetPresentationController.delegate = self
+        sheetPresentationController.prefersGrabberVisible = true
+        sheetPresentationController.detents = [
+            .medium()
+        ]
+    }
 
 }
