@@ -88,7 +88,10 @@ extension VerificationListViewController {
                          viewController: DianthusMVPBuilder().build()),
             Verification(title: "UICollectionViewFlowLayout を試す",
                          lastUpdateDate: "2021.09.20".date(format: .yyyyMMddPd),
-                         viewController: FlowLayoutBuilder().build())
+                         viewController: FlowLayoutBuilder().build()),
+            Verification(title: "UISheetPresentationController を試す",
+                         lastUpdateDate: "2021.09.26".date(format: .yyyyMMddPd),
+                         viewController: HalfModalBuilder().build())
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
