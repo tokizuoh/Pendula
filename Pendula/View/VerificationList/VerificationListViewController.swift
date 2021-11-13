@@ -91,7 +91,10 @@ extension VerificationListViewController {
                          viewController: FlowLayoutBuilder().build()),
             Verification(title: "UISheetPresentationController を試す",
                          lastUpdateDate: "2021.09.26".date(format: .yyyyMMddPd),
-                         viewController: HalfModalBuilder().build())
+                         viewController: HalfModalBuilder().build()),
+            Verification(title: "Accessibility を考える",
+                         lastUpdateDate: "2021.11.13".date(format: .yyyyMMddPd),
+                         viewController: AccessibilityBuilder().build())
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
