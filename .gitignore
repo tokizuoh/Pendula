@@ -10,4 +10,4 @@ Pods/*
 basic.plist
 
 # To prevent image redistribution
-Assets.xcassets
+Assets.xcassets/
