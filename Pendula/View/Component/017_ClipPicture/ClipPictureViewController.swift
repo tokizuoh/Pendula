@@ -28,29 +28,46 @@ final class ClipPictureViewController: ComponentBaseViewController {
     }
 
     @IBAction func clip(_ sender: Any) {
-        guard let targetImage = baseImageView.image,
-              let targetCGImage = targetImage.cgImage else {
-            return
+        let clippedImage = clipImage(baseImageView.image,
+                                     toWidth: clippedImageView.frame.width,
+                                     toHeight: clippedImageView.frame.height)
+        clippedImageView.image = clippedImage
+    }
+
+}
+
+extension ClipPictureViewController {
+
+    /// 画像を切り抜く
+    /// - Parameters:
+    ///   - from: 切り抜く対象の画像
+    ///   - toWidth: 切り抜くWidth
+    ///   - toHeight: 切り抜くHeight
+    /// - Returns: 切り抜いたUIImage
+    private func clipImage(_ from: UIImage?,
+                           toWidth: CGFloat,
+                           toHeight: CGFloat) -> UIImage? {
+        guard let fromImage = from,
+              let fromCGImage = fromImage.cgImage else {
+            return nil
         }
 
-        let clippingWidth = clippedImageView.frame.width
-        let clippingHeight = clippedImageView.frame.height
-
-        let availableX = targetImage.size.width - clippingWidth
-        let availableY = targetImage.size.height - clippingHeight
+        let availableX = fromImage.size.width - toWidth
+        let availableY = fromImage.size.height - toHeight
 
         let x = CGFloat.random(in: 0..<availableX)
         let y = CGFloat.random(in: 0..<availableY)
 
         let clippingRect = CGRect(x: x,
                                   y: y,
-                                  width: x + clippingWidth,
-                                  height: y + clippingHeight)
+                                  width: x + toWidth,
+                                  height: y + toHeight)
 
-        guard let clippedCGImage = targetCGImage.cropping(to: clippingRect) else {
-            return
+        guard let clippedCGImage = fromCGImage.cropping(to: clippingRect) else {
+            return nil
         }
-        let crippedImage = UIImage(cgImage: clippedCGImage)
-        clippedImageView.image = crippedImage
+
+        return UIImage(cgImage: clippedCGImage)
     }
+
 }
