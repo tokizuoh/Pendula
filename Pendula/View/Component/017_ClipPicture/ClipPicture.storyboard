@@ -33,6 +33,9 @@
                                 <rect key="frame" x="182.5" y="332" width="49" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Clip"/>
+                                <connections>
+                                    <action selector="clip:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="S7Z-oH-vJ3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
