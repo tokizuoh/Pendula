@@ -14,6 +14,7 @@ final class ClipPictureViewController: ComponentBaseViewController {
             baseImageView.image = R.image.clip_picture_fugaku()
         }
     }
+    
     @IBOutlet weak var clippedImageView: UIImageView! {
         didSet {
             clippedImageView.backgroundColor = .lightGray
