@@ -9,7 +9,7 @@ import UIKit
 
 class ComponentBaseViewController: UIViewController {
 
-    func configureNavigationItem(navigationTitle: String, blogURL: URL?, githubPRURL: URL?) {
+    func configureNavigationItem(navigationTitle: String, blogURL: URL? = nil, githubPRURL: URL? = nil) {
         navigationItem.title = navigationTitle
         configureLeftBarButtonItem()
         configureRightBarButtonItem(blogURL: blogURL, githubPRURL: githubPRURL)
