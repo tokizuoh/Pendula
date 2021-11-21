@@ -15,9 +15,42 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="leI-m1-KKa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="233"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="leI-m1-KKa" secondAttribute="height" multiplier="16:9" id="dsy-OY-LZc"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sqS-tx-9JZ">
+                                <rect key="frame" x="157" y="473" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sqS-tx-9JZ" secondAttribute="height" multiplier="1:1" id="S9L-hU-ZXK"/>
+                                    <constraint firstAttribute="width" constant="100" id="pa4-5e-113"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwq-er-ZWZ">
+                                <rect key="frame" x="182.5" y="332" width="49" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Clip"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="leI-m1-KKa" secondAttribute="trailing" id="09y-I6-0dH"/>
+                            <constraint firstItem="hwq-er-ZWZ" firstAttribute="centerX" secondItem="leI-m1-KKa" secondAttribute="centerX" id="36p-xe-TTf"/>
+                            <constraint firstItem="hwq-er-ZWZ" firstAttribute="top" secondItem="leI-m1-KKa" secondAttribute="bottom" constant="55" id="73t-px-C9k"/>
+                            <constraint firstItem="leI-m1-KKa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9Eu-hD-6dx"/>
+                            <constraint firstItem="sqS-tx-9JZ" firstAttribute="top" secondItem="hwq-er-ZWZ" secondAttribute="bottom" constant="110" id="Hoc-Q9-TDz"/>
+                            <constraint firstItem="leI-m1-KKa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vuZ-OV-IBc"/>
+                            <constraint firstItem="sqS-tx-9JZ" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="ymj-tS-mR1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="baseImageView" destination="leI-m1-KKa" id="MAy-A6-Put"/>
+                        <outlet property="clippedImageView" destination="sqS-tx-9JZ" id="YZb-uW-wSj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
