@@ -8,6 +8,3 @@ Pods/*
 
 # basic authentication information
 basic.plist
-
-# To prevent image redistribution
-Assets.xcassets/
