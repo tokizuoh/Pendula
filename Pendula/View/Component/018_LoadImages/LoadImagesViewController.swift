@@ -13,6 +13,7 @@ final class LoadImagesViewController: ComponentBaseViewController {
         didSet {
             collectionView.dataSource = self
             collectionView.register(R.nib.loadImagesCollectionViewCell)
+            configureFlowLayout()
         }
     }
 
@@ -26,6 +27,7 @@ final class LoadImagesViewController: ComponentBaseViewController {
 extension LoadImagesViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // TODO: [#104] 画像の枚数の変数に変更
         return 10
     }
 
@@ -33,6 +35,14 @@ extension LoadImagesViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.loadImagesCollectionViewCell,
                                                       for: indexPath)!
         return cell
+    }
+
+    private func configureFlowLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = .init(width: collectionView.frame.width,
+                                height: collectionView.frame.height)
+        layout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = layout
     }
 
 }
