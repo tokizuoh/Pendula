@@ -11,4 +11,8 @@ final class LoadImagesCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
 
+    func setup(image: UIImage?) {
+        thumbnailImageView.image = image
+    }
+
 }
