@@ -13,6 +13,8 @@ struct LoadImagesBuilder: Builder {
 
     func build() -> ViewController {
         let vc = R.storyboard.loadImages.loadImages()!
+        let presenter = LoadImagesPresenterImplement(output: vc)
+        vc.presenter = presenter
         return vc
     }
 

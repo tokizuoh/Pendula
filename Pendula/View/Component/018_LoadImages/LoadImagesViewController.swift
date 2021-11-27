@@ -18,25 +18,18 @@ final class LoadImagesViewController: ComponentBaseViewController {
     }
 
     struct ViewControllerModel {
-        let thumbnailImageURLs: [URL]
+        let thumbnailImages: [UIImage]
     }
 
-    private var dictionary: [URL: UIImage] = [:]
-
-    private let viewControllerModel = ViewControllerModel(thumbnailImageURLs: [
-        URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://placehold.jp/a4b562/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://placehold.jp/b56262/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://placehold.jp/b262b5/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://placehold.jp/6297b5/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://raw.githubusercontent.com/tokizuoh/Pendula/feature/%23104/Pendula/View/Component/018_LoadImages/Image/sky.jpeg")!
-    ])
-
+    private var viewControllerModel: ViewControllerModel?
+    var presenter: LoadImagesPresenter!
     private let cellCount = 300
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem(navigationTitle: "018 LoadImages")
+        collectionView.isHidden = true
+        presenter.getImages()
     }
 
 }
@@ -48,11 +41,14 @@ extension LoadImagesViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let viewControllerModel = viewControllerModel else {
+            return UICollectionViewCell()
+        }
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.loadImagesCollectionViewCell,
                                                       for: indexPath)!
-        let index = indexPath.row % viewControllerModel.thumbnailImageURLs.count
-        print(indexPath, index)
-        let image = getImage(url: viewControllerModel.thumbnailImageURLs[index])
+        let index = indexPath.row % viewControllerModel.thumbnailImages.count
+        let image = viewControllerModel.thumbnailImages[index]
         cell.setup(image: image)
         return cell
     }
@@ -67,25 +63,12 @@ extension LoadImagesViewController: UICollectionViewDataSource {
 
 }
 
-extension LoadImagesViewController {
+extension LoadImagesViewController: LoadImagesPresenterOutput {
 
-    private func getImage(url: URL) -> UIImage? {
-        if let image = dictionary[url] {
-            return image
-
-        } else {
-            let image = fetchImage(url: url)
-            dictionary[url] = image
-            return image
-        }
-    }
-
-    private func fetchImage(url: URL) -> UIImage? {
-        guard let data = try? Data(contentsOf: url) else {
-            return nil
-        }
-
-        return .init(data: data)
+    func updateViewControllerModel(_ viewControllerModel: ViewControllerModel) {
+        self.viewControllerModel = viewControllerModel
+        collectionView.isHidden = false
+        collectionView.reloadData()
     }
 
 }
