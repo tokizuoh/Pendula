@@ -67,7 +67,7 @@ extension LoadImagesViewController: UICollectionViewDataSource {
 
 extension LoadImagesViewController {
 
-    func fetchImage(url: URL) -> UIImage? {
+    private func fetchImage(url: URL) -> UIImage? {
         guard let data = try? Data(contentsOf: url) else {
             return nil
         }
