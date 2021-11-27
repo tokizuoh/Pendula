@@ -21,6 +21,8 @@ final class LoadImagesViewController: ComponentBaseViewController {
         let thumbnailImageURLs: [URL]
     }
 
+    private var dictionary: [URL: UIImage] = [:]
+
     private let viewControllerModel = ViewControllerModel(thumbnailImageURLs: [
         URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
         URL(string: "https://placehold.jp/a4b562/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
@@ -50,7 +52,7 @@ extension LoadImagesViewController: UICollectionViewDataSource {
                                                       for: indexPath)!
         let index = indexPath.row % viewControllerModel.thumbnailImageURLs.count
         print(indexPath, index)
-        let image = fetchImage(url: viewControllerModel.thumbnailImageURLs[index])
+        let image = getImage(url: viewControllerModel.thumbnailImageURLs[index])
         cell.setup(image: image)
         return cell
     }
@@ -66,6 +68,17 @@ extension LoadImagesViewController: UICollectionViewDataSource {
 }
 
 extension LoadImagesViewController {
+
+    private func getImage(url: URL) -> UIImage? {
+        if let image = dictionary[url] {
+            return image
+
+        } else {
+            let image = fetchImage(url: url)
+            dictionary[url] = image
+            return image
+        }
+    }
 
     private func fetchImage(url: URL) -> UIImage? {
         guard let data = try? Data(contentsOf: url) else {
