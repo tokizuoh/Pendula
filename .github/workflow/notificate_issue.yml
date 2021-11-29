@@ -1,0 +1,15 @@
+name: notificate_issue
+
+on:
+  schedule:
+    - cron: '0 9 * * 6'  # 毎週土曜日 AM 09:00
+
+jobs:
+  notificate_old_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test-actions
+        run: echo "TEST"
+      - # issue のAPIを使って古いissueを取得する *1
+      - # *1で取得したissueのリストをslackに通知する
+   
