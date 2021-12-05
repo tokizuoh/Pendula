@@ -8,13 +8,14 @@
 import UIKit
 
 protocol LoadImagesPresenter {
-    init(output: LoadImagesPresenterOutput)
+    init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher)
     func getImages()
 }
 
 final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
     private weak var output: LoadImagesPresenterOutput?
+    private let cacher: LoadImagesCacher?
     private var imagesCacher: [URL: UIImage] = [:]
     private let urls: [URL] = [
         URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
@@ -25,8 +26,9 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
         URL(string: "https://raw.githubusercontent.com/tokizuoh/Pendula/feature/%23104/Pendula/View/Component/018_LoadImages/Image/sky.jpeg")!
     ]
 
-    init(output: LoadImagesPresenterOutput) {
+    init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher) {
         self.output = output
+        self.cacher = cacher
     }
 
     func getImages() {
