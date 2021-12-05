@@ -18,7 +18,7 @@ final class LoadImagesViewController: ComponentBaseViewController {
     }
 
     struct ViewControllerModel {
-        let thumbnailImages: [UIImage]
+        let thumbnailImages: [UIImage?]
     }
 
     private var viewControllerModel: ViewControllerModel?
@@ -49,16 +49,11 @@ extension LoadImagesViewController: UICollectionViewDataSource {
                                                       for: indexPath)!
         let index = indexPath.row % viewControllerModel.thumbnailImages.count
         let image = viewControllerModel.thumbnailImages[index]
-        cell.setup(image: image)
+        let laps = indexPath.row / viewControllerModel.thumbnailImages.count
+        cell.setup(viewModel: .init(image: image,
+                                    rowText: indexPath.row.description,
+                                    lapText: laps.description))
         return cell
-    }
-
-    private func configureFlowLayout() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: collectionView.frame.width,
-                                height: collectionView.frame.height)
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
     }
 
 }
@@ -69,6 +64,19 @@ extension LoadImagesViewController: LoadImagesPresenterOutput {
         self.viewControllerModel = viewControllerModel
         collectionView.isHidden = false
         collectionView.reloadData()
+    }
+
+}
+
+// MARK: - Configure UICollectionView's Layout
+extension LoadImagesViewController {
+
+    private func configureFlowLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = .init(width: collectionView.frame.width,
+                                height: collectionView.frame.height)
+        layout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = layout
     }
 
 }

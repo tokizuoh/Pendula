@@ -8,16 +8,18 @@
 import UIKit
 
 protocol LoadImagesPresenter {
-    init(output: LoadImagesPresenterOutput)
+    init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher)
     func getImages()
 }
 
 final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
     private weak var output: LoadImagesPresenterOutput?
-    private var imagesCacher: [URL: UIImage] = [:]
+    private let cacher: LoadImagesCacher
+
     private let urls: [URL] = [
         URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
+        URL(string: "https://tokizuoh.dev")!,  // 画像のfetchが必ず失敗するURL
         URL(string: "https://placehold.jp/a4b562/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
         URL(string: "https://placehold.jp/b56262/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
         URL(string: "https://placehold.jp/b262b5/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
@@ -25,12 +27,13 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
         URL(string: "https://raw.githubusercontent.com/tokizuoh/Pendula/feature/%23104/Pendula/View/Component/018_LoadImages/Image/sky.jpeg")!
     ]
 
-    init(output: LoadImagesPresenterOutput) {
+    init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher) {
         self.output = output
+        self.cacher = cacher
     }
 
     func getImages() {
-        let images: [UIImage] = urls.compactMap {
+        let images: [UIImage?] = urls.map {
             return getImage(url: $0)
         }
 
@@ -38,12 +41,14 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
     }
 
     private func getImage(url: URL) -> UIImage? {
-        if let image = imagesCacher[url] {
+        if let image = cacher.getCachedImage(url) {
             return image
 
         } else {
-            let image = fetchImage(url: url)
-            imagesCacher[url] = image
+            guard let image = fetchImage(url: url) else {
+                return nil
+            }
+            cacher.cacheImage(url: url, image: image)
             return image
         }
     }
