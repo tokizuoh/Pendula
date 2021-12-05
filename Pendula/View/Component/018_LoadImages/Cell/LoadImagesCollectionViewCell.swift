@@ -12,6 +12,8 @@ final class LoadImagesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var indexLabel: UILabel!
 
+    private let placeholderImage = R.image.loadImages_placeholder()
+
     struct ViewModel {
         let image: UIImage?
         let rowText: String
@@ -19,7 +21,12 @@ final class LoadImagesCollectionViewCell: UICollectionViewCell {
     }
 
     func setup(viewModel: ViewModel) {
-        thumbnailImageView.image = viewModel.image
+        if let image = viewModel.image {
+            thumbnailImageView.image = image
+        } else {
+            thumbnailImageView.image = placeholderImage
+        }
+
         indexLabel.text = "row: \(viewModel.rowText), laps: \(viewModel.lapText)"
     }
 
