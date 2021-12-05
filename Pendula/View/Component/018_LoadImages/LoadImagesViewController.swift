@@ -56,14 +56,6 @@ extension LoadImagesViewController: UICollectionViewDataSource {
         return cell
     }
 
-    private func configureFlowLayout() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = .init(width: collectionView.frame.width,
-                                height: collectionView.frame.height)
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-    }
-
 }
 
 extension LoadImagesViewController: LoadImagesPresenterOutput {
@@ -72,6 +64,19 @@ extension LoadImagesViewController: LoadImagesPresenterOutput {
         self.viewControllerModel = viewControllerModel
         collectionView.isHidden = false
         collectionView.reloadData()
+    }
+
+}
+
+// MARK: - Configure UICollectionView's Layout
+extension LoadImagesViewController {
+
+    private func configureFlowLayout() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = .init(width: collectionView.frame.width,
+                                height: collectionView.frame.height)
+        layout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = layout
     }
 
 }
