@@ -19,7 +19,7 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
     private let urls: [URL] = [
         URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://tokizuoh.dev")!,
+        URL(string: "https://tokizuoh.dev")!,  // 画像のfetchが必ず失敗するURL
         URL(string: "https://placehold.jp/a4b562/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
         URL(string: "https://placehold.jp/b56262/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
         URL(string: "https://placehold.jp/b262b5/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
