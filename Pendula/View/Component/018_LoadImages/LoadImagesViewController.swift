@@ -18,7 +18,7 @@ final class LoadImagesViewController: ComponentBaseViewController {
     }
 
     struct ViewControllerModel {
-        let thumbnailImages: [UIImage]
+        let thumbnailImages: [UIImage?]
     }
 
     private var viewControllerModel: ViewControllerModel?
