@@ -27,7 +27,7 @@ final class LoadImagesCollectionViewCell: UICollectionViewCell {
             thumbnailImageView.image = placeholderImage
         }
 
-        indexLabel.text = "row: \(viewModel.rowText), laps: \(viewModel.lapText)"
+        indexLabel.text = "row: \(viewModel.rowText), lap: \(viewModel.lapText)"
     }
 
 }
