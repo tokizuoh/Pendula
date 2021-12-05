@@ -15,7 +15,7 @@ protocol LoadImagesPresenter {
 final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
     private weak var output: LoadImagesPresenterOutput?
-    private let cacher: LoadImagesCacher?
+    private let cacher: LoadImagesCacher
     private var imagesCacher: [URL: UIImage] = [:]
     private let urls: [URL] = [
         URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
