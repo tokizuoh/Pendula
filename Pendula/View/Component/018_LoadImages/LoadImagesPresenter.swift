@@ -46,7 +46,6 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
         } else {
             guard let image = fetchImage(url: url) else {
-                // TODO: [#109] ここにくるとUICollectionView側で何も表示できなくなるのでプレースホルダーなど準備する
                 return nil
             }
             cacher.cacheImage(url: url, image: image)
