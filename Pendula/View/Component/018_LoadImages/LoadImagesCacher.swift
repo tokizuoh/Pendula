@@ -11,8 +11,9 @@ protocol LoadImagesCacher {
     /// 画像をキャッシュする
     func cacheImage(url: URL, image: UIImage)
 
-    /// 画像がキャッシュされているか
-    func hasCachedImage(_ url: URL) -> Bool
+    /// キャッシュ済みの画像を返す（存在しない場合はnilを返す）
+    func getCachedImage(_ url: URL) -> UIImage?
+
 }
 
 final class LoadImagesCacherImplement: LoadImagesCacher {
@@ -27,8 +28,8 @@ final class LoadImagesCacherImplement: LoadImagesCacher {
         imageDictionary[url] = image
     }
 
-    func hasCachedImage(_ url: URL) -> Bool {
-        return imageDictionary.keys.contains(url)
+    func getCachedImage(_ url: URL) -> UIImage? {
+        return imageDictionary[url]
     }
 
 }

@@ -16,7 +16,7 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
     private weak var output: LoadImagesPresenterOutput?
     private let cacher: LoadImagesCacher
-    private var imagesCacher: [URL: UIImage] = [:]
+
     private let urls: [URL] = [
         URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
         URL(string: "https://placehold.jp/a4b562/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
@@ -40,12 +40,15 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
     }
 
     private func getImage(url: URL) -> UIImage? {
-        if let image = imagesCacher[url] {
+        if let image = cacher.getCachedImage(url) {
             return image
 
         } else {
-            let image = fetchImage(url: url)
-            imagesCacher[url] = image
+            guard let image = fetchImage(url: url) else {
+                // TODO: [#109] ここにくるとUICollectionView側で何も表示できなくなるのでプレースホルダーなど準備する
+                return nil
+            }
+            cacher.cacheImage(url: url, image: image)
             return image
         }
     }
