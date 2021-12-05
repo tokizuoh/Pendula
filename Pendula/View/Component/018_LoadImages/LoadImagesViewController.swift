@@ -49,7 +49,10 @@ extension LoadImagesViewController: UICollectionViewDataSource {
                                                       for: indexPath)!
         let index = indexPath.row % viewControllerModel.thumbnailImages.count
         let image = viewControllerModel.thumbnailImages[index]
-        cell.setup(image: image)
+        let laps = indexPath.row / viewControllerModel.thumbnailImages.count
+        cell.setup(viewModel: .init(image: image,
+                                    rowText: indexPath.row.description,
+                                    lapText: laps.description))
         return cell
     }
 

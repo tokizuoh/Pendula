@@ -10,9 +10,17 @@ import UIKit
 final class LoadImagesCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var indexLabel: UILabel!
 
-    func setup(image: UIImage?) {
-        thumbnailImageView.image = image
+    struct ViewModel {
+        let image: UIImage?
+        let rowText: String
+        let lapText: String
+    }
+
+    func setup(viewModel: ViewModel) {
+        thumbnailImageView.image = viewModel.image
+        indexLabel.text = "row: \(viewModel.rowText), laps: \(viewModel.lapText)"
     }
 
 }
