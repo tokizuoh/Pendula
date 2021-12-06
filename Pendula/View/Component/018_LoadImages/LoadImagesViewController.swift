@@ -76,6 +76,7 @@ extension LoadImagesViewController {
         layout.itemSize = .init(width: collectionView.frame.width,
                                 height: collectionView.frame.height)
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout
     }
 
