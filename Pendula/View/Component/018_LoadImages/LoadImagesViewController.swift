@@ -13,7 +13,6 @@ final class LoadImagesViewController: ComponentBaseViewController {
         didSet {
             collectionView.dataSource = self
             collectionView.register(R.nib.loadImagesCollectionViewCell)
-            configureFlowLayout()
         }
     }
 
@@ -30,6 +29,11 @@ final class LoadImagesViewController: ComponentBaseViewController {
         configureNavigationItem(navigationTitle: "018 LoadImages")
         collectionView.isHidden = true
         presenter.getImages()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureFlowLayout()
     }
 
 }
