@@ -12,8 +12,9 @@ final class LoadImagesViewController: ComponentBaseViewController {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.dataSource = self
+            collectionView.delegate = self
+            collectionView.decelerationRate = .fast
             collectionView.register(R.nib.loadImagesCollectionViewCell)
-            configureFlowLayout()
         }
     }
 
@@ -23,13 +24,19 @@ final class LoadImagesViewController: ComponentBaseViewController {
 
     private var viewControllerModel: ViewControllerModel?
     var presenter: LoadImagesPresenter!
-    private let cellCount = 300
+    private let cellCount = 5
+    private lazy var flowLayout = LoadImagesFlowLayout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationItem(navigationTitle: "018 LoadImages")
         collectionView.isHidden = true
         presenter.getImages()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureFlowLayout()
     }
 
 }
@@ -72,11 +79,20 @@ extension LoadImagesViewController: LoadImagesPresenterOutput {
 extension LoadImagesViewController {
 
     private func configureFlowLayout() {
-        let layout = UICollectionViewFlowLayout()
+        let layout = flowLayout
         layout.itemSize = .init(width: collectionView.frame.width,
                                 height: collectionView.frame.height)
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout
+    }
+
+}
+
+extension LoadImagesViewController: UICollectionViewDelegateFlowLayout {
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        flowLayout.prepareForPaging()
     }
 
 }
