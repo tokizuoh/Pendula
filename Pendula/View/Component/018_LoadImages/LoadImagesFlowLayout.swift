@@ -20,14 +20,15 @@ final class LoadImagesFlowLayout: UICollectionViewFlowLayout {
         }
 
         let nextAttributes: UICollectionViewLayoutAttributes?
-        if velocity.x == 0 {
-            nextAttributes = layoutAttributesForNearbyCenterX(in: targetAttributes, collectionView: collectionView)
+        if velocity.x < 0 {
+            nextAttributes = targetAttributes.first
 
-        } else if velocity.x > 0 {
-            nextAttributes = targetAttributes.last
+        } else if velocity.x == 0 {
+            nextAttributes = layoutAttributesForNearbyCenterX(in: targetAttributes,
+                                                              collectionView: collectionView)
 
         } else {
-            nextAttributes = targetAttributes.first
+            nextAttributes = targetAttributes.last
         }
 
         guard let attributes = nextAttributes else {
