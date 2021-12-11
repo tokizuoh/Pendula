@@ -96,7 +96,7 @@ extension VerificationListViewController {
                          lastUpdateDate: "2021.11.21".date(format: .yyyyMMddPd),
                          viewController: ClipPictureBuilder().build()),
             Verification(title: "画像の読み込み速度の向上を考える",
-                         lastUpdateDate: "2021.11.26".date(format: .yyyyMMddPd),
+                         lastUpdateDate: "2021.12.11".date(format: .yyyyMMddPd),
                          viewController: LoadImagesBuilder().build())
         ]
 
