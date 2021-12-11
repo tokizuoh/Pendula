@@ -56,10 +56,10 @@ final class LoadImagesFlowLayout: UICollectionViewFlowLayout {
             return
         }
 
-        // TODO: [#116] -10, 10で上手く行った。 説明できるようにする
-        let expandedVisibleRect = CGRect(x: max(0, collectionView.contentOffset.x - 10),
+        // 見えてないCellも考慮するため、現在のoffsetの後ろから見るようにする
+        let expandedVisibleRect = CGRect(x: collectionView.contentOffset.x - collectionView.bounds.width,
                                          y: 0,
-                                         width: collectionView.bounds.width + 10,
+                                         width: collectionView.bounds.width * 2,
                                          height: collectionView.bounds.height)
 
         layoutAttributesForPaging = layoutAttributesForElements(in: expandedVisibleRect)?.sorted { $0.frame.minX < $1.frame.minX }
