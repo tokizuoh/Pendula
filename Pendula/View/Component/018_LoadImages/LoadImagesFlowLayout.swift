@@ -9,6 +9,7 @@ import UIKit
 
 final class LoadImagesFlowLayout: UICollectionViewFlowLayout {
 
+    /// ページスクロールに必要なスクロール対象の UICollectionViewLayoutAttributes を保持
     private var layoutAttributesForPaging: [UICollectionViewLayoutAttributes]?
 
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint,
