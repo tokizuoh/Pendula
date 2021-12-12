@@ -54,14 +54,14 @@ extension LoadImagesViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let viewControllerModel = viewControllerModel else {
+        guard let viewControllerModel = viewControllerModel,
+              viewControllerModel.thumbnailImages.indices.contains(indexPath.row) else {
             return UICollectionViewCell()
         }
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.loadImagesCollectionViewCell,
                                                       for: indexPath)!
-        let index = indexPath.row % viewControllerModel.thumbnailImages.count
-        let image = viewControllerModel.thumbnailImages[index]
+        let image = viewControllerModel.thumbnailImages[indexPath.row]
         let laps = indexPath.row / viewControllerModel.thumbnailImages.count
         cell.setup(viewModel: .init(image: image,
                                     rowText: indexPath.row.description,
