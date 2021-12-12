@@ -24,7 +24,6 @@ final class LoadImagesViewController: ComponentBaseViewController {
 
     private var viewControllerModel: ViewControllerModel?
     var presenter: LoadImagesPresenter!
-    private let cellCount = 5
     private lazy var flowLayout = LoadImagesFlowLayout()
     private lazy var activityIndicatorView = UIActivityIndicatorView()
 
