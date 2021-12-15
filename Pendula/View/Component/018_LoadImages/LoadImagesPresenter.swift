@@ -5,7 +5,7 @@
 //  Created by tokizo on 2021/11/27.
 //
 
-import UIKit
+import Foundation
 
 protocol LoadImagesPresenter {
     init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher)
@@ -33,32 +33,29 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
     }
 
     func getImages() {
-        let images: [UIImage?] = urls.map {
+        let images: [Data?] = urls.map {
             return getImage(url: $0)
         }
 
-        output?.updateViewControllerModel(.init(thumbnailImages: images))
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.output?.updateViewControllerModel(.init(thumbnailImages: images))
+        }
     }
 
-    private func getImage(url: URL) -> UIImage? {
-        if let image = cacher.getCachedImage(url) {
-            return image
+    private func getImage(url: URL) -> Data? {
+        if let imageData = cacher.getCachedImageData(url) {
+            return imageData
 
         } else {
-            guard let image = fetchImage(url: url) else {
+            guard let imageData = try? Data(contentsOf: url) else {
                 return nil
             }
-            cacher.cacheImage(url: url, image: image)
-            return image
+            cacher.cacheImage(url: url, imageData: imageData)
+            return imageData
         }
-    }
-
-    private func fetchImage(url: URL) -> UIImage? {
-        guard let data = try? Data(contentsOf: url) else {
-            return nil
-        }
-
-        return .init(data: data)
     }
 
 }

@@ -5,30 +5,30 @@
 //  Created by tokizo on 2021/12/05.
 //
 
-import UIKit
+import Foundation
 
 protocol LoadImagesCacher {
     /// 画像をキャッシュする
-    func cacheImage(url: URL, image: UIImage)
+    func cacheImage(url: URL, imageData: Data)
 
     /// キャッシュ済みの画像を返す（存在しない場合はnilを返す）
-    func getCachedImage(_ url: URL) -> UIImage?
+    func getCachedImageData(_ url: URL) -> Data?
 
 }
 
 final class LoadImagesCacherImplement: LoadImagesCacher {
 
-    private var imageDictionary: [URL: UIImage] = [:]
+    private var imageDictionary: [URL: Data] = [:]
 
     static let shared = LoadImagesCacherImplement()
 
     private init() {}
 
-    func cacheImage(url: URL, image: UIImage) {
-        imageDictionary[url] = image
+    func cacheImage(url: URL, imageData: Data) {
+        imageDictionary[url] = imageData
     }
 
-    func getCachedImage(_ url: URL) -> UIImage? {
+    func getCachedImageData(_ url: URL) -> Data? {
         return imageDictionary[url]
     }
 
