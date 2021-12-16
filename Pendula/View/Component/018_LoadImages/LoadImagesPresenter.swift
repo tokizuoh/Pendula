@@ -53,7 +53,7 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
             guard let imageData = try? Data(contentsOf: url) else {
                 return nil
             }
-            cacher.cacheImage(url: url, imageData: imageData)
+            cacher.cacheImageData(url: url, imageData: imageData)
             return imageData
         }
     }

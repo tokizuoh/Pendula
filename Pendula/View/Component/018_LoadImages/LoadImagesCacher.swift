@@ -9,7 +9,7 @@ import Foundation
 
 protocol LoadImagesCacher {
     /// 画像をキャッシュする
-    func cacheImage(url: URL, imageData: Data)
+    func cacheImageData(url: URL, imageData: Data)
 
     /// キャッシュ済みの画像を返す（存在しない場合はnilを返す）
     func getCachedImageData(_ url: URL) -> Data?
@@ -24,7 +24,7 @@ final class LoadImagesCacherImplement: LoadImagesCacher {
 
     private init() {}
 
-    func cacheImage(url: URL, imageData: Data) {
+    func cacheImageData(url: URL, imageData: Data) {
         imageDictionary[url] = imageData
     }
 
