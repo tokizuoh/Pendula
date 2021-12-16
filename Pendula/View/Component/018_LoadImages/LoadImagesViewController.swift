@@ -46,7 +46,7 @@ final class LoadImagesViewController: ComponentBaseViewController {
             guard let self = self else {
                 return
             }
-            self.presenter.getImages()
+            self.presenter.getImageDataList()
         }
     }
 

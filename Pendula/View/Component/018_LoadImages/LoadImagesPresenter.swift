@@ -9,7 +9,7 @@ import Foundation
 
 protocol LoadImagesPresenter {
     init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher)
-    func getImages()
+    func getImageDataList()
 }
 
 final class LoadImagesPresenterImplement: LoadImagesPresenter {
@@ -32,9 +32,9 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
         self.cacher = cacher
     }
 
-    func getImages() {
+    func getImageDataList() {
         let images: [Data?] = urls.map {
-            return getImage(url: $0)
+            return getImageData(url: $0)
         }
 
         DispatchQueue.main.async { [weak self] in
@@ -45,7 +45,7 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
         }
     }
 
-    private func getImage(url: URL) -> Data? {
+    private func getImageData(url: URL) -> Data? {
         if let imageData = cacher.getCachedImageData(url) {
             return imageData
 
