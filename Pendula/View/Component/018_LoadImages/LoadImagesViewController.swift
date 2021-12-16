@@ -66,9 +66,9 @@ extension LoadImagesViewController: UICollectionViewDataSource {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.loadImagesCollectionViewCell,
                                                       for: indexPath)!
-        let image = viewControllerModel.thumbnailImages[indexPath.row]
+        let imageData = viewControllerModel.thumbnailImages[indexPath.row]
         let laps = indexPath.row / viewControllerModel.thumbnailImages.count
-        cell.setup(viewModel: .init(image: image,
+        cell.setup(viewModel: .init(imageData: imageData,
                                     rowText: indexPath.row.description,
                                     lapText: laps.description))
         return cell
