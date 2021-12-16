@@ -42,7 +42,12 @@ final class LoadImagesViewController: ComponentBaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.getImages()
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.presenter.getImages()
+        }
     }
 
 }
