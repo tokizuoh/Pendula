@@ -15,13 +15,14 @@ final class LoadImagesCollectionViewCell: UICollectionViewCell {
     private let placeholderImage = R.image.loadImages_placeholder()
 
     struct ViewModel {
-        let image: UIImage?
+        let imageData: Data?
         let rowText: String
         let lapText: String
     }
 
     func setup(viewModel: ViewModel) {
-        if let image = viewModel.image {
+        if let imageData = viewModel.imageData,
+           let image = UIImage(data: imageData) {
             thumbnailImageView.image = image
         } else {
             thumbnailImageView.image = placeholderImage

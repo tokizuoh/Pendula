@@ -19,7 +19,7 @@ final class LoadImagesViewController: ComponentBaseViewController {
     }
 
     struct ViewControllerModel {
-        let thumbnailImages: [UIImage?]
+        let thumbnailImages: [Data?]
     }
 
     private var viewControllerModel: ViewControllerModel?
@@ -42,7 +42,12 @@ final class LoadImagesViewController: ComponentBaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.getImages()
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.presenter.getImageDataList()
+        }
     }
 
 }
@@ -61,9 +66,9 @@ extension LoadImagesViewController: UICollectionViewDataSource {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.loadImagesCollectionViewCell,
                                                       for: indexPath)!
-        let image = viewControllerModel.thumbnailImages[indexPath.row]
+        let imageData = viewControllerModel.thumbnailImages[indexPath.row]
         let laps = indexPath.row / viewControllerModel.thumbnailImages.count
-        cell.setup(viewModel: .init(image: image,
+        cell.setup(viewModel: .init(imageData: imageData,
                                     rowText: indexPath.row.description,
                                     lapText: laps.description))
         return cell
