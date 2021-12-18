@@ -14,8 +14,10 @@ struct LoadImagesBuilder: Builder {
     func build() -> ViewController {
         let vc = R.storyboard.loadImages.loadImages()!
         let cacher = LoadImagesCacherImplement.shared
+        let client = LoadImagesStubAPIClient()
         let presenter = LoadImagesPresenterImplement(output: vc,
-                                                     cacher: cacher)
+                                                     cacher: cacher,
+                                                     client: client)
         vc.presenter = presenter
         return vc
     }
