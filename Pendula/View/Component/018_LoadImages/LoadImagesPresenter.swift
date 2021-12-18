@@ -8,7 +8,9 @@
 import Foundation
 
 protocol LoadImagesPresenter {
-    init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher)
+    init(output: LoadImagesPresenterOutput,
+         cacher: LoadImagesCacher,
+         URLGenerator: LoadImagesURLGenerator)
     func getImageDataList()
 }
 
@@ -16,23 +18,21 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
     private weak var output: LoadImagesPresenterOutput?
     private let cacher: LoadImagesCacher
+    private let urlGenerator: LoadImagesURLGenerator
 
-    private let urls: [URL] = [
-        URL(string: "https://placehold.jp/7276c4/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://tokizuoh.dev")!,  // 画像のfetchが必ず失敗するURL
-        URL(string: "https://placehold.jp/a4b562/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://placehold.jp/b56262/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://placehold.jp/b262b5/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://placehold.jp/6297b5/ffffff/1000x2000.png?text=1000%20%C3%97%202000")!,
-        URL(string: "https://raw.githubusercontent.com/tokizuoh/Pendula/feature/%23104/Pendula/View/Component/018_LoadImages/Image/sky.jpeg")!
-    ]
+    private let urlCounts = 47
 
-    init(output: LoadImagesPresenterOutput, cacher: LoadImagesCacher) {
+    init(output: LoadImagesPresenterOutput,
+         cacher: LoadImagesCacher,
+         URLGenerator: LoadImagesURLGenerator) {
         self.output = output
         self.cacher = cacher
+        self.urlGenerator = URLGenerator
     }
 
     func getImageDataList() {
+        let urls = urlGenerator.generate(count: urlCounts)
+
         let images: [Data?] = urls.map {
             return getImageData(url: $0)
         }
