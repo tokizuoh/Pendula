@@ -8,28 +8,28 @@
 import Foundation
 
 protocol LoadImagesCacher {
-    /// 画像をキャッシュする
+    /// 画像Dataをキャッシュする
     func cacheImageData(url: URL, imageData: Data)
 
-    /// キャッシュ済みの画像を返す（存在しない場合はnilを返す）
+    /// キャッシュ済みの画像Dataを返す（存在しない場合はnilを返す）
     func getCachedImageData(_ url: URL) -> Data?
 
 }
 
 final class LoadImagesCacherImplement: LoadImagesCacher {
 
-    private var imageDictionary: [URL: Data] = [:]
+    private var imageDataDictionary: [URL: Data] = [:]
 
     static let shared = LoadImagesCacherImplement()
 
     private init() {}
 
     func cacheImageData(url: URL, imageData: Data) {
-        imageDictionary[url] = imageData
+        imageDataDictionary[url] = imageData
     }
 
     func getCachedImageData(_ url: URL) -> Data? {
-        return imageDictionary[url]
+        return imageDataDictionary[url]
     }
 
 }
