@@ -14,7 +14,6 @@ struct LoadImagesBuilder: Builder {
     func build() -> ViewController {
         let vc = R.storyboard.loadImages.loadImages()!
         let cacher = LoadImagesCacherImplement.shared
-        let urlGenerator = LoadImagesURLGeneratorImplement()
         let presenter = LoadImagesPresenterImplement(output: vc,
                                                      cacher: cacher)
         vc.presenter = presenter
