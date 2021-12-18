@@ -16,8 +16,7 @@ struct LoadImagesBuilder: Builder {
         let cacher = LoadImagesCacherImplement.shared
         let urlGenerator = LoadImagesURLGeneratorImplement()
         let presenter = LoadImagesPresenterImplement(output: vc,
-                                                     cacher: cacher,
-                                                     urlGenerator: urlGenerator)
+                                                     cacher: cacher)
         vc.presenter = presenter
         return vc
     }
