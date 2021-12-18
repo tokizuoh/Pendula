@@ -14,6 +14,7 @@ final class LoadImagesViewController: ComponentBaseViewController {
             collectionView.dataSource = self
             collectionView.delegate = self
             collectionView.decelerationRate = .fast
+            collectionView.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
             collectionView.register(R.nib.loadImagesCollectionViewCell)
         }
     }
@@ -71,6 +72,7 @@ extension LoadImagesViewController: UICollectionViewDataSource {
         cell.setup(viewModel: .init(imageData: imageData,
                                     rowText: indexPath.row.description,
                                     lapText: laps.description))
+        cell.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         return cell
     }
 
