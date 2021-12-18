@@ -10,7 +10,7 @@ import Foundation
 protocol LoadImagesPresenter {
     init(output: LoadImagesPresenterOutput,
          cacher: LoadImagesCacher,
-         URLGenerator: LoadImagesURLGenerator)
+         urlGenerator: LoadImagesURLGenerator)
     func getImageDataList()
 }
 
@@ -24,10 +24,10 @@ final class LoadImagesPresenterImplement: LoadImagesPresenter {
 
     init(output: LoadImagesPresenterOutput,
          cacher: LoadImagesCacher,
-         URLGenerator: LoadImagesURLGenerator) {
+         urlGenerator: LoadImagesURLGenerator) {
         self.output = output
         self.cacher = cacher
-        self.urlGenerator = URLGenerator
+        self.urlGenerator = urlGenerator
     }
 
     func getImageDataList() {
