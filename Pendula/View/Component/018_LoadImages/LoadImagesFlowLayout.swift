@@ -58,7 +58,7 @@ final class LoadImagesFlowLayout: UICollectionViewFlowLayout {
         }
 
         // 見えてないCellも考慮するため、現在のoffsetの後ろから見るようにする
-        let expandedVisibleRect = CGRect(x: collectionView.contentOffset.x - collectionView.bounds.width,
+        let expandedVisibleRect = CGRect(x: collectionView.contentOffset.x - collectionView.bounds.width / 2,
                                          y: 0,
                                          width: collectionView.bounds.width * 2,
                                          height: collectionView.bounds.height)
