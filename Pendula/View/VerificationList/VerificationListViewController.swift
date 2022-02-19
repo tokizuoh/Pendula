@@ -97,7 +97,10 @@ extension VerificationListViewController {
                          viewController: ClipPictureBuilder().build()),
             Verification(title: "画像の読み込み速度の向上を考える",
                          lastUpdateDate: "2021.12.19".date(format: .yyyyMMddPd),
-                         viewController: LoadImagesBuilder().build())
+                         viewController: LoadImagesBuilder().build()),
+            Verification(title: "Combine練習",
+                         lastUpdateDate: "2022.2.19".date(format: .yyyyMMddPd),
+                         viewController: CombinePracticeBuilder().build())
         ]
 
         // TODO: 遷移先のVC内でHealthKitが利用かどうか判断するほうが良さそう
